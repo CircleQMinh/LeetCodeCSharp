@@ -1,0 +1,14 @@
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\4. Median of Two Sorted Arrays\MedianofTwoSortedArrays\MedianofTwoSortedArrays\bin\Debug\net8.0\MedianofTwoSortedArrays.exe
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\4. Median of Two Sorted Arrays\MedianofTwoSortedArrays\MedianofTwoSortedArrays\bin\Debug\net8.0\MedianofTwoSortedArrays.deps.json
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\4. Median of Two Sorted Arrays\MedianofTwoSortedArrays\MedianofTwoSortedArrays\bin\Debug\net8.0\MedianofTwoSortedArrays.runtimeconfig.json
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\4. Median of Two Sorted Arrays\MedianofTwoSortedArrays\MedianofTwoSortedArrays\bin\Debug\net8.0\MedianofTwoSortedArrays.dll
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\4. Median of Two Sorted Arrays\MedianofTwoSortedArrays\MedianofTwoSortedArrays\bin\Debug\net8.0\MedianofTwoSortedArrays.pdb
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\4. Median of Two Sorted Arrays\MedianofTwoSortedArrays\MedianofTwoSortedArrays\obj\Debug\net8.0\MedianofTwoSortedArrays.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\4. Median of Two Sorted Arrays\MedianofTwoSortedArrays\MedianofTwoSortedArrays\obj\Debug\net8.0\MedianofTwoSortedArrays.AssemblyInfoInputs.cache
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\4. Median of Two Sorted Arrays\MedianofTwoSortedArrays\MedianofTwoSortedArrays\obj\Debug\net8.0\MedianofTwoSortedArrays.AssemblyInfo.cs
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\4. Median of Two Sorted Arrays\MedianofTwoSortedArrays\MedianofTwoSortedArrays\obj\Debug\net8.0\MedianofTwoSortedArrays.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\4. Median of Two Sorted Arrays\MedianofTwoSortedArrays\MedianofTwoSortedArrays\obj\Debug\net8.0\MedianofTwoSortedArrays.dll
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\4. Median of Two Sorted Arrays\MedianofTwoSortedArrays\MedianofTwoSortedArrays\obj\Debug\net8.0\refint\MedianofTwoSortedArrays.dll
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\4. Median of Two Sorted Arrays\MedianofTwoSortedArrays\MedianofTwoSortedArrays\obj\Debug\net8.0\MedianofTwoSortedArrays.pdb
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\4. Median of Two Sorted Arrays\MedianofTwoSortedArrays\MedianofTwoSortedArrays\obj\Debug\net8.0\MedianofTwoSortedArrays.genruntimeconfig.cache
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\4. Median of Two Sorted Arrays\MedianofTwoSortedArrays\MedianofTwoSortedArrays\obj\Debug\net8.0\ref\MedianofTwoSortedArrays.dll

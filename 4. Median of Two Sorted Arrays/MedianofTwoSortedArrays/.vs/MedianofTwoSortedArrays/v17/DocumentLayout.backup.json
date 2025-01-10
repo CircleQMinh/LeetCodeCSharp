@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\admin\\Desktop\\Projects\\LeetCodeEveryDay\\4. Median of Two Sorted Arrays\\MedianofTwoSortedArrays\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B2CF026B-B8E1-45F2-8E9E-3C39D32456EC}|MedianofTwoSortedArrays\\MedianofTwoSortedArrays.csproj|c:\\users\\admin\\desktop\\projects\\leetcodeeveryday\\4. median of two sorted arrays\\medianoftwosortedarrays\\medianoftwosortedarrays\\solution.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B2CF026B-B8E1-45F2-8E9E-3C39D32456EC}|MedianofTwoSortedArrays\\MedianofTwoSortedArrays.csproj|solutionrelative:medianoftwosortedarrays\\solution.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B2CF026B-B8E1-45F2-8E9E-3C39D32456EC}|MedianofTwoSortedArrays\\MedianofTwoSortedArrays.csproj|c:\\users\\admin\\desktop\\projects\\leetcodeeveryday\\4. median of two sorted arrays\\medianoftwosortedarrays\\medianoftwosortedarrays\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B2CF026B-B8E1-45F2-8E9E-3C39D32456EC}|MedianofTwoSortedArrays\\MedianofTwoSortedArrays.csproj|solutionrelative:medianoftwosortedarrays\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Solution.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\Desktop\\Projects\\LeetCodeEveryDay\\4. Median of Two Sorted Arrays\\MedianofTwoSortedArrays\\MedianofTwoSortedArrays\\Solution.cs",
+              "RelativeDocumentMoniker": "MedianofTwoSortedArrays\\Solution.cs",
+              "ToolTip": "C:\\Users\\admin\\Desktop\\Projects\\LeetCodeEveryDay\\4. Median of Two Sorted Arrays\\MedianofTwoSortedArrays\\MedianofTwoSortedArrays\\Solution.cs",
+              "RelativeToolTip": "MedianofTwoSortedArrays\\Solution.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-10T07:51:17.2Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\Desktop\\Projects\\LeetCodeEveryDay\\4. Median of Two Sorted Arrays\\MedianofTwoSortedArrays\\MedianofTwoSortedArrays\\Program.cs",
+              "RelativeDocumentMoniker": "MedianofTwoSortedArrays\\Program.cs",
+              "ToolTip": "C:\\Users\\admin\\Desktop\\Projects\\LeetCodeEveryDay\\4. Median of Two Sorted Arrays\\MedianofTwoSortedArrays\\MedianofTwoSortedArrays\\Program.cs",
+              "RelativeToolTip": "MedianofTwoSortedArrays\\Program.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAAAAUAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-10T07:50:15.316Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
