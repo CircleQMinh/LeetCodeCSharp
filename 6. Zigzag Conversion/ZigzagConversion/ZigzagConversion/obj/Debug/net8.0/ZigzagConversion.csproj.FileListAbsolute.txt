@@ -1,0 +1,15 @@
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\6. Zigzag Conversion\ZigzagConversion\ZigzagConversion\bin\Debug\net8.0\ZigzagConversion.exe
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\6. Zigzag Conversion\ZigzagConversion\ZigzagConversion\bin\Debug\net8.0\ZigzagConversion.deps.json
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\6. Zigzag Conversion\ZigzagConversion\ZigzagConversion\bin\Debug\net8.0\ZigzagConversion.runtimeconfig.json
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\6. Zigzag Conversion\ZigzagConversion\ZigzagConversion\bin\Debug\net8.0\ZigzagConversion.dll
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\6. Zigzag Conversion\ZigzagConversion\ZigzagConversion\bin\Debug\net8.0\ZigzagConversion.pdb
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\6. Zigzag Conversion\ZigzagConversion\ZigzagConversion\obj\Debug\net8.0\ZigzagConversion.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\6. Zigzag Conversion\ZigzagConversion\ZigzagConversion\obj\Debug\net8.0\ZigzagConversion.AssemblyInfoInputs.cache
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\6. Zigzag Conversion\ZigzagConversion\ZigzagConversion\obj\Debug\net8.0\ZigzagConversion.AssemblyInfo.cs
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\6. Zigzag Conversion\ZigzagConversion\ZigzagConversion\obj\Debug\net8.0\ZigzagConversion.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\6. Zigzag Conversion\ZigzagConversion\ZigzagConversion\obj\Debug\net8.0\ZigzagConversion.sourcelink.json
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\6. Zigzag Conversion\ZigzagConversion\ZigzagConversion\obj\Debug\net8.0\ZigzagConversion.dll
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\6. Zigzag Conversion\ZigzagConversion\ZigzagConversion\obj\Debug\net8.0\refint\ZigzagConversion.dll
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\6. Zigzag Conversion\ZigzagConversion\ZigzagConversion\obj\Debug\net8.0\ZigzagConversion.pdb
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\6. Zigzag Conversion\ZigzagConversion\ZigzagConversion\obj\Debug\net8.0\ZigzagConversion.genruntimeconfig.cache
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\6. Zigzag Conversion\ZigzagConversion\ZigzagConversion\obj\Debug\net8.0\ref\ZigzagConversion.dll
