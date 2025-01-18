@@ -1,0 +1,15 @@
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\16. 3Sum Closest\16. 3Sum Closest\16. 3Sum Closest\bin\Debug\net8.0\16. 3Sum Closest.exe
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\16. 3Sum Closest\16. 3Sum Closest\16. 3Sum Closest\bin\Debug\net8.0\16. 3Sum Closest.deps.json
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\16. 3Sum Closest\16. 3Sum Closest\16. 3Sum Closest\bin\Debug\net8.0\16. 3Sum Closest.runtimeconfig.json
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\16. 3Sum Closest\16. 3Sum Closest\16. 3Sum Closest\bin\Debug\net8.0\16. 3Sum Closest.dll
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\16. 3Sum Closest\16. 3Sum Closest\16. 3Sum Closest\bin\Debug\net8.0\16. 3Sum Closest.pdb
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\16. 3Sum Closest\16. 3Sum Closest\16. 3Sum Closest\obj\Debug\net8.0\16. 3Sum Closest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\16. 3Sum Closest\16. 3Sum Closest\16. 3Sum Closest\obj\Debug\net8.0\16. 3Sum Closest.AssemblyInfoInputs.cache
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\16. 3Sum Closest\16. 3Sum Closest\16. 3Sum Closest\obj\Debug\net8.0\16. 3Sum Closest.AssemblyInfo.cs
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\16. 3Sum Closest\16. 3Sum Closest\16. 3Sum Closest\obj\Debug\net8.0\16. 3Sum Closest.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\16. 3Sum Closest\16. 3Sum Closest\16. 3Sum Closest\obj\Debug\net8.0\16. 3Sum Closest.sourcelink.json
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\16. 3Sum Closest\16. 3Sum Closest\16. 3Sum Closest\obj\Debug\net8.0\16. 3Sum Closest.dll
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\16. 3Sum Closest\16. 3Sum Closest\16. 3Sum Closest\obj\Debug\net8.0\refint\16. 3Sum Closest.dll
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\16. 3Sum Closest\16. 3Sum Closest\16. 3Sum Closest\obj\Debug\net8.0\16. 3Sum Closest.pdb
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\16. 3Sum Closest\16. 3Sum Closest\16. 3Sum Closest\obj\Debug\net8.0\16. 3Sum Closest.genruntimeconfig.cache
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\16. 3Sum Closest\16. 3Sum Closest\16. 3Sum Closest\obj\Debug\net8.0\ref\16. 3Sum Closest.dll

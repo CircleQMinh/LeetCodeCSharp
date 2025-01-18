@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\admin\\Desktop\\Projects\\LeetCodeEveryDay\\16. 3Sum Closest\\16. 3Sum Closest\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1DF4BABA-00A5-47FF-9494-AC5BE8FE602E}|16. 3Sum Closest\\16. 3Sum Closest.csproj|c:\\users\\admin\\desktop\\projects\\leetcodeeveryday\\16. 3sum closest\\16. 3sum closest\\16. 3sum closest\\solution.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1DF4BABA-00A5-47FF-9494-AC5BE8FE602E}|16. 3Sum Closest\\16. 3Sum Closest.csproj|solutionrelative:16. 3sum closest\\solution.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1DF4BABA-00A5-47FF-9494-AC5BE8FE602E}|16. 3Sum Closest\\16. 3Sum Closest.csproj|c:\\users\\admin\\desktop\\projects\\leetcodeeveryday\\16. 3sum closest\\16. 3sum closest\\16. 3sum closest\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1DF4BABA-00A5-47FF-9494-AC5BE8FE602E}|16. 3Sum Closest\\16. 3Sum Closest.csproj|solutionrelative:16. 3sum closest\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Solution.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\Desktop\\Projects\\LeetCodeEveryDay\\16. 3Sum Closest\\16. 3Sum Closest\\16. 3Sum Closest\\Solution.cs",
+              "RelativeDocumentMoniker": "16. 3Sum Closest\\Solution.cs",
+              "ToolTip": "C:\\Users\\admin\\Desktop\\Projects\\LeetCodeEveryDay\\16. 3Sum Closest\\16. 3Sum Closest\\16. 3Sum Closest\\Solution.cs",
+              "RelativeToolTip": "16. 3Sum Closest\\Solution.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAAADEAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-18T10:32:15Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\Desktop\\Projects\\LeetCodeEveryDay\\16. 3Sum Closest\\16. 3Sum Closest\\16. 3Sum Closest\\Program.cs",
+              "RelativeDocumentMoniker": "16. 3Sum Closest\\Program.cs",
+              "ToolTip": "C:\\Users\\admin\\Desktop\\Projects\\LeetCodeEveryDay\\16. 3Sum Closest\\16. 3Sum Closest\\16. 3Sum Closest\\Program.cs",
+              "RelativeToolTip": "16. 3Sum Closest\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-18T10:31:57.488Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
