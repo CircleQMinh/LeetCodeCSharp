@@ -3,7 +3,9 @@ using Playground;
 
 Console.WriteLine("Hello, World!");
 var solution = new Solution();
-var nums = new int[] { 0, 1, 2, 2, 3, 0, 4, 2 };
-var v = 2;
-var r = solution.RemoveElement(nums,v);
+var n= "sad";
+var h = "sadbutsad";
+var n1 = "issip";
+var h1 = "mississippi";
+var r = solution.StrStr(h1,n1);
 Console.WriteLine("Hello, World!");

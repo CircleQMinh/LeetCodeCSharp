@@ -1,81 +1,42 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Playground
+namespace MinhVu
 {
     public class Solution
     {
-        public int RemoveDuplicates(int[] nums)
+        public int StrStr(string haystack, string needle)
         {
-            int i = 1;
-            int count = 0;
-            while (i < nums.Length)
+            var result = -1;
+            if (needle.Length>haystack.Length)
             {
-                if (nums[count] != nums[i])
-                {
-                    count++;
-                    nums[count] = nums[i];
-                }
-                i++;
+                return result;
             }
-            return nums.Length == 0 ? 0 : count + 1;
-        }
-        public int RemoveElement(int[] nums, int val)
-        {
-            int i = 0;
-            int j = 0;
-            int count = 0;
-            while (i < nums.Length && j < nums.Length)
-            {
-                if (nums[j] != val)
+            var needleStartIndex = 0;
+            for (int i = 0; i < haystack.Length; i++) {
+                if (needleStartIndex == needle.Length)
                 {
-                    nums[i] = nums[j];
-                    i++;
-                  
+                    return result + 1 - needle.Length;
+                }
+                if (haystack[i] == needle[needleStartIndex])
+                {
+                result = i;
+                needleStartIndex++;
                 }
                 else
                 {
-                    count ++;
+                    result = -1;
+                    i -= needleStartIndex;
+                    needleStartIndex = 0;
+                    
                 }
-                j++;
             }
-
-            return nums.Length == 0 ? 0 : nums.Length - count;
+            return needleStartIndex == needle.Length ? result + 1 - needle.Length : -1;
         }
 
-        //public int StrStr(string haystack, string needle)
-        //{
-        //    var result = -1;
-        //    if (needle.Length>haystack.Length)
-        //    {
-        //        return result;
-        //    }
-        //    var needleStartIndex = 0;
-        //    for (int i = 0; i < haystack.Length; i++) {
-        //        if (needleStartIndex == needle.Length)
-        //        {
-        //            return result + 1 - needle.Length;
-        //        }
-        //        if (haystack[i] == needle[needleStartIndex])
-        //        {
-        //           result = i;
-        //           needleStartIndex++;
-        //        }
-        //        else
-        //        {
-        //            result = -1;
-        //            i -= needleStartIndex;
-        //            needleStartIndex = 0;
-                    
-        //        }
-        //    }
-        //    return needleStartIndex == needle.Length ? result + 1 - needle.Length : -1;
-        //}
-
-        public int StrStr(string haystack, string needle)
+        public int StrStr2(string haystack, string needle) //KMP algorithm
         {
             int n = haystack.Length;
             int m = needle.Length;
