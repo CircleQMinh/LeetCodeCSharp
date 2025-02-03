@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\admin\\Desktop\\Projects\\LeetCodeEveryDay\\Playground\\Playground\\Playground\\Playground.csproj",
+      "projectUniqueName": "C:\\Users\\admin\\Desktop\\Projects\\LeetCodeEveryDay\\New folder\\Playground\\Playground\\Playground.csproj",
       "projectName": "Playground",
-      "projectPath": "C:\\Users\\admin\\Desktop\\Projects\\LeetCodeEveryDay\\Playground\\Playground\\Playground\\Playground.csproj",
+      "projectPath": "C:\\Users\\admin\\Desktop\\Projects\\LeetCodeEveryDay\\New folder\\Playground\\Playground\\Playground.csproj",
       "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\admin\\Desktop\\Projects\\LeetCodeEveryDay\\Playground\\Playground\\Playground\\obj\\",
+      "outputPath": "C:\\Users\\admin\\Desktop\\Projects\\LeetCodeEveryDay\\New folder\\Playground\\Playground\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

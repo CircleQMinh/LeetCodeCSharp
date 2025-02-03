@@ -3,9 +3,6 @@ using Playground;
 
 Console.WriteLine("Hello, World!");
 var solution = new Solution();
-var n= "sad";
-var h = "sadbutsad";
-var n1 = "issip";
-var h1 = "mississippi";
-var r = solution.StrStr(h1,n1);
+var a = new int[7] { 4, 2, 0, 2, 3, 2, 0 };
+solution.NextPermutation(a);
 Console.WriteLine("Hello, World!");

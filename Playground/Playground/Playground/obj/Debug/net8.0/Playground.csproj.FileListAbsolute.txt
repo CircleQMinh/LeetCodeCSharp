@@ -13,3 +13,18 @@ C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\Playground\Playground\Playgroun
 C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\Playground\Playground\Playground\obj\Debug\net8.0\Playground.pdb
 C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\Playground\Playground\Playground\obj\Debug\net8.0\Playground.genruntimeconfig.cache
 C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\Playground\Playground\Playground\obj\Debug\net8.0\ref\Playground.dll
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\New folder\Playground\Playground\bin\Debug\net8.0\Playground.exe
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\New folder\Playground\Playground\bin\Debug\net8.0\Playground.deps.json
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\New folder\Playground\Playground\bin\Debug\net8.0\Playground.runtimeconfig.json
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\New folder\Playground\Playground\bin\Debug\net8.0\Playground.dll
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\New folder\Playground\Playground\bin\Debug\net8.0\Playground.pdb
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\New folder\Playground\Playground\obj\Debug\net8.0\Playground.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\New folder\Playground\Playground\obj\Debug\net8.0\Playground.AssemblyInfoInputs.cache
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\New folder\Playground\Playground\obj\Debug\net8.0\Playground.AssemblyInfo.cs
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\New folder\Playground\Playground\obj\Debug\net8.0\Playground.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\New folder\Playground\Playground\obj\Debug\net8.0\Playground.sourcelink.json
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\New folder\Playground\Playground\obj\Debug\net8.0\Playground.dll
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\New folder\Playground\Playground\obj\Debug\net8.0\refint\Playground.dll
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\New folder\Playground\Playground\obj\Debug\net8.0\Playground.pdb
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\New folder\Playground\Playground\obj\Debug\net8.0\Playground.genruntimeconfig.cache
+C:\Users\admin\Desktop\Projects\LeetCodeEveryDay\New folder\Playground\Playground\obj\Debug\net8.0\ref\Playground.dll
