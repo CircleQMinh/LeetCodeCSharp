@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\admin\\Desktop\\Projects\\LeetCodeEveryDay\\New folder\\Playground\\",
+  "WorkspaceRootPath": "C:\\Users\\admin\\Desktop\\Projects\\LeetCodeEveryDay\\Playground\\Playground\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BD643B7D-AB96-4473-9104-8B72ACA2CC66}|Playground\\Playground.csproj|c:\\users\\admin\\desktop\\projects\\leetcodeeveryday\\new folder\\playground\\playground\\solution.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{BD643B7D-AB96-4473-9104-8B72ACA2CC66}|Playground\\Playground.csproj|c:\\users\\admin\\desktop\\projects\\leetcodeeveryday\\playground\\playground\\playground\\solution.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BD643B7D-AB96-4473-9104-8B72ACA2CC66}|Playground\\Playground.csproj|solutionrelative:playground\\solution.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BD643B7D-AB96-4473-9104-8B72ACA2CC66}|Playground\\Playground.csproj|c:\\users\\admin\\desktop\\projects\\leetcodeeveryday\\new folder\\playground\\playground\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{BD643B7D-AB96-4473-9104-8B72ACA2CC66}|Playground\\Playground.csproj|c:\\users\\admin\\desktop\\projects\\leetcodeeveryday\\playground\\playground\\playground\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BD643B7D-AB96-4473-9104-8B72ACA2CC66}|Playground\\Playground.csproj|solutionrelative:playground\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -24,11 +24,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Solution.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\Desktop\\Projects\\LeetCodeEveryDay\\New folder\\Playground\\Playground\\Solution.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\Desktop\\Projects\\LeetCodeEveryDay\\Playground\\Playground\\Playground\\Solution.cs",
               "RelativeDocumentMoniker": "Playground\\Solution.cs",
-              "ToolTip": "C:\\Users\\admin\\Desktop\\Projects\\LeetCodeEveryDay\\New folder\\Playground\\Playground\\Solution.cs",
+              "ToolTip": "C:\\Users\\admin\\Desktop\\Projects\\LeetCodeEveryDay\\Playground\\Playground\\Playground\\Solution.cs",
               "RelativeToolTip": "Playground\\Solution.cs",
-              "ViewState": "AgIAAF0AAAAAAAAAAAAkwLAAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAPgAAAAAAAAAAAAQwPAAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-23T09:11:31.473Z",
               "IsPinned": true,
@@ -38,11 +38,11 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\Desktop\\Projects\\LeetCodeEveryDay\\New folder\\Playground\\Playground\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\Desktop\\Projects\\LeetCodeEveryDay\\Playground\\Playground\\Playground\\Program.cs",
               "RelativeDocumentMoniker": "Playground\\Program.cs",
-              "ToolTip": "C:\\Users\\admin\\Desktop\\Projects\\LeetCodeEveryDay\\New folder\\Playground\\Playground\\Program.cs",
+              "ToolTip": "C:\\Users\\admin\\Desktop\\Projects\\LeetCodeEveryDay\\Playground\\Playground\\Playground\\Program.cs",
               "RelativeToolTip": "Playground\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-23T09:11:08.826Z",
               "EditorCaption": ""

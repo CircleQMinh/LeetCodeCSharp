@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Playground
 {
@@ -34,11 +35,11 @@ namespace Playground
                 {
                     nums[i] = nums[j];
                     i++;
-                  
+
                 }
                 else
                 {
-                    count ++;
+                    count++;
                 }
                 j++;
             }
@@ -69,7 +70,7 @@ namespace Playground
         //            result = -1;
         //            i -= needleStartIndex;
         //            needleStartIndex = 0;
-                    
+
         //        }
         //    }
         //    return needleStartIndex == needle.Length ? result + 1 - needle.Length : -1;
@@ -157,7 +158,8 @@ namespace Playground
             var right = nums.Length - 1;
             var limit = right - 1;
             var isSwap = false;
-            while (left >= limit && right >= 1 && limit >=0) {
+            while (left >= limit && right >= 1 && limit >= 0)
+            {
                 if (nums[right] > nums[left])
                 {
                     var t = nums[left];
@@ -166,11 +168,13 @@ namespace Playground
                     isSwap = true;
                     break;
                 }
-                else { 
+                else
+                {
                     left--;
 
                 }
-                if (left < limit) { 
+                if (left < limit)
+                {
                     right--;
                     left = right - 1;
                 }
@@ -199,7 +203,7 @@ namespace Playground
             }
             else
             {
-                for (int i = left+1; i < nums.Length; i++)
+                for (int i = left + 1; i < nums.Length; i++)
                 {
                     for (int j = i + 1; j < nums.Length; j++)
                     {
@@ -213,6 +217,79 @@ namespace Playground
                 }
             }
 
+        }
+
+        public int[] SearchRange(int[] nums, int target)
+        {
+            var l = -1;
+            var r = -1;
+
+            int left = 0;
+            int right = nums.Length - 1;
+
+            while (left <= right)
+            {
+                int middle = left + (right - left) / 2;
+
+                if (nums[middle] == target)
+                {
+                    var index = middle;
+                    for (int i = index; i>= 0; i--)
+                    {
+                        if(nums[i] == target){
+                            l = i;
+                        }
+                    }
+                    for (int i = index; i <= nums.Length -1; i++)
+                    {
+                        if (nums[i] == target)
+                        {
+                            r = i;
+                        }
+                    }
+                    break;
+                }
+
+                if (nums[middle] < target)
+                {
+                    left = middle + 1;
+                }
+                else
+                {
+                    right = middle - 1;
+                }
+            }
+
+
+
+            return [l, r];
+        }
+
+        public int BinarySearch(int[] array, int target)
+        {
+            int left = 0;
+            int right = array.Length - 1;
+
+            while (left <= right)
+            {
+                int middle = left + (right - left) / 2; 
+
+                if (array[middle] == target)
+                {
+                    return middle; 
+                }
+
+                if (array[middle] < target)
+                {
+                    left = middle + 1; 
+                }
+                else
+                {
+                    right = middle - 1; 
+                }
+            }
+
+            return -1; 
         }
     }
 }
