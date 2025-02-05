@@ -3,6 +3,6 @@ using Playground;
 
 Console.WriteLine("Hello, World!");
 var solution = new Solution();
-var a = new int[12] { 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9 };
-solution.SearchRange(a,8);
+var a = new int[4] { 1, 3, 5, 6 };
+solution.SearchInsert(a,0);
 Console.WriteLine("Hello, World!");
