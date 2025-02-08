@@ -13,5 +13,6 @@ var a = new char[9][] {
 ['.', '6', '.', '.', '.', '.', '2', '8', '.'], 
 ['.', '.', '.', '4', '1', '9', '.', '.', '5'], 
 ['.', '.', '.', '.', '8', '.', '.', '7', '9']} ;
-solution.IsValidSudoku(a);
+
+solution.SolveSudoku(a);
 Console.WriteLine("Hello, World!");
