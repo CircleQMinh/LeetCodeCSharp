@@ -417,5 +417,95 @@ namespace Playground
             }
             return (-1,-1);
         }
+
+        public IList<IList<int>> ThreeSum(int[] nums)
+        {
+            IList<IList<int>> list = new List<IList<int>>();
+            nums = nums.OrderBy(q => q).ToArray(); //-4 -1 -1 0 1 2
+
+            for (int i = 0; i < nums.Length - 2; i++)
+            {
+                if (i > 0 && nums[i] == nums[i - 1])
+                {
+                    continue;
+                }
+
+                var j = i + 1;
+                var k = nums.Length - 1;
+
+                while (j < k)
+                {
+                    var sum = nums[i] + nums[j] + nums[k];
+                    if (sum == 0)
+                    {
+                        var add = new List<int> { nums[i], nums[j], nums[k] };
+                        list.Add(add);
+                        j++;
+                        while (nums[j] == nums[j - 1] && j < k)
+                        {
+                            j++;
+                        }
+
+                    }
+                    else if (sum > 0)
+                    {
+                        k--;
+                    }
+                    else
+                    {
+                        j++;
+                    }
+                }
+            }
+
+            return list;
+        }
+
+        public IList<IList<int>> FourSum(int[] nums, int target)
+        {
+            IList<IList<int>> list = new List<IList<int>>();
+            nums = nums.OrderBy(q => q).ToArray(); //-4 -1 -1 0 1 2
+
+            for (int a = 0; a < nums.Length - 3; a++)
+            {
+                if (a > 0 && nums[a] == nums[a - 1])
+                {
+                    continue;
+                }
+                for (int b = a + 1; b < nums.Length - 2; b++)
+                {
+                    if (b > a + 1 && nums[b] == nums[b - 1])
+                    {
+                        continue;
+                    }
+
+                    var c = b + 1;
+                    var d = nums.Length - 1;
+
+                    while (c < d) {
+                        // cast numbers to long to avoid overflow lol
+                        long sum = (long)nums[a] + nums[b] + nums[c] + nums[d];
+                        if (sum == target)
+                        {
+                            var add = new List<int> { nums[a], nums[b], nums[c], nums[d] };
+                            list.Add(add);
+                            c++;
+                            while (nums[c] == nums[c - 1] && c < d)
+                            {
+                                c++;
+                            }
+                        }
+                        else if (sum > target)
+                        {
+                            d--;
+                        }
+                        else {
+                            c++;
+                        }
+                    }
+                }
+            }
+            return list;
+        }
     }
 }
