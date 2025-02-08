@@ -507,5 +507,36 @@ namespace Playground
             }
             return list;
         }
+
+        public int Search(int[] nums, int target)
+        {
+            var original = new int[nums.Length];
+
+            var pivot = 0;
+            var index = 0;
+            for (int i = 1; i < nums.Length; i++) {
+                if (nums[i] < nums[i-1])
+                {
+                    pivot = i;
+                }
+            }
+            if(pivot >= 0)
+            {
+                for (int i = pivot; i < nums.Length; i++)
+                {
+                    original[index] = nums[i];
+                    index++;
+                }
+                for (int i = 0; i < pivot; i++)
+                {
+                    original[index] = nums[i];
+                    index++;
+                }
+            }
+
+            var result = BinarySearch(original, target);
+
+            return  result > -1 ? (result + pivot) % nums.Length : -1;
+        }
     }
 }
