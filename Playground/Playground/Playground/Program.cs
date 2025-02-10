@@ -16,7 +16,7 @@ var solution = new Solution();
 
 //solution.SolveSudoku(a);
 
-var a = new int[7] { 4, 5, 6, 7, 0, 1, 2 };
-var c = new int[7] { 7,1,2,3,4,5,6 };
-var b = solution.Search(c, 7);
+var a = "223314444411";
+var b = solution.ConvertToPair(a);
+
 Console.WriteLine("Hello, World!");
