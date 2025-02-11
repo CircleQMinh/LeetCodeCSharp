@@ -16,7 +16,8 @@ var solution = new Solution();
 
 //solution.SolveSudoku(a);
 
-var a = "223314444411";
-var b = solution.ConvertToPair(a);
+var a = new int[3] { 7,3,2 };
+var t = 18;
+var r = solution.CombinationSum(a,t);
 
 Console.WriteLine("Hello, World!");
