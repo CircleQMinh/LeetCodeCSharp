@@ -16,8 +16,8 @@ var solution = new Solution();
 
 //solution.SolveSudoku(a);
 
-var a = new int[7] { 10, 1, 2, 7, 6, 1, 5 };
+var a = new int[4] { 3, 4, -1, 1 };
 var t = 8;
-var r = solution.CombinationSum2(a,t);
+var r = solution.FirstMissingPositive(a);
 
 Console.WriteLine("Hello, World!");
