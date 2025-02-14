@@ -16,8 +16,7 @@ var solution = new Solution();
 
 //solution.SolveSudoku(a);
 
-var a = new int[4] { 3, 4, -1, 1 };
-var t = 8;
-var r = solution.FirstMissingPositive(a);
+var a = new int[5] { 2, 3, 1, 1, 4 };;
+var r = solution.Jump(a);
 
 Console.WriteLine("Hello, World!");
