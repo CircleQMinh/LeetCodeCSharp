@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -815,8 +816,147 @@ namespace Playground
                 }
 
             }
-
             return jumps;
+        }
+
+        public IList<IList<int>> Permute(int[] nums)
+        {
+            var result = new List<IList<int>>();
+            GeneratePermute(nums, result, new List<int>());
+            return result;
+        }
+        public void GeneratePermute(int[] nums, IList<IList<int>> result, List<int> current)
+        {
+            if (current.Count == nums.Length)
+            {
+                result.Add(new List<int>(current));
+            }
+            for (int i = 0; i < nums.Length; i++) {
+                if (!current.Contains(nums[i]))
+                {
+                    current.Add(nums[i]);
+                    GeneratePermute(nums, result, current);
+                    current.RemoveAt(current.Count - 1);
+                }
+            }
+        }
+        //public IList<IList<int>> PermuteUnique(int[] nums)
+        //{
+        //    var result = new List<IList<int>>();
+        //    GeneratePermuteUnique(nums, result, new List<int>());
+        //    return result;
+        //}
+        //public void GeneratePermuteUnique(int[] nums, IList<IList<int>> result, List<int> current)
+        //{
+        //    if (current.Count == nums.Length)
+        //    {
+        //        var list = new List<int>();
+        //        var isDup = false;
+        //        foreach (int i in current) { 
+        //            list.Add(nums[i]);
+        //        }
+        //        foreach (var item in result) {
+        //            if (item.SequenceEqual(list))
+        //            {
+        //                isDup = true;
+        //                break;
+        //            }
+        //        }
+        //        if (!isDup)
+        //        {
+        //            result.Add(list);
+        //        }
+
+        //    }
+        //    for (int i = 0; i < nums.Length; i++)
+        //    {
+        //        if (!current.Contains(i))
+        //        {
+        //            current.Add(i);
+        //            GeneratePermuteUnique(nums, result, current);
+        //            current.RemoveAt(current.Count - 1);
+        //        }
+        //    }
+        //}
+        public IList<IList<int>> PermuteUnique(int[] nums)
+        {
+            var result = new List<IList<int>>(); 
+            Array.Sort(nums); // Sort to skip duplicates
+            GeneratePermuteUnique(nums,new bool[nums.Length], result, new List<int>());
+            return result;
+        }
+        public void GeneratePermuteUnique(int[] nums, bool[] used,IList<IList<int>> result, List<int> current)
+        {
+            if (current.Count == nums.Length)
+            {
+                result.Add(new List<int>(current));
+            }
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (used[i]) {
+                    continue;
+                }
+                if (i > 0 && nums[i] == nums[i-1] && !used[i-1])//if nums[i-1]  have not been used and nums[i-1]=num[i]
+                {
+                    continue;                                   //skip because dont want to start another list with the same number
+                }
+                current.Add(nums[i]);
+                used[i] = true;
+                GeneratePermuteUnique(nums, used,result, current);
+                current.RemoveAt(current.Count - 1);
+                used[i] = false;
+            }
+        }
+        public void Rotate(int[][] matrix)
+        {
+            var n = matrix.Length;
+
+            for (int i = 0; i < n - 1; i++) {
+                for (int j = i + 1; j < n; j++) { 
+                    var t = matrix[i][j];
+                    matrix[i][j] = matrix[j][i];
+                    matrix[j][i] = t;
+                }
+            }
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n/2; j++) {
+                    var t = matrix[i][j];
+                    matrix[i][j] = matrix[i][n-1-j];
+                    matrix[i][n-1-j] = t;
+                }
+            }
+        }
+
+        public IList<IList<string>> GroupAnagrams(string[] strs)
+        {
+            var result = new List<IList<string>>();
+            var dict = new Dictionary<string,HashSet<string>>();
+            
+            foreach (var str in strs) {
+                var sortedStr = SortStringByChar(str);
+                if (!dict.ContainsKey(sortedStr))
+                {
+                    dict.Add(sortedStr, new HashSet<string>());
+                }
+                dict[sortedStr].Add(str);
+            }
+            foreach (var key in dict.Keys) {
+                var hashset = dict[key];
+                result.Add(hashset.ToList());
+            }
+            return result;
+        }
+
+        public string SortStringByChar(string str)
+        {
+            var chars = str.ToList();
+            chars = chars.Order().ToList();
+            var result = "";
+            foreach (var item in chars)
+            {
+                result += item;
+            }
+            return result;
         }
     }
 }

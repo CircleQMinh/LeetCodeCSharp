@@ -16,7 +16,7 @@ var solution = new Solution();
 
 //solution.SolveSudoku(a);
 
-var a = new int[5] { 2, 3, 1, 1, 4 };;
-var r = solution.Jump(a);
+var a = new string[6] { "eat", "tea", "tan", "ate", "nat", "bat" }; 
+var r = solution.GroupAnagrams(a);
 
 Console.WriteLine("Hello, World!");
