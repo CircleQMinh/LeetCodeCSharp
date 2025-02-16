@@ -10,21 +10,21 @@ namespace Playground
 {
     public class Solution
     {
-        public int RemoveDuplicates(int[] nums)
-        {
-            int i = 1;
-            int count = 0;
-            while (i < nums.Length)
-            {
-                if (nums[count] != nums[i])
-                {
-                    count++;
-                    nums[count] = nums[i];
-                }
-                i++;
-            }
-            return nums.Length == 0 ? 0 : count + 1;
-        }
+        //public int RemoveDuplicates(int[] nums)
+        //{
+        //    int i = 1;
+        //    int count = 0;
+        //    while (i < nums.Length)
+        //    {
+        //        if (nums[count] != nums[i])
+        //        {
+        //            count++;
+        //            nums[count] = nums[i];
+        //        }
+        //        i++;
+        //    }
+        //    return nums.Length == 0 ? 0 : count + 1;
+        //}
         public int RemoveElement(int[] nums, int val)
         {
             int i = 0;
@@ -930,19 +930,19 @@ namespace Playground
         public IList<IList<string>> GroupAnagrams(string[] strs)
         {
             var result = new List<IList<string>>();
-            var dict = new Dictionary<string,HashSet<string>>();
+            var dict = new Dictionary<string,List<string>>();
             
             foreach (var str in strs) {
                 var sortedStr = SortStringByChar(str);
                 if (!dict.ContainsKey(sortedStr))
                 {
-                    dict.Add(sortedStr, new HashSet<string>());
+                    dict.Add(sortedStr, new List<string>());
                 }
                 dict[sortedStr].Add(str);
             }
             foreach (var key in dict.Keys) {
                 var hashset = dict[key];
-                result.Add(hashset.ToList());
+                result.Add(hashset);
             }
             return result;
         }
@@ -958,5 +958,52 @@ namespace Playground
             }
             return result;
         }
+
+        public void Merge(int[] nums1, int m, int[] nums2, int n)
+        {
+            var i = 0;
+            var j = 0;
+
+            for (int k = m; k < m+n; k++)
+            {
+                nums1[i] = int.MaxValue;
+            }
+
+            while (j < n) {
+                if (nums1[i] > nums2[j])
+                {
+                    for(int k = m+n-1; k>i; k--)
+                    {
+                        nums1[k] = nums1[k-1];
+                    }
+                    nums1[i] = nums2[j];
+                    j++;
+                }
+                i++;
+            }
+        }
+
+        public int RemoveDuplicates(int[] nums)
+        {
+            var count = 0;
+            if (nums.Length < 3)
+            {
+                return nums.Length;
+            }
+            for (int i = 1; i < nums.Length - 1 - count; i++) {
+                if (nums[i] == nums[i-1] && nums[i] == nums[i+1])
+                {
+                    count++;
+                    for (int j = i+1;j < nums.Length-1; j++)
+                    {
+                        nums[j] = nums[j+1];
+                    }
+                    i--;
+                }
+            }
+
+            return nums.Length - count;
+        }
+
     }
 }
