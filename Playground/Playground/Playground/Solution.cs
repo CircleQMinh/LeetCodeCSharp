@@ -1004,6 +1004,64 @@ namespace Playground
 
             return nums.Length - count;
         }
+        public int MajorityElement(int[] nums)
+        {
+            var result = nums[0];
+            var count = 1;
+            for (int i = 1; i < nums.Length; i++) {
+                if (nums[i] != result)
+                {
+                    count--;
+                }
+                else
+                {
+                    count++;
+                }
+                if (count == 0)
+                {
+                    result = nums[i];
+                    count = 1;
+                }
+            }
+            return result;
+        }
+        public void Rotate(int[] nums, int k)
+        {
+            var time = k < nums.Length ? k : k % nums.Length;
 
+            ReverseArray(nums, 0, nums.Length - 1);
+            ReverseArray(nums, 0, time - 1);
+            ReverseArray(nums, time, nums.Length - 1);
+
+        }
+
+        public void ReverseArray(int[] nums, int start, int end)
+        {
+            while (start < end)
+            {
+                (nums[start], nums[end]) = (nums[end], nums[start]);
+                start++;
+                end--;
+            }
+
+        }
+
+        public int MaxProfit(int[] prices)
+        {
+            var profit = 0;
+            var dayToBuy = 0;
+            for (int i = 1; i < prices.Length; i++) {
+                if (prices[dayToBuy] < prices[i])
+                {
+                    profit = prices[i] - prices[dayToBuy] > profit ? prices[i] - prices[dayToBuy] : profit;
+                }
+                else
+                {
+                    dayToBuy = i;
+                }
+            }
+
+            return profit;
+        }
     }
 }
