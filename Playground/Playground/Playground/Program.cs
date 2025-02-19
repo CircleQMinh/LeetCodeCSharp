@@ -16,7 +16,7 @@ var solution = new Solution();
 
 //solution.SolveSudoku(a);
 
-var a = new int[9] { 0, 0, 1, 1, 1, 1, 2, 3, 3 }; 
-var r = solution.RemoveDuplicates(a);
+var a = new int[1] { 1 }; 
+var r = solution.HIndex(a);
 
 Console.WriteLine("Hello, World!");
