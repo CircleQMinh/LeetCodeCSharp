@@ -16,7 +16,7 @@ var solution = new Solution();
 
 //solution.SolveSudoku(a);
 
-var a = new int[1] { 1 }; 
-var r = solution.HIndex(a);
+var s = "a good   example";
+var r = solution.ReverseWords(s);
 
 Console.WriteLine("Hello, World!");

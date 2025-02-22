@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -1094,5 +1096,152 @@ namespace Playground
             }
             return h;
         }
+
+        public int CanCompleteCircuit(int[] gas, int[] cost)
+        {
+            var startLocation = -1;
+            var n = gas.Length;
+            if (n < 2)
+            {
+                return gas[0] > cost[0] ? 0 : -1;
+            }
+            for (int i = 0; i < n; i++) {
+                var index = i % n;
+                if (gas[index] > cost[index])
+                {
+                    startLocation = index;
+                    if (TryCompleCircuit(gas,cost,startLocation))
+                    {
+                        return startLocation;
+                    }
+                }
+            }
+
+            return -1;
+            
+        
+        }
+        public bool TryCompleCircuit(int[] gas, int[] cost, int start)
+        {
+            var n = gas.Length;
+            var tank = 0;
+            for (int i = 0; i < n; i++)
+            {
+                var index = (start + i) % n;
+                tank += gas[index];
+                if (tank  < cost[index])
+                {
+                    return false;
+                }
+                tank-= cost[index];
+
+            }
+            return true;
+        }
+        public int Candy(int[] ratings)
+        {
+            var n = ratings.Length;
+            var result = new int[n];
+            Array.Fill(result, 1);
+            for (int i = 1; i < n; i++)
+            {
+                if (ratings[i] > ratings[i-1])
+                {
+                    result[i] = result[i - 1] + 1; 
+                }
+            }
+            for (int i = n-2; i >=0; i--)
+            {
+                if (ratings[i] > ratings[i + 1])
+                {
+                    result[i] = Math.Max(result[i + 1] + 1, result[i]);
+                }
+            }
+            return result.Sum(q=>q);
+        }
+        public int Trap(int[] height)
+        {
+            var n = height.Length;
+            var canHold = new int[n];
+            Array.Fill(canHold, 0);
+            var nextGreatestToTheRight = BiggestNumberToTheRight(height);
+            // reverse input then reverse output
+            var nextGreatestToTheLeft = (BiggestNumberToTheRight(height.Reverse().ToArray())).Reverse().ToArray();
+            for (int i = 1; i < n-1; i++)
+            {
+                var leftWall = nextGreatestToTheLeft[i];
+                var rightWall = nextGreatestToTheRight[i];
+                canHold[i] = Math.Min(leftWall, rightWall) - height[i];
+            }
+            return canHold.Where(q=>q>0).Sum(q=>q);
+        }
+        public int[] BiggestNumberToTheRight(int[] arr)
+        {
+            int n = arr.Length;
+            int[] result = new int[n];
+
+            int maxFromRight = -1; 
+
+            for (int i = n - 1; i >= 0; i--)
+            {
+                int current = arr[i];
+                result[i] = maxFromRight; 
+                maxFromRight = Math.Max(maxFromRight, current);
+            }
+
+            return result;
+        }
+        public int[] NextGreaterElement(int[] arr)
+        {
+            int n = arr.Length;
+            int[] result = new int[n];
+            Stack<int> stack = new Stack<int>();
+
+            for (int i = n - 1; i >= 0; i--)  // Traverse from right to left
+            {
+                while (stack.Count > 0 && stack.Peek() <= arr[i]) // Pop smaller elements
+                    stack.Pop();
+
+                result[i] = (stack.Count > 0) ? stack.Peek() : -1; // Next greater element
+                stack.Push(arr[i]); // Push current element
+            }
+
+            return result;
+        }
+        public int LengthOfLastWord(string s)
+        {
+            var n = s.Length;
+            var count = 0;
+            var i = n - 1;
+            while (i >= 0)
+            {
+                if (s[i].Equals(' ') && count>0)
+                {
+                    return count;
+                }
+                if (!s[i].Equals(' '))
+                {
+                    count++;
+                }
+                i--;
+            }
+            return count;
+        }
+
+        public string ReverseWords(string s)
+        {
+            var result = "";
+            s = s.Trim();
+            var split = s.Split(' ');
+            for (int i = split.Length-1; i >=0; i--) {
+                if (!string.IsNullOrEmpty(split[i]))
+                {
+                    result += split[i];
+                    result += " ";
+                }
+            }
+            return result.Trim();
+        }
     }
 }
+
