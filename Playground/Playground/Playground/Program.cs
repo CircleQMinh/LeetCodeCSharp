@@ -16,7 +16,9 @@ var solution = new Solution();
 
 //solution.SolveSudoku(a);
 
-var s = "a good   example";
-var r = solution.ReverseWords(s);
+var s = new int[] { 2, 3, 1, 2, 4, 3 };
+var t = 7;
+var r = solution.MinSubArrayLen(t,s);
+
 
 Console.WriteLine("Hello, World!");

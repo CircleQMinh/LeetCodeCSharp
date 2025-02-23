@@ -1242,6 +1242,154 @@ namespace Playground
             }
             return result.Trim();
         }
+        public IList<string> FullJustify(string[] words, int maxWidth)
+        {
+            var result = new List<string>();
+            var currentWords = new List<string>();
+
+            foreach (var word in words) {
+                var len = word.Length;
+                if (!(maxWidth - len - currentWords.Count - currentWords.Sum(q=>q.Length) >= 0))
+                {
+                    result.Add(Justify(currentWords, maxWidth));
+                    currentWords.Clear(); 
+                }
+                currentWords.Add(word);
+            }
+            if (currentWords.Count > 0)
+            {
+                result.Add(JustifyLastLine(currentWords, maxWidth));
+            }
+            return result;
+        }
+        public string Justify(List<string> words, int maxWidth) {
+            var result = string.Join(" ", words);
+            var n = words.Count;
+            var totalWordLen = result.Length;
+            var emptySpaces = maxWidth - totalWordLen;
+            while (emptySpaces > 0) {
+                for (var i = 0; i < n && emptySpaces>0; i++) {
+                    var value = words[i];
+                    if (value.Equals(words[n - 1]) && n > 1)
+                    {
+                        continue;
+                    }
+                    words[i] = words[i] + " ";
+                    emptySpaces--;
+                }
+            }
+            result = string.Join(" ", words);
+
+            return result;
+        }
+        public string JustifyLastLine(List<string> words, int maxWidth)
+        {
+            var result = string.Join(" ",words);
+            var totalWordLen = result.Length;
+            var emptySpaces = maxWidth - totalWordLen;
+
+            for (var i = 0; i < emptySpaces; i++) {
+                result += " ";
+            }
+            return result;
+        }
+        public bool IsPalindrome(string s)
+        {
+            var list = s.Where(q=>char.IsLetterOrDigit(q)).Select(q=>char.ToLower(q)).ToList();
+            var l = 0;
+            var r = list.Count - 1;
+            while (l < r) {
+                if (list[l] != list[r])
+                {
+                    return false;
+                }
+                l++;
+                r--;
+            }
+
+            return true;
+        }
+        public bool IsSubsequence(string s, string t)
+        {
+            var currentIndex = 0;
+            for (var i = 0; i < t.Length && currentIndex < s.Length; i++) {
+                if (s[currentIndex].Equals(t[i]))
+                {
+                    currentIndex++;
+                }
+            }
+            return currentIndex == s.Length;
+        }
+
+        public int[] TwoSum(int[] numbers, int target)
+        {
+            var n = numbers.Length;
+            var l = 0;
+            var r = n - 1;
+            while (l<r)
+            {
+                var sum = numbers[l]+ numbers[r];
+                if (sum > target)
+                {
+                    r--;
+                }
+                else if (sum < target) { 
+                    l++;
+                }
+                else{
+                    return [l+1, r+1];
+                }
+            }
+            return [l+1,r+1];
+        }
+
+        public int MinSubArrayLen(int target, int[] nums)
+        {
+            //return CheckSubArray(target,nums);
+            var n = nums.Length;
+            var l = 0;
+            var r = 0;
+            var sum = 0;
+            var result = int.MaxValue;
+            while (r < n) { 
+                sum += nums[r];
+                while (sum >= target) {
+                    var currentLen = r-l+1;
+                    result = Math.Min(result, currentLen);
+                    sum -= nums[l];
+                    l++;
+                }
+                r++;
+            }
+            return result == int.MaxValue ? 0 : result;
+        }
+
+        //public int CheckSubArray(int target, int[] nums, int currentLen = 1)
+        //{
+        //    var n = nums.Length;
+        //    if (currentLen > nums.Length)
+        //    {
+        //        return 0;
+        //    }
+
+        //    for (var i = 0; i < n-currentLen+1; i++) { 
+        //        var arr = new List<int>();
+        //        for (var j = i; j < i+currentLen; j++)
+        //        {
+        //            arr.Add(nums[j]);
+        //        }
+        //        if (CalculateSumArray(arr) >= target)
+        //        {
+        //            return currentLen;
+        //        }
+        //    }
+        //    return CheckSubArray(target,nums,currentLen+1);
+        //}
+
+        //public int CalculateSumArray(List<int> arr)
+        //{
+        //    return arr.Sum(x => x);
+        //}
     }
 }
 
