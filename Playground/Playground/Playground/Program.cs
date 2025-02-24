@@ -16,9 +16,8 @@ var solution = new Solution();
 
 //solution.SolveSudoku(a);
 
-var s = new int[] { 2, 3, 1, 2, 4, 3 };
-var t = 7;
-var r = solution.MinSubArrayLen(t,s);
+var s = new int[][] { [1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12], [13, 14, 15] };
+var t = solution.SpiralOrder(s);
 
 
 Console.WriteLine("Hello, World!");
