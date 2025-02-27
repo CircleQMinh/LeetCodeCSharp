@@ -1535,6 +1535,37 @@ namespace Playground
                 ? numberAlive == 3 ? deadToAlive : deadToDead
                 : numberAlive == 2 || numberAlive == 3 ? aliveToAlive : aliveToDead;
         }
+
+        public bool IsIsomorphic(string s, string t)
+        {
+            if (s.Length != t.Length)
+            {
+                return false;
+            }
+
+            var charS = s.Distinct().ToList();
+            var charT = s.Distinct().ToList();
+
+            if (charS.Count != charT.Count)
+            {
+                return false;
+            }
+
+            var map = new Dictionary<char, char>();
+            for (int i = 0; i < charS.Count; i++)
+            {
+                map.Add(charS[i], charT[i]);
+            }
+
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (map[s[i]] != t[i])
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }
 

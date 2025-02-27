@@ -16,8 +16,9 @@ var solution = new Solution();
 
 //solution.SolveSudoku(a);
 
-var s = new int[][] { [0, 1, 0], [0, 0, 1], [1, 1, 1], [0, 0, 0] };
-solution.GameOfLife(s);
+var s = "add";
+var t = "egg";
+var r = solution.IsIsomorphic(s, t);
 
 
 Console.WriteLine("Hello, World!");
