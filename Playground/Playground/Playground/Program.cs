@@ -16,9 +16,9 @@ var solution = new Solution();
 
 //solution.SolveSudoku(a);
 
-var s = "add";
-var t = "egg";
-var r = solution.IsIsomorphic(s, t);
+var s = "ABCllBBBBBlllllllABCDEFAAAllBBBBllZ";
+var t = "ABAAACDEFZ";
+var r = solution.MinWindow(s, t);
 
 
 Console.WriteLine("Hello, World!");

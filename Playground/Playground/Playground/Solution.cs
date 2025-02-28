@@ -1566,6 +1566,190 @@ namespace Playground
             }
             return true;
         }
+
+        public IList<int> FindSubstring(string s, string[] words)
+        {
+            var result = new List<int>();
+            var concatenatedString = new HashSet<string>();
+            //GenerateConcatenatedStrings(words, new List<int>(), concatenatedString);
+            //foreach (var item in concatenatedString) {
+            //    var index = s.IndexOf(item);
+            //    if (index >= 0)
+            //    {
+            //        result.Add(index);
+            //    }
+            //}
+
+            var sLen = s.Length;
+            var wordLen = words[0].Length;
+            var wordCount = words.Length;
+
+            if (sLen < wordLen * wordCount)
+            {
+                return result;
+            }
+
+            var numberOfWords = new Dictionary<string, int>();
+            foreach (var word in words) {
+                if (!numberOfWords.ContainsKey(word))
+                {
+                    numberOfWords.Add(word, 0);
+                }
+                numberOfWords[word]++;
+            }
+            var numberOfAppearWords = new Dictionary<string, int>();
+            for (int i = 0; i < wordLen; i++)
+            {
+                var left = i;
+                var right = i;
+                while (right + wordLen <= sLen)
+                {
+                    var currentWord = s.Substring(right,wordLen);
+                    right += wordLen;
+                    if (numberOfWords.ContainsKey(currentWord))
+                    {
+                        if (!numberOfAppearWords.ContainsKey(currentWord))
+                        {
+                            numberOfAppearWords.Add(currentWord, 0);
+                        }
+                        numberOfAppearWords[currentWord]++;
+
+                        // if a word appear too many times  remove 1 word from the start of current subtring (s[left] to s[right]) until false
+                        while (numberOfAppearWords[currentWord] > numberOfWords[currentWord])
+                        {
+                            var wordToRemove = s.Substring(left,wordLen);
+                            left += wordLen;
+                            numberOfAppearWords[wordToRemove]--;
+                        }
+                        // if found a substring(s[left] to s[right] using all word in words add start index to result)
+                        if (right-left == wordLen * wordCount)
+                        {
+                            result.Add(left);
+                        }
+                    }
+                    else
+                    {
+                        // reset the dictionary use to check
+                        numberOfAppearWords.Clear();
+                        //skip current word, move to next one
+                        left = right;
+                    }
+
+                }
+                numberOfAppearWords.Clear();
+            }
+
+
+            return result;
+        }
+
+        //public void GenerateConcatenatedStrings(string[] words,List<int> current, HashSet<string> strings)
+        //{
+        //    if (current.Count == words.Length)
+        //    {
+        //        var stringToAdd = "";
+        //        foreach (var item in current) { 
+        //            stringToAdd += words[item];  
+        //        }
+        //        strings.Add(stringToAdd);
+        //    }
+
+        //    for (int i = 0; i < words.Length; i++) {
+        //        if (!current.Contains(i))
+        //        {
+        //            current.Add(i);
+        //            GenerateConcatenatedStrings(words, current, strings);
+        //            current.RemoveAt(current.Count - 1);
+        //        }
+        //    }
+        //}
+
+        public string MinWindow(string s, string t)
+        {
+            if (s.Length < t.Length)
+            {
+                return "";
+            }
+
+            var charInT = new Dictionary<char,int>();
+            foreach (char c in t) {
+                if (!charInT.ContainsKey(c)) { 
+                    charInT.Add(c, 0);
+                }
+                charInT[c]++;
+            }
+
+            var left = 0;
+            var right = 0;
+            var minLen = int.MaxValue;
+            var minStart = 0;
+
+            var charInCurrent = new Dictionary<char,int>();
+            var numberOfTcharInCurrent = 0;
+            var numberOfTchar = charInT.Count;
+            while (right < s.Length)
+            {
+                var cRight = s[right];
+                if (!charInCurrent.ContainsKey(cRight)) { 
+                    charInCurrent.Add(cRight, 0);
+                }
+                charInCurrent[cRight]++;
+                if (charInT.ContainsKey(cRight) && charInCurrent[cRight] == charInT[cRight])
+                {
+                    numberOfTcharInCurrent++;
+                }
+
+                while (numberOfTcharInCurrent == numberOfTchar)
+                {
+                    if (minLen > right-left+1)
+                    {
+                        minLen = right - left + 1;
+                        minStart = left;
+                    }
+                    var cLeft = s[left];
+                    charInCurrent[cLeft]--;
+                    if (charInT.ContainsKey(cLeft) && charInT[cLeft] > charInCurrent[cLeft])
+                    {
+                        numberOfTcharInCurrent--;
+                    }
+                    left++;
+
+                }
+                right++;
+            }
+
+            return minLen == int.MaxValue ? "" : s.Substring(minStart, minLen); ;
+            //return FindMinWindow(charInT, s, t.Length);
+        }
+
+        //public string FindMinWindow(Dictionary<char,int> charInT, string s,int currentLen)
+        //{
+        //    if (s.Length-currentLen < 0)
+        //    {
+        //        return string.Empty;
+        //    }
+        //    for (int i = 0; i <= s.Length-currentLen; i++)
+        //    {
+        //        var current = s.Substring(i,currentLen);
+        //        if (StringContainAllChar(new Dictionary<char, int>(charInT), current))
+        //        {
+        //            return current;
+        //        }
+        //    }
+        //    return FindMinWindow(charInT, s, currentLen+1);
+        //}
+
+        //public bool StringContainAllChar(Dictionary<char, int> charInT, string current)
+        //{
+        //    foreach (var item in current)
+        //    {
+        //        if (charInT.ContainsKey(item))
+        //        {
+        //            charInT[item]--;
+        //        }
+        //    }
+        //    return charInT.All(q => q.Value == 0);
+        //}
     }
 }
 
