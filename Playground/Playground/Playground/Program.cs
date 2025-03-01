@@ -16,9 +16,7 @@ var solution = new Solution();
 
 //solution.SolveSudoku(a);
 
-var s = "ABCllBBBBBlllllllABCDEFAAAllBBBBllZ";
-var t = "ABAAACDEFZ";
-var r = solution.MinWindow(s, t);
-
+var s = new int[][] { [10, 16], [2, 8], [1, 6], [7, 12] };
+var r = solution.FindMinArrowShots(s);
 
 Console.WriteLine("Hello, World!");

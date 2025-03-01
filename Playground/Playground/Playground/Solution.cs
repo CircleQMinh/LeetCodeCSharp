@@ -1750,6 +1750,281 @@ namespace Playground
         //    }
         //    return charInT.All(q => q.Value == 0);
         //}
+
+        public bool IsAnagram(string s, string t)
+        {
+            if (s.Length != t.Length)
+            {
+                return false;
+            }
+            var map = new Dictionary<char, int>();
+            foreach (char c in s) {
+                if (!map.ContainsKey(c))
+                {
+                    map.Add(c, 0);
+                }
+                map[c]++;
+            }
+
+            foreach (char c in t) {
+                if (!map.ContainsKey(c) || map[c] == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    map[c]--;
+                }
+            }
+            return true;
+        }
+
+        public bool IsHappy(int n)
+        {
+            var map = new HashSet<int>();
+            var sum = 0;
+            while (true)
+            {
+                while (n > 9)
+                {
+                    var digit = n % 10;
+                    n = n / 10;
+                    sum += digit * digit;
+                }
+                sum += n * n;
+                if (sum == 1)
+                {
+                    return true;
+                }
+               
+                var success = map.Add(sum);
+                if (!success)
+                {
+                    return false;
+                }
+                n = sum;
+                sum = 0;
+            }
+        }
+
+        public bool ContainsNearbyDuplicate(int[] nums, int k)
+        {
+            if (k>nums.Length)
+            {
+                return false;
+            }
+            var map = new Dictionary<int, int>();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (!map.ContainsKey(nums[i]))
+                {
+                    map.Add(nums[i], i);
+                }
+                else
+                {
+                    var result = Math.Abs(map[nums[i]] - i);
+                    if (result <= k)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        map[nums[i]] = i;
+                    }
+                }
+
+            }
+            return false;
+        }
+
+        public int LongestConsecutive(int[] nums)
+        {
+            //var map = new HashSet<int>();
+            //var result = 0;
+
+            //for (int i = 0; i < nums.Length; i++)
+            //{
+
+            //    var value = nums[i];
+            //    map.Add(value);
+            //    var count = 1;
+            //    while (map.Contains(value-1))
+            //    {
+            //        count++;
+            //        value--;
+            //    }
+            //    value = nums[i];
+            //    while (map.Contains(value+1))
+            //    {
+            //        count++;
+            //        value++;
+            //    }
+            //    if (count > result)
+            //    {
+            //        result = count;
+            //    }
+            //}
+
+            //return result;
+            if (nums.Length == 0)
+            {
+                return 0;
+            }
+            var map = new HashSet<int>(nums);
+            var result = 0;
+            foreach (int i in map)
+            {
+                if (!map.Contains(i-1))
+                {
+                    var count = 1;
+                    var value = i;
+                    while (map.Contains(value + 1))
+                    {
+                        count++;
+                        value++;
+                    }
+                    result = Math.Max(result, count);
+                }
+            }
+            return result;
+        }
+        public IList<string> SummaryRanges(int[] nums)
+        {
+            if (nums.Length == 0)
+            {
+                return new List<string>();
+            }
+            var result = new List<string>();
+            var previous = 0;
+            for (int i = 1; i < nums.Length; i++) {
+                if (nums[i] - nums[i-1] != 1)
+                {
+                    result.Add(ContructString(nums[previous], nums[i - 1]));
+                    previous = i;
+                }
+            
+            }
+            result.Add(ContructString(nums[previous], nums[nums.Length - 1]));
+            return result;
+        }
+
+        public string ContructString(int a, int b)
+        {
+            if (a == b)
+            {
+                return $"{a}";
+            }
+            return $"{a}->{b}";
+        }
+        public int[][] Merge(int[][] intervals)
+        {
+            var result = new List<int[]>();
+            intervals = intervals.OrderBy(q => q[0]).ToArray();
+            result.Add(intervals[0]);
+
+            for (int i = 1; i < intervals.Length; i++) {
+
+                    var prevS = result[result.Count - 1][0];
+                    var prevE = result[result.Count - 1][1];
+                    var currS = intervals[i][0];
+                    var currE = intervals[i][1];
+
+                    if (prevS <= currS && currE <= prevE)
+                    {
+                        result[result.Count - 1][0] = prevS;
+                        result[result.Count - 1][1] = prevE;
+                        continue;
+                    }
+                    if (currS <= prevE && prevE <= currE)
+                    {
+                        result[result.Count - 1][0] = Math.Min(currS,prevS);
+                        result[result.Count - 1][1] = currE;
+
+                        continue;
+                    }
+                    if (currS <= prevS && prevS <= currE)
+                    {
+                        result[result.Count - 1][0] = currS;
+                        result[result.Count - 1][1] = Math.Max(currE,prevE);
+
+                        continue;
+                    }
+                    if (currS <= prevS && prevE <= currE)
+                    {
+                        result[result.Count - 1][0] = currS;
+                        result[result.Count - 1][1] = currE;
+
+                        continue;
+                    }
+      
+                    result.Add(intervals[i]);
+                
+            }
+
+            return result.DistinctBy(q => (q[0], q[1])).ToArray();
+        }
+
+        public int[][] Insert(int[][] intervals, int[] newInterval)
+        {
+            var result = new List<int[]>();
+            var overlap = new List<int[]>();
+
+            foreach (var interval in intervals) {
+                var oldS = interval[0];
+                var oldE = interval[1];
+                var newS = newInterval[0];
+                var newE = newInterval[1];
+                if (oldS <= newE && newS <= oldE)
+                {
+                    overlap.Add(interval);
+                }
+                else
+                {
+                    result.Add(interval);
+                }
+            }
+            overlap.Add(newInterval);
+            var maxE = overlap.Max(q => q[1]);
+            var minS = overlap.Min(q => q[0]);
+
+            result.Add([minS, maxE]);
+
+            return result.OrderBy(q => q[0]).ToArray();
+        }
+
+        public int FindMinArrowShots(int[][] points)
+        {
+            points = points.OrderBy(q => q[0]).ToArray();
+            var result = 0;
+            var overlap = new List<int[]>();
+            overlap.Add(points[0]);
+            for (var i = 1; i < points.Length; i++) {
+
+                if (!IsAllOverlap(overlap, points[i]))
+                {
+                    result++;
+                    overlap.Clear();
+                }
+                overlap.Add(points[i]);
+            }
+
+            return overlap.Count > 0 ? result+1:result;
+        }
+
+        public bool IsAllOverlap(List<int[]> currents, int[] newP)
+        {
+            foreach (var item in currents) {
+                var oldS = item[0];
+                var oldE = item[1];
+                var newS = newP[0];
+                var newE = newP[1];
+                if (!(oldS <= newE && newS <= oldE))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }
 
