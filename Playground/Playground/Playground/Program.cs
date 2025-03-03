@@ -16,7 +16,9 @@ var solution = new Solution();
 
 //solution.SolveSudoku(a);
 
-var s = new int[][] { [10, 16], [2, 8], [1, 6], [7, 12] };
-var r = solution.FindMinArrowShots(s);
+var s = solution.CreateLinkedList(new List<int>() { 1,2});
+var b = new ListNode(5);
+var r = solution.RotateRight(s,1);
+//var r = solution.ReverseBetween(b, 1, 1);
 
 Console.WriteLine("Hello, World!");

@@ -2025,6 +2025,333 @@ namespace Playground
             }
             return true;
         }
+
+        public string SimplifyPath(string path)
+        {
+            var result = "/";
+            var split = path.Split('/');
+            split = split.Where(q => !string.IsNullOrEmpty(q)).ToArray();
+            var stack = new Stack<string>();
+            foreach (var item in split) {
+                if (item.Equals(".."))
+                {
+                    var outs="";
+                    stack.TryPop(out outs);
+                }
+                else
+                {
+                    if (!(item.Equals(".")))
+                    {
+                        stack.Push(item);
+                    }
+                }
+            }
+            while (stack.Count > 0)
+            {
+                var p = stack.Pop();
+                result = p + result;
+                result = "/" + result;
+            }
+            if (result.EndsWith('/') && result.Length>1)
+            {
+                result = result.Remove(result.Length - 1);
+            }
+
+            return result;
+        }
+
+        public int EvalRPN(string[] tokens)
+        {
+            var stack = new Stack<int>();
+            foreach (var token in tokens) {
+                if (token.Equals("+") || token.Equals("-") || token.Equals("*") || token.Equals("/"))
+                {
+                    var numB = stack.Pop();
+                    var numA = stack.Pop();
+                    switch (token)
+                    {
+                        case "+":
+                            stack.Push(numA + numB);
+                            break;
+                        case "-":
+                            stack.Push(numA - numB);
+                            break;
+                        case "*":
+                            stack.Push(numA * numB);
+                            break;
+                        case "/":
+                            stack.Push(numA / numB);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else
+                {
+                    var num = int.Parse(token);
+                    stack.Push(num);
+                }
+            }
+            return stack.Pop();
+        }
+
+        public int Calculate(string s)
+        {
+            int length = s.Length;
+            int sign = 1;
+            int ans = 0;
+            int currNo = 0;
+            Stack<int> stack = new Stack<int>();
+
+            for (int i = 0; i < length; i++)
+            {
+                if (char.IsDigit(s.ElementAt(i)))
+                {
+                    currNo = s.ElementAt(i) - '0';
+                    while (i + 1 < length && char.IsDigit(s.ElementAt(i + 1)))
+                    {
+                        currNo = currNo * 10 + s.ElementAt(i + 1) - '0';
+                        i++;
+                    }
+                    currNo = currNo * sign;
+                    ans += currNo;
+                    currNo = 0;
+                    sign = 1;
+                }
+                else if (s.ElementAt(i) == '+')
+                {
+                    sign = 1;
+                }
+                else if (s.ElementAt(i) == '-')
+                {
+                    sign = -1;
+                }
+                else if (s.ElementAt(i) == '(')
+                {
+                    stack.Push(ans);
+                    stack.Push(sign);
+                    ans = 0;
+                    sign = 1;
+                }
+                else if (s.ElementAt(i) == ')')
+                {
+                    int prevSign = stack.Pop();
+                    ans = prevSign * ans;
+                    int precAns = stack.Pop();
+                    ans = precAns + ans;
+                }
+            }
+            return ans;
+        }
+
+        public bool HasCycle(ListNode head)
+        {
+            var set = new HashSet<ListNode>();
+
+            while (head != null) { 
+                var success = set.Add(head);
+                if (!success)
+                {
+                    return true;
+                }
+                head = head.next;
+            }
+            return false;
+        }
+
+        public Node CopyRandomList(Node head)
+        {
+            var set = new Dictionary<Node, Node>();
+
+            var current = head;
+            while (current != null) {
+                var newNode = new Node(current.val);
+                set.Add(current, newNode);
+                current = current.next;
+            }
+
+            var newNodeHead = new Node(0);
+            var result = newNodeHead;
+
+            current = head;
+            while (current != null) {
+                var copy = set[current];
+                newNodeHead.next = copy;
+                newNodeHead.next.next = current.next == null ? null : set[current.next];
+                newNodeHead.next.random = current.random == null ? null : set[current.random];
+                if (newNodeHead.next != null)
+                {
+                    newNodeHead = newNodeHead.next;
+                }
+                current = current.next;
+            }
+
+         
+
+            return result.next;
+        }
+
+        public Node CreateNodeList()
+        {
+            // Step 1: Create Nodes
+            Node node1 = new Node(7);
+            Node node2 = new Node(13);
+            Node node3 = new Node(11);
+            Node node4 = new Node(10);
+            Node node5 = new Node(1);
+
+            // Step 2: Set next pointers
+            node1.next = node2;
+            node2.next = node3;
+            node3.next = node4;
+            node4.next = node5;
+            node5.next = null;
+
+            // Step 3: Set random pointers (based on the image)
+            node1.random = node1; // 7 -> 7
+            node2.random = node1; // 13 -> 7
+            node3.random = node5; // 11 -> 1
+            node4.random = node3; // 10 -> 11
+            node5.random = node1; // 1 -> 7
+
+            // Return the head of the linked list
+            return node1;
+        }
+        public ListNode CreateLinkedList(List<int> list)
+        {
+            var result = new ListNode();
+            var current = result;
+            foreach (var item in list) { 
+                current.next = new ListNode(item);
+                current = current.next;
+            }
+            // Return head of the linked list
+            return result.next;
+        }
+        public ListNode ReverseBetween(ListNode head, int left, int right)
+        {
+            if (right - left <= 0)
+            {
+                return head;
+            }
+            var current = head;
+            var start = head;
+            var end = new ListNode();
+            var count = 0;
+
+            var index = 0; // convert to 0-index
+            left--;
+            right--;
+
+
+            var previous = end;
+
+            while (current != null) {
+                if (index >= left && index <= right)
+                {
+                   
+                    var newNode = new ListNode(current.val);
+                    newNode.next = previous;
+                    previous = newNode;
+                }
+                if (index == right + 1)
+                {
+                    end = current;
+                }
+                if (index == left - 1)
+                {
+                    start = current;
+                }
+
+                current = current.next;
+                index++;
+            }
+            count = index;
+
+            current = previous;
+            index = 0;
+            while (current.next != null)
+            {
+                if (index == right - left)
+                {
+                    break;
+                }
+                index++;
+                current = current.next;
+            }
+
+            current.next = count-1 == right ? null : end;
+            start.next = previous;
+
+            return left == 0 ? head.next : head;
+        }
+
+        public ListNode DeleteDuplicates(ListNode head)
+        {
+            var result = new ListNode();
+            var set = new HashSet<int>();
+            var valueToDelete = new HashSet<int>();
+
+            var current = head;
+            var currentResult = result;
+
+            while (current != null) {
+                var value = current.val;
+                if (!set.Add(value))
+                {
+                    valueToDelete.Add(value);
+                }
+                current = current.next;
+
+            }
+
+            current = head;
+            while (current != null) {
+                var value = current.val;
+                if (!valueToDelete.Contains(value))
+                {
+                    currentResult.next = new ListNode(value);
+                    currentResult = currentResult.next;
+                }
+                current = current.next;
+            }
+            return result.next;
+        }
+
+        public ListNode RotateRight(ListNode head, int k)
+        {
+            if (head == null)
+            {
+                return null;
+            }
+            var end = new ListNode();
+            var previous = new ListNode();
+            var current = head;
+            var n = 0;
+
+            while (current != null) {
+                n++;
+                end = current;
+                current = current.next;
+            }
+            k = k % n;
+            if (k == 0)
+            {
+                return head;
+            }
+            end.next = head; //create a Circular Linked List 
+
+
+           
+            current = head;
+            for (var i = 0; i < Math.Abs(k-n) ; i++){
+                previous = current;
+                current = current.next;
+            }
+            previous.next = null; // not a Circular Linked List anymore
+
+            return current;
+        }
     }
 }
 
