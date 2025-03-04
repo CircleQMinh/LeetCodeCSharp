@@ -2352,6 +2352,44 @@ namespace Playground
 
             return current;
         }
+        public ListNode Partition(ListNode head, int x)
+        {
+            if (head == null)
+            {
+                return null;
+            }
+            ListNode current = head;
+            ListNode prev = null;
+            var list = new List<int>();
+
+            while (current != null) {
+                if (current.val < x)
+                {
+                    if (prev != null)
+                    {
+                        prev.next = current.next;
+                    }
+                    else
+                    {
+                        head = current.next;
+                    }
+                    list.Add(current.val);
+                }
+                else
+                {
+                    prev = current;
+                }
+                current = current.next;
+            }
+            ListNode result = new ListNode();
+            current = result;
+            foreach (var item in list) { 
+                current.next = new ListNode(item);
+                current = current.next;
+            }
+            current.next = head;
+            return result.next;
+        }
     }
 }
 

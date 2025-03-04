@@ -29,4 +29,18 @@ namespace Playground
             random = null;
         }
     }
+
+    public class DoublyLinkedList
+    {
+        public int val;
+        public DoublyLinkedList prev;
+        public DoublyLinkedList next;
+
+        public DoublyLinkedList(int val)
+        {
+            this.val = val;
+            this.prev = null;
+            this.next = null;
+        }
+    }
 }
