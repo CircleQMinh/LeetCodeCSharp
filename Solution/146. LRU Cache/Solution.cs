@@ -1,11 +1,25 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Playground
+namespace MinhVu
 {
+    public class DoublyLinkedList
+    {
+        public int val;
+        public int key;
+        public DoublyLinkedList prev;
+        public DoublyLinkedList next;
+
+        public DoublyLinkedList(int key, int val)
+        {
+            this.val = val;
+            this.key = key;
+            this.prev = null;
+            this.next = null;
+        }
+    }
     public class LRUCache
     {
         private int _capacity;
@@ -16,8 +30,8 @@ namespace Playground
         {
             _cache = new Dictionary<int, DoublyLinkedList>();
             _capacity = capacity;
-            _oldest = new DoublyLinkedList(0);
-            _latest = new DoublyLinkedList(0);
+            _oldest = new DoublyLinkedList(0, 0);
+            _latest = new DoublyLinkedList(0, 0);
             _oldest.next = _latest;
             _latest.prev = _oldest;
         }
@@ -36,17 +50,18 @@ namespace Playground
 
         public void Put(int key, int value)
         {
-            var newNode = new DoublyLinkedList(value);
-            if (_cache.ContainsKey(key)) { 
+            var newNode = new DoublyLinkedList(key, value);
+            if (_cache.ContainsKey(key))
+            {
                 var exist = _cache[key];
                 RemoveNode(exist);
-              
+
             }
             AddNode(newNode);
             _cache[key] = newNode;
             if (_capacity < _cache.Count)
             {
-                _cache.Remove(_oldest.next.val);
+                _cache.Remove(_oldest.next.key);
                 RemoveNode(_oldest.next);
             }
 
@@ -65,11 +80,4 @@ namespace Playground
             _latest.prev = node;
         }
     }
-
-    /**
-     * Your LRUCache object will be instantiated and called as such:
-     * LRUCache obj = new LRUCache(capacity);
-     * int param_1 = obj.Get(key);
-     * obj.Put(key,value);
-     */
 }

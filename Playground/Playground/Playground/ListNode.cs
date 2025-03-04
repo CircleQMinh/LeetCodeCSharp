@@ -33,12 +33,14 @@ namespace Playground
     public class DoublyLinkedList
     {
         public int val;
+        public int key;
         public DoublyLinkedList prev;
         public DoublyLinkedList next;
 
-        public DoublyLinkedList(int val)
+        public DoublyLinkedList(int key,int val)
         {
             this.val = val;
+            this.key = key;
             this.prev = null;
             this.next = null;
         }
