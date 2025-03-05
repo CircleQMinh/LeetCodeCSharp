@@ -2390,6 +2390,121 @@ namespace Playground
             current.next = head;
             return result.next;
         }
+        public TreeNode BuildTree(List<int?> values)
+        {
+            if (values == null || values.Count == 0 || values[0] == null)
+                return null;
+
+            TreeNode root = new TreeNode(values[0].Value);
+            Queue<TreeNode> queue = new Queue<TreeNode>();
+            queue.Enqueue(root);
+
+            int i = 1;
+            while (i < values.Count)
+            {
+                TreeNode current = queue.Dequeue();
+
+                // Process left child
+                if (i < values.Count && values[i] != null)
+                {
+                    current.left = new TreeNode(values[i].Value);
+                    queue.Enqueue(current.left);
+                }
+                i++;
+
+                // Process right child
+                if (i < values.Count && values[i] != null)
+                {
+                    current.right = new TreeNode(values[i].Value);
+                    queue.Enqueue(current.right);
+                }
+                i++;
+            }
+
+            return root;
+        }
+        public int MaxDepth(TreeNode root)
+        {
+            return FindMaxDepth(root,0);
+        }
+
+        public int FindMaxDepth(TreeNode current,int max)
+        {
+            if (current == null)
+            {
+                return max;
+            }
+            var left = FindMaxDepth(current.left,max+1);
+            var right = FindMaxDepth(current.right, max + 1);
+            return Math.Max(left,right);
+        }
+        public bool IsSameTree(TreeNode p, TreeNode q)
+        {
+            Queue<TreeNode> queue = new Queue<TreeNode>();
+            queue.Enqueue(p);
+            queue.Enqueue(q);
+
+            while (queue.Count > 0) { 
+                var pSide = queue.Dequeue();
+                var qSide = queue.Dequeue();
+                if ((pSide == null && qSide != null )|| (pSide != null && qSide == null))
+                {
+                    return false;
+                }
+                if (pSide == null && qSide == null)
+                {
+                    continue;
+                }
+                if (qSide.val != pSide.val)
+                {
+                    return false;
+                }
+
+                queue.Enqueue(pSide.left);
+                queue.Enqueue(qSide.left);
+                queue.Enqueue(pSide.right);
+                queue.Enqueue(qSide.right);
+
+            }
+
+            return true;
+        }
+        public TreeNode InvertTree(TreeNode root)
+        {
+            var q = new Queue<TreeNode>();
+            var listNode = new List<int?>();
+            q.Enqueue(root);
+            while ((q.Count > 0)) { 
+                var current = q.Dequeue();
+                if (current != null)
+                {
+                    listNode.Add(current.val);
+                    q.Enqueue(current.right);
+                    q.Enqueue(current.left);
+                }
+            }
+
+            var newRoot = new TreeNode(root.val);
+            int i = 1;
+            q.Enqueue(newRoot);
+            while (i < listNode.Count)
+            {
+                var current = q.Dequeue();
+                if (i < listNode.Count && listNode[i] != null)
+                {
+                    current.left = new TreeNode(listNode[i].Value);
+                    q.Enqueue(current.left);
+                }
+                i++;
+                if (i < listNode.Count && listNode[i] != null)
+                {
+                    current.right = new TreeNode(listNode[i].Value);
+                    q.Enqueue(current.right);
+                }
+                i++;
+            }
+            return newRoot;
+        }
     }
 }
 

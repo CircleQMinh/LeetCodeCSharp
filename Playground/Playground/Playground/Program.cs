@@ -32,8 +32,12 @@ var solution = new Solution();
 //lRUCache.Get(3);    // return 3
 //lRUCache.Get(4);    // return 4
 
-LRUCache lRUCache = new LRUCache(1);
-lRUCache.Put(2, 1);
-lRUCache.Get(2);
+//LRUCache lRUCache = new LRUCache(1);
+//lRUCache.Put(2, 1);
+//lRUCache.Get(2);
+
+var s = solution.BuildTree(new List<int?>() { 4, 2, 7, 1, 3, 6, 9 });
+var r = solution.InvertTree(s);
+
 
 Console.WriteLine("Hello, World!");

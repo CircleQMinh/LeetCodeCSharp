@@ -37,7 +37,7 @@ namespace Playground
         public DoublyLinkedList prev;
         public DoublyLinkedList next;
 
-        public DoublyLinkedList(int key,int val)
+        public DoublyLinkedList(int key, int val)
         {
             this.val = val;
             this.key = key;
