@@ -2471,16 +2471,25 @@ namespace Playground
         }
         public TreeNode InvertTree(TreeNode root)
         {
+            if (root == null)
+            {
+                return root;
+            }
             var q = new Queue<TreeNode>();
             var listNode = new List<int?>();
             q.Enqueue(root);
             while ((q.Count > 0)) { 
                 var current = q.Dequeue();
+
                 if (current != null)
                 {
                     listNode.Add(current.val);
                     q.Enqueue(current.right);
                     q.Enqueue(current.left);
+                }
+                else
+                {
+                    listNode.Add(null);
                 }
             }
 
@@ -2504,6 +2513,62 @@ namespace Playground
                 i++;
             }
             return newRoot;
+        }
+
+        public bool IsSymmetric(TreeNode root)
+        {
+            var q = new Queue<TreeNode>();
+            q.Enqueue(root.left);
+            q.Enqueue(root.right);
+            while (q.Count > 0)
+            {
+                var left = q.Dequeue();
+                var right = q.Dequeue();
+                if (left == null && right == null)
+                {
+                    continue;
+                }
+                if ((left == null && right != null) || (left != null && right == null))
+                {
+                    return false;
+                }
+                if (left.val != right.val)
+                {
+                    return false;
+
+                }
+
+                q.Enqueue(left.right);
+                q.Enqueue(right.left);
+                q.Enqueue(left.left);
+                q.Enqueue(right.right);
+            }
+            return true;
+        }
+
+        public TreeNode BuildTree(int[] preorder, int[] inorder)
+        {
+            var queue = new Queue<int>(preorder);
+            return BuildMyTree(queue, inorder); 
+
+        }
+
+        public TreeNode BuildMyTree(Queue<int> queue, int[] inorder)
+        {
+            if (queue.Count > 0 && inorder.Length > 0)
+            {
+                var value = queue.Dequeue();
+                var index = Array.IndexOf(inorder, value);
+                var root = new TreeNode(value);
+                var leftInOrder = new int[index];
+                var rightInOrder = new int[inorder.Length - index - 1];
+                leftInOrder = inorder.Take(index).ToArray();
+                rightInOrder = inorder.Skip(index+1).Take(inorder.Length - 1 - index).ToArray();
+                root.left =  BuildMyTree(queue, leftInOrder);
+                root.right = BuildMyTree(queue, rightInOrder);
+                return root;
+            }
+            return null;
         }
     }
 }
