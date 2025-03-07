@@ -36,7 +36,7 @@ var solution = new Solution();
 //lRUCache.Put(2, 1);
 //lRUCache.Get(2);
 
-var s = solution.BuildTree(new int[] {3,9,20,15,7},new int[] { 9, 3, 15, 20, 7 });
+var s = solution.BuildTree(new int[] { 9, 3, 15, 20, 7 },new int[] { 9, 15, 7, 20, 3 });
 var r = solution.InvertTree(s);
 
 
