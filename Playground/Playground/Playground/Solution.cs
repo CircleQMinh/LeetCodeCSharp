@@ -2397,6 +2397,42 @@ namespace Playground
 
             return root;
         }
+
+
+        public Node CreateNode(List<int?> values)
+        {
+            if (values == null || values.Count == 0 || values[0] == null)
+                return null;
+
+            Node root = new Node(values[0].Value);
+            Queue<Node> queue = new Queue<Node>();
+            queue.Enqueue(root);
+
+            int i = 1;
+            while (i < values.Count)
+            {
+                Node current = queue.Dequeue();
+
+                // Process left child
+                if (i < values.Count && values[i] != null)
+                {
+                    current.left = new Node(values[i].Value);
+                    queue.Enqueue(current.left);
+                }
+                i++;
+
+                // Process right child
+                if (i < values.Count && values[i] != null)
+                {
+                    current.right = new Node(values[i].Value);
+                    queue.Enqueue(current.right);
+                }
+                i++;
+            }
+
+            return root;
+        }
+
         public int MaxDepth(TreeNode root)
         {
             return FindMaxDepth(root,0);
@@ -2575,6 +2611,40 @@ namespace Playground
                 return root;
             }
             return null;
+        }
+
+        public Node Connect(Node root)
+        {
+            if (root == null)
+            {
+                return root;
+            }
+            var queue = new Queue<Node>();
+            queue.Enqueue(root);
+      
+            while (queue.Count > 0) {
+                var count = queue.Count;
+                Node prev = null;
+                for (int i = 0; i < count; i++) { 
+                    var node = queue.Dequeue();
+                    if (prev!=null)
+                    {
+                        prev.next = node;
+                    }
+                    prev = node;
+
+                    if (node.left != null)
+                    {
+                        queue.Enqueue(node.left);
+                    }
+                    if (node.right != null)
+                    {
+                        queue.Enqueue(node.right);
+                    }
+
+                }
+            }
+            return root;
         }
 
     }

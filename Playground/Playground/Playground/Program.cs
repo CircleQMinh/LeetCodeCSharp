@@ -36,8 +36,9 @@ var solution = new Solution();
 //lRUCache.Put(2, 1);
 //lRUCache.Get(2);
 
-var s = solution.BuildTree(new int[] { 9, 3, 15, 20, 7 },new int[] { 9, 15, 7, 20, 3 });
-var r = solution.InvertTree(s);
+var s = solution.CreateNode(new List<int?> { 1, 2, null, 3, null, 4, null, 5 });
+//var s = solution.CreateNode(new List<int?> { 3, 9, 20, null, null, 15, 7 });
+var r = solution.Connect(s);
 
 
 Console.WriteLine("Hello, World!");
