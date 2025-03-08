@@ -2843,6 +2843,55 @@ namespace Playground
             var gain = Math.Max(Math.Max(MaxGain(root.left),0), Math.Max(MaxGain(root.right),0));
             return gain+root.val;
         }
+
+        public int CountNodes(TreeNode root)
+        {
+            if (root == null)
+            {
+                return 0;
+            }
+            int level = 0;
+            var left = root;
+            var right = root;
+            while (right != null) 
+            {
+                level++;
+                left=left.left;
+                right=right.right;  
+            }
+            if (left == null) // check if this is a full tree, this always trigger once so the complexity is < o(n)
+            {
+                return (int) Math.Pow(2,level) - 1;
+            }
+            // if not full then Calculate like O(N) solution
+            return 1 + CountNodes(root.left) + CountNodes(root.right);
+        }
+
+        public TreeNode LowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q)
+        {
+            if (root == null || root.val == p.val|| root.val == q.val)
+            {
+                return root;
+            }
+
+            var l = LowestCommonAncestor(root.left,p,q);
+            var r = LowestCommonAncestor(root.right,p,q);
+
+            if (l != null && r != null)
+            {
+                return root;
+            }
+            if (l == null && r != null)
+            {
+                return r.val < root.val ? r : root;
+            }
+            if (l != null && r == null)
+            {
+                return l.val < root.val ? l : root;
+            }
+
+            return null;
+        }
     }
 }
 

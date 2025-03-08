@@ -36,9 +36,9 @@ var solution = new Solution();
 //lRUCache.Put(2, 1);
 //lRUCache.Get(2);
 
-var s = solution.CreateTreeNode(new List<int?> { 1, 2, 3});
+var s = solution.CreateTreeNode(new List<int?> { 3, 5, 1, 6, 2, 0, 8, null, null, 7, 4});
 //var s = solution.CreateNode(new List<int?> { 3, 9, 20, null, null, 15, 7 });
-solution.SumNumbers(s);
+var r = solution.LowestCommonAncestor(s, new TreeNode(5),new TreeNode(1));
 
 
 Console.WriteLine("Hello, World!");
