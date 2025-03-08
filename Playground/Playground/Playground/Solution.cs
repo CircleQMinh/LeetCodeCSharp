@@ -237,13 +237,14 @@ namespace Playground
                 if (nums[middle] == target)
                 {
                     var index = middle;
-                    for (int i = index; i>= 0; i--)
+                    for (int i = index; i >= 0; i--)
                     {
-                        if(nums[i] == target){
+                        if (nums[i] == target)
+                        {
                             l = i;
                         }
                     }
-                    for (int i = index; i <= nums.Length -1; i++)
+                    for (int i = index; i <= nums.Length - 1; i++)
                     {
                         if (nums[i] == target)
                         {
@@ -275,24 +276,24 @@ namespace Playground
 
             while (left <= right)
             {
-                int middle = left + (right - left) / 2; 
+                int middle = left + (right - left) / 2;
 
                 if (array[middle] == target)
                 {
-                    return middle; 
+                    return middle;
                 }
 
                 if (array[middle] < target)
                 {
-                    left = middle + 1; 
+                    left = middle + 1;
                 }
                 else
                 {
-                    right = middle - 1; 
+                    right = middle - 1;
                 }
             }
 
-            return -1; 
+            return -1;
         }
 
         public int SearchInsert(int[] nums, int target)
@@ -300,18 +301,21 @@ namespace Playground
             var result = -1;
 
             int left = 0;
-            int right = nums.Length - 1; 
-            while (left <= right) {
+            int right = nums.Length - 1;
+            while (left <= right)
+            {
                 int middle = left + (right - left) / 2;
                 if (nums[middle] == target)
                 {
                     result = middle;
                     return result;
                 }
-                if (nums[middle] < target) { 
+                if (nums[middle] < target)
+                {
                     left = middle + 1;
                 }
-                if (nums[middle] > target) { 
+                if (nums[middle] > target)
+                {
                     right = middle - 1;
                 }
 
@@ -366,11 +370,11 @@ namespace Playground
             }
             for (char num = '1'; num <= '9'; num++)
             {
-                if (IsValidPlacement(board,i,j,num))
+                if (IsValidPlacement(board, i, j, num))
                 {
                     board[i][j] = num;
                     //if (IsValidSudoku(board) && InsertToBoard(board)) // too slow
-                    if ( InsertToBoard(board))
+                    if (InsertToBoard(board))
                     {
                         return true;
                     }
@@ -378,7 +382,7 @@ namespace Playground
                 board[i][j] = '.';
             }
 
-            return false ;
+            return false;
         }
 
         public bool IsValidPlacement(char[][] board, int row, int col, char c)
@@ -406,7 +410,7 @@ namespace Playground
             return true;
         }
 
-        public (int curI,int curJ) FindFirstEmptySpace(char[][] board)
+        public (int curI, int curJ) FindFirstEmptySpace(char[][] board)
         {
             for (int i = 0; i < 9; i++)
             {
@@ -418,7 +422,7 @@ namespace Playground
                     }
                 }
             }
-            return (-1,-1);
+            return (-1, -1);
         }
 
         public IList<IList<int>> ThreeSum(int[] nums)
@@ -485,7 +489,8 @@ namespace Playground
                     var c = b + 1;
                     var d = nums.Length - 1;
 
-                    while (c < d) {
+                    while (c < d)
+                    {
                         // cast numbers to long to avoid overflow lol
                         long sum = (long)nums[a] + nums[b] + nums[c] + nums[d];
                         if (sum == target)
@@ -502,7 +507,8 @@ namespace Playground
                         {
                             d--;
                         }
-                        else {
+                        else
+                        {
                             c++;
                         }
                     }
@@ -517,13 +523,14 @@ namespace Playground
 
             var pivot = 0;
             var index = 0;
-            for (int i = 1; i < nums.Length; i++) {
-                if (nums[i] < nums[i-1])
+            for (int i = 1; i < nums.Length; i++)
+            {
+                if (nums[i] < nums[i - 1])
                 {
                     pivot = i;
                 }
             }
-            if(pivot >= 0)
+            if (pivot >= 0)
             {
                 for (int i = pivot; i < nums.Length; i++)
                 {
@@ -539,7 +546,7 @@ namespace Playground
 
             var result = BinarySearch(original, target);
 
-            return  result > -1 ? (result + pivot) % nums.Length : -1;
+            return result > -1 ? (result + pivot) % nums.Length : -1;
         }
 
         public string CountAndSay(int n)
@@ -563,13 +570,13 @@ namespace Playground
             var currentChar = 'x';
             var currentCount = 0;
 
-            for (int i = 0; i< s.Length; i++)
+            for (int i = 0; i < s.Length; i++)
             {
-                if(currentChar != s[i])
+                if (currentChar != s[i])
                 {
                     if (!(currentChar == 'x'))
                     {
-                        resultList.Add((currentCount, s[i-1]));
+                        resultList.Add((currentCount, s[i - 1]));
                     }
                     currentChar = s[i];
                     currentCount = 0;
@@ -579,8 +586,8 @@ namespace Playground
                 currentCount++;
             }
             resultList.Add((currentCount, s[s.Length - 1]));
-            
-            for (int i = 0;i< resultList.Count; i++)
+
+            for (int i = 0; i < resultList.Count; i++)
             {
                 result += $"{resultList[i].count}{resultList[i].c}";
             }
@@ -610,7 +617,7 @@ namespace Playground
                 var isDup = false;
                 foreach (var item in result)
                 {
-                    if (IsSameCombination(newCombination,item.ToList()))
+                    if (IsSameCombination(newCombination, item.ToList()))
                     {
                         isDup = true;
                         break;
@@ -622,8 +629,9 @@ namespace Playground
                 }
             }
 
-            for (int i = 0; i < candidates.Length; i++) { 
-                if(IsValidAdd(current, candidates[i], target))
+            for (int i = 0; i < candidates.Length; i++)
+            {
+                if (IsValidAdd(current, candidates[i], target))
                 {
                     current.Add(candidates[i]);
                     GenerateCombinations(current, candidates, target, result);
@@ -638,7 +646,8 @@ namespace Playground
             {
                 return false;
             }
-            for (int i = 0; i < a.Count; i++) {
+            for (int i = 0; i < a.Count; i++)
+            {
                 if (a[i] != b[i])
                 {
                     return false;
@@ -647,7 +656,7 @@ namespace Playground
             return true;
         }
 
-        public bool IsValidAdd(List<int> current, int add,int target)
+        public bool IsValidAdd(List<int> current, int add, int target)
         {
             return CalculateSum(current) + add <= target;
         }
@@ -665,7 +674,7 @@ namespace Playground
         {
             IList<IList<int>> g = new List<IList<int>>();
             Array.Sort(candidates);
-            GenerateCombinations2(0,new List<int>(), candidates, target, g);
+            GenerateCombinations2(0, new List<int>(), candidates, target, g);
 
             return g;
         }
@@ -681,19 +690,20 @@ namespace Playground
                 }
                 newCombination.Sort();
                 result.Add(newCombination);
-                
+
             }
 
-            for (int i = currentIndex; i < candidates.Length; i++) {
-                if (i > currentIndex && candidates[i] == candidates[i-1])
+            for (int i = currentIndex; i < candidates.Length; i++)
+            {
+                if (i > currentIndex && candidates[i] == candidates[i - 1])
                 {
                     continue;
                 }
                 if (candidates[i] <= target)
                 {
                     current.Add(candidates[i]);
-                    GenerateCombinations2(i+1, current, candidates, target - candidates[i], result);
-                    current.RemoveAt(current.Count -1);
+                    GenerateCombinations2(i + 1, current, candidates, target - candidates[i], result);
+                    current.RemoveAt(current.Count - 1);
                 }
                 else
                 {
@@ -748,7 +758,7 @@ namespace Playground
                 {
                     nums[value] = nums[value] * -1;
                 }
-              
+
 
             }
 
@@ -805,14 +815,15 @@ namespace Playground
             var currentMaxPos = 0;
             var currentPos = 0;
 
-            for (int i = 0; i < nums.Length; i++) { 
+            for (int i = 0; i < nums.Length; i++)
+            {
                 currentMaxPos = Math.Max(currentMaxPos, i + nums[i]);
                 if (i == currentPos) // if index catch up to current pos -> jump
                 {
                     jumps++; // plus 1 jump at start
                     currentPos = currentMaxPos;
                 }
-                if (currentPos >= nums.Length-1)
+                if (currentPos >= nums.Length - 1)
                 {
                     break;
                 }
@@ -833,7 +844,8 @@ namespace Playground
             {
                 result.Add(new List<int>(current));
             }
-            for (int i = 0; i < nums.Length; i++) {
+            for (int i = 0; i < nums.Length; i++)
+            {
                 if (!current.Contains(nums[i]))
                 {
                     current.Add(nums[i]);
@@ -882,12 +894,12 @@ namespace Playground
         //}
         public IList<IList<int>> PermuteUnique(int[] nums)
         {
-            var result = new List<IList<int>>(); 
+            var result = new List<IList<int>>();
             Array.Sort(nums); // Sort to skip duplicates
-            GeneratePermuteUnique(nums,new bool[nums.Length], result, new List<int>());
+            GeneratePermuteUnique(nums, new bool[nums.Length], result, new List<int>());
             return result;
         }
-        public void GeneratePermuteUnique(int[] nums, bool[] used,IList<IList<int>> result, List<int> current)
+        public void GeneratePermuteUnique(int[] nums, bool[] used, IList<IList<int>> result, List<int> current)
         {
             if (current.Count == nums.Length)
             {
@@ -895,16 +907,17 @@ namespace Playground
             }
             for (int i = 0; i < nums.Length; i++)
             {
-                if (used[i]) {
+                if (used[i])
+                {
                     continue;
                 }
-                if (i > 0 && nums[i] == nums[i-1] && !used[i-1])//if nums[i-1]  have not been used and nums[i-1]=num[i]
+                if (i > 0 && nums[i] == nums[i - 1] && !used[i - 1])//if nums[i-1]  have not been used and nums[i-1]=num[i]
                 {
                     continue;                                   //skip because dont want to start another list with the same number
                 }
                 current.Add(nums[i]);
                 used[i] = true;
-                GeneratePermuteUnique(nums, used,result, current);
+                GeneratePermuteUnique(nums, used, result, current);
                 current.RemoveAt(current.Count - 1);
                 used[i] = false;
             }
@@ -913,18 +926,22 @@ namespace Playground
         {
             var n = matrix.Length;
 
-            for (int i = 0; i < n - 1; i++) {
-                for (int j = i + 1; j < n; j++) { 
+            for (int i = 0; i < n - 1; i++)
+            {
+                for (int j = i + 1; j < n; j++)
+                {
                     var t = matrix[i][j];
                     matrix[i][j] = matrix[j][i];
                     matrix[j][i] = t;
                 }
             }
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < n/2; j++) {
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n / 2; j++)
+                {
                     var t = matrix[i][j];
-                    matrix[i][j] = matrix[i][n-1-j];
-                    matrix[i][n-1-j] = t;
+                    matrix[i][j] = matrix[i][n - 1 - j];
+                    matrix[i][n - 1 - j] = t;
                 }
             }
         }
@@ -932,9 +949,10 @@ namespace Playground
         public IList<IList<string>> GroupAnagrams(string[] strs)
         {
             var result = new List<IList<string>>();
-            var dict = new Dictionary<string,List<string>>();
-            
-            foreach (var str in strs) {
+            var dict = new Dictionary<string, List<string>>();
+
+            foreach (var str in strs)
+            {
                 var sortedStr = SortStringByChar(str);
                 if (!dict.ContainsKey(sortedStr))
                 {
@@ -942,7 +960,8 @@ namespace Playground
                 }
                 dict[sortedStr].Add(str);
             }
-            foreach (var key in dict.Keys) {
+            foreach (var key in dict.Keys)
+            {
                 var hashset = dict[key];
                 result.Add(hashset);
             }
@@ -966,17 +985,18 @@ namespace Playground
             var i = 0;
             var j = 0;
 
-            for (int k = m; k < m+n; k++)
+            for (int k = m; k < m + n; k++)
             {
                 nums1[i] = int.MaxValue;
             }
 
-            while (j < n) {
+            while (j < n)
+            {
                 if (nums1[i] > nums2[j])
                 {
-                    for(int k = m+n-1; k>i; k--)
+                    for (int k = m + n - 1; k > i; k--)
                     {
-                        nums1[k] = nums1[k-1];
+                        nums1[k] = nums1[k - 1];
                     }
                     nums1[i] = nums2[j];
                     j++;
@@ -992,13 +1012,14 @@ namespace Playground
             {
                 return nums.Length;
             }
-            for (int i = 1; i < nums.Length - 1 - count; i++) {
-                if (nums[i] == nums[i-1] && nums[i] == nums[i+1])
+            for (int i = 1; i < nums.Length - 1 - count; i++)
+            {
+                if (nums[i] == nums[i - 1] && nums[i] == nums[i + 1])
                 {
                     count++;
-                    for (int j = i+1;j < nums.Length-1; j++)
+                    for (int j = i + 1; j < nums.Length - 1; j++)
                     {
-                        nums[j] = nums[j+1];
+                        nums[j] = nums[j + 1];
                     }
                     i--;
                 }
@@ -1010,7 +1031,8 @@ namespace Playground
         {
             var result = nums[0];
             var count = 1;
-            for (int i = 1; i < nums.Length; i++) {
+            for (int i = 1; i < nums.Length; i++)
+            {
                 if (nums[i] != result)
                 {
                     count--;
@@ -1052,7 +1074,8 @@ namespace Playground
         {
             var profit = 0;
             var dayToBuy = 0;
-            for (int i = 1; i < prices.Length; i++) {
+            for (int i = 1; i < prices.Length; i++)
+            {
                 if (prices[dayToBuy] < prices[i])
                 {
                     profit = prices[i] - prices[dayToBuy] > profit ? prices[i] - prices[dayToBuy] : profit;
@@ -1073,7 +1096,7 @@ namespace Playground
             }
             Array.Sort(citations);
 
-            int i; int h; 
+            int i; int h;
             i = citations.Length - 1;
             h = citations.Length;
             var count = 0;
@@ -1105,12 +1128,13 @@ namespace Playground
             {
                 return gas[0] > cost[0] ? 0 : -1;
             }
-            for (int i = 0; i < n; i++) {
+            for (int i = 0; i < n; i++)
+            {
                 var index = i % n;
                 if (gas[index] > cost[index])
                 {
                     startLocation = index;
-                    if (TryCompleCircuit(gas,cost,startLocation))
+                    if (TryCompleCircuit(gas, cost, startLocation))
                     {
                         return startLocation;
                     }
@@ -1118,8 +1142,8 @@ namespace Playground
             }
 
             return -1;
-            
-        
+
+
         }
         public bool TryCompleCircuit(int[] gas, int[] cost, int start)
         {
@@ -1129,11 +1153,11 @@ namespace Playground
             {
                 var index = (start + i) % n;
                 tank += gas[index];
-                if (tank  < cost[index])
+                if (tank < cost[index])
                 {
                     return false;
                 }
-                tank-= cost[index];
+                tank -= cost[index];
 
             }
             return true;
@@ -1145,19 +1169,19 @@ namespace Playground
             Array.Fill(result, 1);
             for (int i = 1; i < n; i++)
             {
-                if (ratings[i] > ratings[i-1])
+                if (ratings[i] > ratings[i - 1])
                 {
-                    result[i] = result[i - 1] + 1; 
+                    result[i] = result[i - 1] + 1;
                 }
             }
-            for (int i = n-2; i >=0; i--)
+            for (int i = n - 2; i >= 0; i--)
             {
                 if (ratings[i] > ratings[i + 1])
                 {
                     result[i] = Math.Max(result[i + 1] + 1, result[i]);
                 }
             }
-            return result.Sum(q=>q);
+            return result.Sum(q => q);
         }
         public int Trap(int[] height)
         {
@@ -1167,25 +1191,25 @@ namespace Playground
             var nextGreatestToTheRight = BiggestNumberToTheRight(height);
             // reverse input then reverse output
             var nextGreatestToTheLeft = (BiggestNumberToTheRight(height.Reverse().ToArray())).Reverse().ToArray();
-            for (int i = 1; i < n-1; i++)
+            for (int i = 1; i < n - 1; i++)
             {
                 var leftWall = nextGreatestToTheLeft[i];
                 var rightWall = nextGreatestToTheRight[i];
                 canHold[i] = Math.Min(leftWall, rightWall) - height[i];
             }
-            return canHold.Where(q=>q>0).Sum(q=>q);
+            return canHold.Where(q => q > 0).Sum(q => q);
         }
         public int[] BiggestNumberToTheRight(int[] arr)
         {
             int n = arr.Length;
             int[] result = new int[n];
 
-            int maxFromRight = -1; 
+            int maxFromRight = -1;
 
             for (int i = n - 1; i >= 0; i--)
             {
                 int current = arr[i];
-                result[i] = maxFromRight; 
+                result[i] = maxFromRight;
                 maxFromRight = Math.Max(maxFromRight, current);
             }
 
@@ -1215,7 +1239,7 @@ namespace Playground
             var i = n - 1;
             while (i >= 0)
             {
-                if (s[i].Equals(' ') && count>0)
+                if (s[i].Equals(' ') && count > 0)
                 {
                     return count;
                 }
@@ -1233,7 +1257,8 @@ namespace Playground
             var result = "";
             s = s.Trim();
             var split = s.Split(' ');
-            for (int i = split.Length-1; i >=0; i--) {
+            for (int i = split.Length - 1; i >= 0; i--)
+            {
                 if (!string.IsNullOrEmpty(split[i]))
                 {
                     result += split[i];
@@ -1247,12 +1272,13 @@ namespace Playground
             var result = new List<string>();
             var currentWords = new List<string>();
 
-            foreach (var word in words) {
+            foreach (var word in words)
+            {
                 var len = word.Length;
-                if (!(maxWidth - len - currentWords.Count - currentWords.Sum(q=>q.Length) >= 0))
+                if (!(maxWidth - len - currentWords.Count - currentWords.Sum(q => q.Length) >= 0))
                 {
                     result.Add(Justify(currentWords, maxWidth));
-                    currentWords.Clear(); 
+                    currentWords.Clear();
                 }
                 currentWords.Add(word);
             }
@@ -1262,13 +1288,16 @@ namespace Playground
             }
             return result;
         }
-        public string Justify(List<string> words, int maxWidth) {
+        public string Justify(List<string> words, int maxWidth)
+        {
             var result = string.Join(" ", words);
             var n = words.Count;
             var totalWordLen = result.Length;
             var emptySpaces = maxWidth - totalWordLen;
-            while (emptySpaces > 0) {
-                for (var i = 0; i < n && emptySpaces>0; i++) {
+            while (emptySpaces > 0)
+            {
+                for (var i = 0; i < n && emptySpaces > 0; i++)
+                {
                     var value = words[i];
                     if (value.Equals(words[n - 1]) && n > 1)
                     {
@@ -1284,21 +1313,23 @@ namespace Playground
         }
         public string JustifyLastLine(List<string> words, int maxWidth)
         {
-            var result = string.Join(" ",words);
+            var result = string.Join(" ", words);
             var totalWordLen = result.Length;
             var emptySpaces = maxWidth - totalWordLen;
 
-            for (var i = 0; i < emptySpaces; i++) {
+            for (var i = 0; i < emptySpaces; i++)
+            {
                 result += " ";
             }
             return result;
         }
         public bool IsPalindrome(string s)
         {
-            var list = s.Where(q=>char.IsLetterOrDigit(q)).Select(q=>char.ToLower(q)).ToList();
+            var list = s.Where(q => char.IsLetterOrDigit(q)).Select(q => char.ToLower(q)).ToList();
             var l = 0;
             var r = list.Count - 1;
-            while (l < r) {
+            while (l < r)
+            {
                 if (list[l] != list[r])
                 {
                     return false;
@@ -1312,7 +1343,8 @@ namespace Playground
         public bool IsSubsequence(string s, string t)
         {
             var currentIndex = 0;
-            for (var i = 0; i < t.Length && currentIndex < s.Length; i++) {
+            for (var i = 0; i < t.Length && currentIndex < s.Length; i++)
+            {
                 if (s[currentIndex].Equals(t[i]))
                 {
                     currentIndex++;
@@ -1326,21 +1358,23 @@ namespace Playground
             var n = numbers.Length;
             var l = 0;
             var r = n - 1;
-            while (l<r)
+            while (l < r)
             {
-                var sum = numbers[l]+ numbers[r];
+                var sum = numbers[l] + numbers[r];
                 if (sum > target)
                 {
                     r--;
                 }
-                else if (sum < target) { 
+                else if (sum < target)
+                {
                     l++;
                 }
-                else{
-                    return [l+1, r+1];
+                else
+                {
+                    return [l + 1, r + 1];
                 }
             }
-            return [l+1,r+1];
+            return [l + 1, r + 1];
         }
 
         public int MinSubArrayLen(int target, int[] nums)
@@ -1351,10 +1385,12 @@ namespace Playground
             var r = 0;
             var sum = 0;
             var result = int.MaxValue;
-            while (r < n) { 
+            while (r < n)
+            {
                 sum += nums[r];
-                while (sum >= target) {
-                    var currentLen = r-l+1;
+                while (sum >= target)
+                {
+                    var currentLen = r - l + 1;
                     result = Math.Min(result, currentLen);
                     sum -= nums[l];
                     l++;
@@ -1404,8 +1440,9 @@ namespace Playground
             var bot = m;
             var dir = "right";
             var count = 0;
-            while (count < m*n) {
-                
+            while (count < m * n)
+            {
+
                 if (dir == "right")
                 {
                     j++;
@@ -1417,7 +1454,7 @@ namespace Playground
                         continue;
                     }
                 }
-                if(dir == "down")
+                if (dir == "down")
                 {
                     i++;
                     if (i == bot)
@@ -1460,11 +1497,12 @@ namespace Playground
             var m = board.Length;
             var n = board[0].Length;
 
-            for (var i = 0; i < m; i++) {
+            for (var i = 0; i < m; i++)
+            {
                 for (int j = 0; j < n; j++)
                 {
                     CheckElement(i, j, board);
-                }            
+                }
             }
             ReAssignBoard(board);
 
@@ -1487,7 +1525,7 @@ namespace Playground
                     {
                         board[i][j] = 0;
                     }
-                    if ( board[i][j] == aliveToAlive || board[i][j] == deadToAlive)
+                    if (board[i][j] == aliveToAlive || board[i][j] == deadToAlive)
                     {
                         board[i][j] = 1;
                     }
@@ -1495,13 +1533,13 @@ namespace Playground
             }
         }
 
-        public void CheckElement(int x,int y,int[][] board)
+        public void CheckElement(int x, int y, int[][] board)
         {
             var m = board.Length;
             var n = board[0].Length;
 
             var dirI = new int[] { -1, -1, -1, 0, 0, 1, 1, 1 };
-            var dirJ = new int[] { -1, 0, 1, -1, 1, - 1, 0, 1 };
+            var dirJ = new int[] { -1, 0, 1, -1, 1, -1, 0, 1 };
 
 
             var deadToDead = 2;
@@ -1517,12 +1555,12 @@ namespace Playground
                 var row = x + dirI[i];
                 var col = y + dirJ[i];
 
-                if (row < 0 || col < 0 || row > m-1 || col > n-1)
+                if (row < 0 || col < 0 || row > m - 1 || col > n - 1)
                 {
                     continue;
                 }
 
-                if(board[row][col] == 0 || board[row][col] == deadToDead || board[row][col] == deadToAlive)
+                if (board[row][col] == 0 || board[row][col] == deadToDead || board[row][col] == deadToAlive)
                 {
                     numberDead++;
                 }
@@ -1590,7 +1628,8 @@ namespace Playground
             }
 
             var numberOfWords = new Dictionary<string, int>();
-            foreach (var word in words) {
+            foreach (var word in words)
+            {
                 if (!numberOfWords.ContainsKey(word))
                 {
                     numberOfWords.Add(word, 0);
@@ -1604,7 +1643,7 @@ namespace Playground
                 var right = i;
                 while (right + wordLen <= sLen)
                 {
-                    var currentWord = s.Substring(right,wordLen);
+                    var currentWord = s.Substring(right, wordLen);
                     right += wordLen;
                     if (numberOfWords.ContainsKey(currentWord))
                     {
@@ -1617,12 +1656,12 @@ namespace Playground
                         // if a word appear too many times  remove 1 word from the start of current subtring (s[left] to s[right]) until false
                         while (numberOfAppearWords[currentWord] > numberOfWords[currentWord])
                         {
-                            var wordToRemove = s.Substring(left,wordLen);
+                            var wordToRemove = s.Substring(left, wordLen);
                             left += wordLen;
                             numberOfAppearWords[wordToRemove]--;
                         }
                         // if found a substring(s[left] to s[right] using all word in words add start index to result)
-                        if (right-left == wordLen * wordCount)
+                        if (right - left == wordLen * wordCount)
                         {
                             result.Add(left);
                         }
@@ -1671,9 +1710,11 @@ namespace Playground
                 return "";
             }
 
-            var charInT = new Dictionary<char,int>();
-            foreach (char c in t) {
-                if (!charInT.ContainsKey(c)) { 
+            var charInT = new Dictionary<char, int>();
+            foreach (char c in t)
+            {
+                if (!charInT.ContainsKey(c))
+                {
                     charInT.Add(c, 0);
                 }
                 charInT[c]++;
@@ -1684,13 +1725,14 @@ namespace Playground
             var minLen = int.MaxValue;
             var minStart = 0;
 
-            var charInCurrent = new Dictionary<char,int>();
+            var charInCurrent = new Dictionary<char, int>();
             var numberOfTcharInCurrent = 0;
             var numberOfTchar = charInT.Count;
             while (right < s.Length)
             {
                 var cRight = s[right];
-                if (!charInCurrent.ContainsKey(cRight)) { 
+                if (!charInCurrent.ContainsKey(cRight))
+                {
                     charInCurrent.Add(cRight, 0);
                 }
                 charInCurrent[cRight]++;
@@ -1701,7 +1743,7 @@ namespace Playground
 
                 while (numberOfTcharInCurrent == numberOfTchar)
                 {
-                    if (minLen > right-left+1)
+                    if (minLen > right - left + 1)
                     {
                         minLen = right - left + 1;
                         minStart = left;
@@ -1758,7 +1800,8 @@ namespace Playground
                 return false;
             }
             var map = new Dictionary<char, int>();
-            foreach (char c in s) {
+            foreach (char c in s)
+            {
                 if (!map.ContainsKey(c))
                 {
                     map.Add(c, 0);
@@ -1766,7 +1809,8 @@ namespace Playground
                 map[c]++;
             }
 
-            foreach (char c in t) {
+            foreach (char c in t)
+            {
                 if (!map.ContainsKey(c) || map[c] == 0)
                 {
                     return false;
@@ -1796,7 +1840,7 @@ namespace Playground
                 {
                     return true;
                 }
-               
+
                 var success = map.Add(sum);
                 if (!success)
                 {
@@ -1809,7 +1853,7 @@ namespace Playground
 
         public bool ContainsNearbyDuplicate(int[] nums, int k)
         {
-            if (k>nums.Length)
+            if (k > nums.Length)
             {
                 return false;
             }
@@ -1874,7 +1918,7 @@ namespace Playground
             var result = 0;
             foreach (int i in map)
             {
-                if (!map.Contains(i-1))
+                if (!map.Contains(i - 1))
                 {
                     var count = 1;
                     var value = i;
@@ -1896,13 +1940,14 @@ namespace Playground
             }
             var result = new List<string>();
             var previous = 0;
-            for (int i = 1; i < nums.Length; i++) {
-                if (nums[i] - nums[i-1] != 1)
+            for (int i = 1; i < nums.Length; i++)
+            {
+                if (nums[i] - nums[i - 1] != 1)
                 {
                     result.Add(ContructString(nums[previous], nums[i - 1]));
                     previous = i;
                 }
-            
+
             }
             result.Add(ContructString(nums[previous], nums[nums.Length - 1]));
             return result;
@@ -1922,43 +1967,44 @@ namespace Playground
             intervals = intervals.OrderBy(q => q[0]).ToArray();
             result.Add(intervals[0]);
 
-            for (int i = 1; i < intervals.Length; i++) {
+            for (int i = 1; i < intervals.Length; i++)
+            {
 
-                    var prevS = result[result.Count - 1][0];
-                    var prevE = result[result.Count - 1][1];
-                    var currS = intervals[i][0];
-                    var currE = intervals[i][1];
+                var prevS = result[result.Count - 1][0];
+                var prevE = result[result.Count - 1][1];
+                var currS = intervals[i][0];
+                var currE = intervals[i][1];
 
-                    if (prevS <= currS && currE <= prevE)
-                    {
-                        result[result.Count - 1][0] = prevS;
-                        result[result.Count - 1][1] = prevE;
-                        continue;
-                    }
-                    if (currS <= prevE && prevE <= currE)
-                    {
-                        result[result.Count - 1][0] = Math.Min(currS,prevS);
-                        result[result.Count - 1][1] = currE;
+                if (prevS <= currS && currE <= prevE)
+                {
+                    result[result.Count - 1][0] = prevS;
+                    result[result.Count - 1][1] = prevE;
+                    continue;
+                }
+                if (currS <= prevE && prevE <= currE)
+                {
+                    result[result.Count - 1][0] = Math.Min(currS, prevS);
+                    result[result.Count - 1][1] = currE;
 
-                        continue;
-                    }
-                    if (currS <= prevS && prevS <= currE)
-                    {
-                        result[result.Count - 1][0] = currS;
-                        result[result.Count - 1][1] = Math.Max(currE,prevE);
+                    continue;
+                }
+                if (currS <= prevS && prevS <= currE)
+                {
+                    result[result.Count - 1][0] = currS;
+                    result[result.Count - 1][1] = Math.Max(currE, prevE);
 
-                        continue;
-                    }
-                    if (currS <= prevS && prevE <= currE)
-                    {
-                        result[result.Count - 1][0] = currS;
-                        result[result.Count - 1][1] = currE;
+                    continue;
+                }
+                if (currS <= prevS && prevE <= currE)
+                {
+                    result[result.Count - 1][0] = currS;
+                    result[result.Count - 1][1] = currE;
 
-                        continue;
-                    }
-      
-                    result.Add(intervals[i]);
-                
+                    continue;
+                }
+
+                result.Add(intervals[i]);
+
             }
 
             return result.DistinctBy(q => (q[0], q[1])).ToArray();
@@ -1969,7 +2015,8 @@ namespace Playground
             var result = new List<int[]>();
             var overlap = new List<int[]>();
 
-            foreach (var interval in intervals) {
+            foreach (var interval in intervals)
+            {
                 var oldS = interval[0];
                 var oldE = interval[1];
                 var newS = newInterval[0];
@@ -1998,7 +2045,8 @@ namespace Playground
             var result = 0;
             var overlap = new List<int[]>();
             overlap.Add(points[0]);
-            for (var i = 1; i < points.Length; i++) {
+            for (var i = 1; i < points.Length; i++)
+            {
 
                 if (!IsAllOverlap(overlap, points[i]))
                 {
@@ -2008,12 +2056,13 @@ namespace Playground
                 overlap.Add(points[i]);
             }
 
-            return overlap.Count > 0 ? result+1:result;
+            return overlap.Count > 0 ? result + 1 : result;
         }
 
         public bool IsAllOverlap(List<int[]> currents, int[] newP)
         {
-            foreach (var item in currents) {
+            foreach (var item in currents)
+            {
                 var oldS = item[0];
                 var oldE = item[1];
                 var newS = newP[0];
@@ -2032,10 +2081,11 @@ namespace Playground
             var split = path.Split('/');
             split = split.Where(q => !string.IsNullOrEmpty(q)).ToArray();
             var stack = new Stack<string>();
-            foreach (var item in split) {
+            foreach (var item in split)
+            {
                 if (item.Equals(".."))
                 {
-                    var outs="";
+                    var outs = "";
                     stack.TryPop(out outs);
                 }
                 else
@@ -2052,7 +2102,7 @@ namespace Playground
                 result = p + result;
                 result = "/" + result;
             }
-            if (result.EndsWith('/') && result.Length>1)
+            if (result.EndsWith('/') && result.Length > 1)
             {
                 result = result.Remove(result.Length - 1);
             }
@@ -2063,7 +2113,8 @@ namespace Playground
         public int EvalRPN(string[] tokens)
         {
             var stack = new Stack<int>();
-            foreach (var token in tokens) {
+            foreach (var token in tokens)
+            {
                 if (token.Equals("+") || token.Equals("-") || token.Equals("*") || token.Equals("/"))
                 {
                     var numB = stack.Pop();
@@ -2148,7 +2199,8 @@ namespace Playground
         {
             var set = new HashSet<ListNode>();
 
-            while (head != null) { 
+            while (head != null)
+            {
                 var success = set.Add(head);
                 if (!success)
                 {
@@ -2186,7 +2238,7 @@ namespace Playground
         //        current = current.next;
         //    }
 
-         
+
 
         //    return result.next;
         //}
@@ -2195,7 +2247,8 @@ namespace Playground
         {
             var result = new ListNode();
             var current = result;
-            foreach (var item in list) { 
+            foreach (var item in list)
+            {
                 current.next = new ListNode(item);
                 current = current.next;
             }
@@ -2220,10 +2273,11 @@ namespace Playground
 
             var previous = end;
 
-            while (current != null) {
+            while (current != null)
+            {
                 if (index >= left && index <= right)
                 {
-                   
+
                     var newNode = new ListNode(current.val);
                     newNode.next = previous;
                     previous = newNode;
@@ -2254,7 +2308,7 @@ namespace Playground
                 current = current.next;
             }
 
-            current.next = count-1 == right ? null : end;
+            current.next = count - 1 == right ? null : end;
             start.next = previous;
 
             return left == 0 ? head.next : head;
@@ -2269,7 +2323,8 @@ namespace Playground
             var current = head;
             var currentResult = result;
 
-            while (current != null) {
+            while (current != null)
+            {
                 var value = current.val;
                 if (!set.Add(value))
                 {
@@ -2280,7 +2335,8 @@ namespace Playground
             }
 
             current = head;
-            while (current != null) {
+            while (current != null)
+            {
                 var value = current.val;
                 if (!valueToDelete.Contains(value))
                 {
@@ -2303,7 +2359,8 @@ namespace Playground
             var current = head;
             var n = 0;
 
-            while (current != null) {
+            while (current != null)
+            {
                 n++;
                 end = current;
                 current = current.next;
@@ -2316,9 +2373,10 @@ namespace Playground
             end.next = head; //create a Circular Linked List 
 
 
-           
+
             current = head;
-            for (var i = 0; i < Math.Abs(k-n) ; i++){
+            for (var i = 0; i < Math.Abs(k - n); i++)
+            {
                 previous = current;
                 current = current.next;
             }
@@ -2336,7 +2394,8 @@ namespace Playground
             ListNode prev = null;
             var list = new List<int>();
 
-            while (current != null) {
+            while (current != null)
+            {
                 if (current.val < x)
                 {
                     if (prev != null)
@@ -2357,7 +2416,8 @@ namespace Playground
             }
             ListNode result = new ListNode();
             current = result;
-            foreach (var item in list) { 
+            foreach (var item in list)
+            {
                 current.next = new ListNode(item);
                 current = current.next;
             }
@@ -2435,18 +2495,18 @@ namespace Playground
 
         public int MaxDepth(TreeNode root)
         {
-            return FindMaxDepth(root,0);
+            return FindMaxDepth(root, 0);
         }
 
-        public int FindMaxDepth(TreeNode current,int max)
+        public int FindMaxDepth(TreeNode current, int max)
         {
             if (current == null)
             {
                 return max;
             }
-            var left = FindMaxDepth(current.left,max+1);
+            var left = FindMaxDepth(current.left, max + 1);
             var right = FindMaxDepth(current.right, max + 1);
-            return Math.Max(left,right);
+            return Math.Max(left, right);
         }
         public bool IsSameTree(TreeNode p, TreeNode q)
         {
@@ -2454,10 +2514,11 @@ namespace Playground
             queue.Enqueue(p);
             queue.Enqueue(q);
 
-            while (queue.Count > 0) { 
+            while (queue.Count > 0)
+            {
                 var pSide = queue.Dequeue();
                 var qSide = queue.Dequeue();
-                if ((pSide == null && qSide != null )|| (pSide != null && qSide == null))
+                if ((pSide == null && qSide != null) || (pSide != null && qSide == null))
                 {
                     return false;
                 }
@@ -2488,7 +2549,8 @@ namespace Playground
             var q = new Queue<TreeNode>();
             var listNode = new List<int?>();
             q.Enqueue(root);
-            while ((q.Count > 0)) { 
+            while ((q.Count > 0))
+            {
                 var current = q.Dequeue();
 
                 if (current != null)
@@ -2573,8 +2635,8 @@ namespace Playground
                 var leftInOrder = new int[index];
                 var rightInOrder = new int[inorder.Length - index - 1];
                 leftInOrder = inorder.Take(index).ToArray();
-                rightInOrder = inorder.Skip(index+1).Take(inorder.Length - 1 - index).ToArray();
-                root.left =  BuildMyTree(queue, leftInOrder);
+                rightInOrder = inorder.Skip(index + 1).Take(inorder.Length - 1 - index).ToArray();
+                root.left = BuildMyTree(queue, leftInOrder);
                 root.right = BuildMyTree(queue, rightInOrder);
                 return root;
             }
@@ -2602,12 +2664,12 @@ namespace Playground
                 rightInOrder = inorder.Skip(index + 1).Take(inorder.Length - 1 - index).ToArray();
 
                 leftPostOrder = postorder.Take(index).ToArray();
-                rightPostOrder = postorder.Skip(index).Take(postorder.Length  - index).ToArray();
+                rightPostOrder = postorder.Skip(index).Take(postorder.Length - index).ToArray();
                 rightPostOrder = rightPostOrder.Take(rightPostOrder.Length - 1).ToArray(); // remove current node val
 
                 root.right = BuildMyTreePostOrder(rightInOrder, rightPostOrder);
                 root.left = BuildMyTreePostOrder(leftInOrder, leftPostOrder);
-        
+
                 return root;
             }
             return null;
@@ -2621,13 +2683,15 @@ namespace Playground
             }
             var queue = new Queue<Node>();
             queue.Enqueue(root);
-      
-            while (queue.Count > 0) {
+
+            while (queue.Count > 0)
+            {
                 var count = queue.Count;
                 Node prev = null;
-                for (int i = 0; i < count; i++) { 
+                for (int i = 0; i < count; i++)
+                {
                     var node = queue.Dequeue();
-                    if (prev!=null)
+                    if (prev != null)
                     {
                         prev.next = node;
                     }
@@ -2661,7 +2725,7 @@ namespace Playground
             {
                 Flatten(root.right);
             }
-            if (root.left !=null && root.right == null)
+            if (root.left != null && root.right == null)
             {
 
                 root.right = root.left;
@@ -2671,13 +2735,76 @@ namespace Playground
             if (root.left != null && root.right != null)
             {
                 var current = root.left;
-                while(current.right != null)
+                while (current.right != null)
                 {
                     current = current.right;
                 }
                 current.right = root.right;
                 root.right = root.left;
                 root.left = null;
+            }
+        }
+
+        public bool HasPathSum(TreeNode root, int targetSum)
+        {
+            if (root == null)
+            {
+                return false;
+            }
+            if (root.left == null && root.right == null)
+            {
+                return targetSum == root.val;
+            }
+            var left = false;
+            var right = false;
+            if (root.left != null)
+            {
+                left = CalculatePathSum(root.left, targetSum, 0);
+            }
+            if (root.right != null)
+            {
+                right = CalculatePathSum(root.right, targetSum, 0);
+            }
+
+            return left || right;
+
+        }
+
+        public bool CalculatePathSum(TreeNode root, int targetSum, int current)
+        {
+            if (root == null)
+            {
+                return false;
+            }
+            var value = current + root.val;
+            if (value == targetSum && root.left == null && root.right == null)
+            {
+                return true;
+            }
+
+            return CalculatePathSum(root.left, targetSum, value) || CalculatePathSum(root.right, targetSum, value);
+        }
+
+        public int SumNumbers(TreeNode root)
+        {
+            var result = new List<int>();
+            CalcalatePathSum(root, 0, result);
+            return result.Sum();
+        }
+
+        public void CalcalatePathSum(TreeNode root, int current, List<int> result)
+        {
+            if (root.left == null && root.right == null)
+            {
+                result.Add(current * 10 + root.val);
+            }
+            if (root.left != null)
+            {
+                CalcalatePathSum(root.left, current * 10 + root.val, result);
+            }
+            if (root.right != null)
+            {
+                CalcalatePathSum(root.right, current * 10 + root.val, result);
             }
         }
     }

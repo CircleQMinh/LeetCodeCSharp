@@ -36,9 +36,9 @@ var solution = new Solution();
 //lRUCache.Put(2, 1);
 //lRUCache.Get(2);
 
-var s = solution.CreateTreeNode(new List<int?> { 1, 2, null, null, 3, 4 });
+var s = solution.CreateTreeNode(new List<int?> { 1, 2, 3});
 //var s = solution.CreateNode(new List<int?> { 3, 9, 20, null, null, 15, 7 });
-solution.Flatten(s);
+solution.SumNumbers(s);
 
 
 Console.WriteLine("Hello, World!");
