@@ -2646,7 +2646,40 @@ namespace Playground
             }
             return root;
         }
+        public void Flatten(TreeNode root)
+        {
+            if (root == null)
+            {
+                return;
+            }
 
+            if (root.left != null)
+            {
+                Flatten(root.left);
+            }
+            if (root.right != null)
+            {
+                Flatten(root.right);
+            }
+            if (root.left !=null && root.right == null)
+            {
+
+                root.right = root.left;
+                root.left = null;
+                return;
+            }
+            if (root.left != null && root.right != null)
+            {
+                var current = root.left;
+                while(current.right != null)
+                {
+                    current = current.right;
+                }
+                current.right = root.right;
+                root.right = root.left;
+                root.left = null;
+            }
+        }
     }
 }
 
