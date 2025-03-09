@@ -3036,6 +3036,25 @@ namespace Playground
             }
             return result;
         }
+        public int KthSmallest(TreeNode root, int k)
+        {
+            var result = new List<int>();
+            GetTreeNodeValueInOrder(root, result);
+            return result[k];
+        }
+        public void GetTreeNodeValueInOrder(TreeNode root, List<int> result)
+        {
+
+            if (root.left != null)
+            {
+                GetTreeNodeValueInOrder(root.left, result);
+            }
+            result.Add(root.val);
+            if (root.right != null)
+            { 
+                GetTreeNodeValueInOrder(root.right, result);
+            }
+        }
     }
 }
 
