@@ -2919,7 +2919,123 @@ namespace Playground
                 FindRightMost(root.left, h+1, result);
             }
         }
+        public IList<double> AverageOfLevels(TreeNode root)
+        {
+            var result = new List<double>();
+            var queue = new Queue<TreeNode>();
+            queue.Enqueue(root);
+            while (queue.Count > 0) {
+                double avg = 0;
+                var count = queue.Count;
+                for (int i = 0; i < count; i++) { 
+                    var node = queue.Dequeue();
+                    if (node.left !=null)
+                    {
+                        queue.Enqueue(node.left);
+                    }
+                    if (node.right != null)
+                    {
+                        queue.Enqueue(node.right);
+                    }
+                    avg += node.val;
+                }
+                avg/= count;
+                result.Add(avg);
+            }
+            return result;
+        }
 
+        public IList<IList<int>> LevelOrder(TreeNode root)
+        {
+            var result = new List<IList<int>>();
+            if (root == null) { 
+            
+                return result;
+            }
+            var queue = new Queue<TreeNode>();
+            queue.Enqueue(root);
+            while (queue.Count > 0) {
+                var count = queue.Count;
+                var list = new List<int>();
+                for (int i = 0; i < count; i++) {
+                    var node = queue.Dequeue();
+                    if (node.left != null)
+                    {
+                        queue.Enqueue(node.left);
+                    }
+                    if (node.right != null)
+                    {
+                        queue.Enqueue(node.right);
+                    }
+                    list.Add(node.val);
+                }
+                result.Add(list);
+            }
+            return result;
+        }
+        public IList<IList<int>> ZigzagLevelOrder(TreeNode root)
+        {
+            var result = new List<IList<int>>();
+            if (root == null)
+            {
+                return result;
+            }
+            var queue = new Queue<TreeNode>();
+            queue.Enqueue(root);
+            var reverse = true;
+            while (queue.Count > 0)
+            {
+                reverse = !reverse;
+                var count = queue.Count;
+                var list = new List<int>();
+                for (int i = 0; i < count; i++)
+                {
+                    var node = queue.Dequeue();
+                    if (node.left != null)
+                    {
+                        queue.Enqueue(node.left);
+                    }
+                    if (node.right != null)
+                    {
+                        queue.Enqueue(node.right);
+                    }
+                    list.Add(node.val);
+                }
+                if (reverse)
+                {
+                    list.Reverse();
+                }
+                result.Add(list);
+            }
+            return result;
+        }
+        public int GetMinimumDifference(TreeNode root)
+        {
+            var queue = new Queue<TreeNode>();
+            var list = new List<int>();
+            queue.Enqueue(root);
+            while (queue.Count > 0)
+            {
+                var node = queue.Dequeue();
+                if (node.left != null)
+                {
+                    queue.Enqueue(node.left);
+                }
+                if (node.right != null)
+                {
+                    queue.Enqueue(node.right);
+                }
+                list.Add(node.val);
+            }
+            var result = int.MaxValue;
+            list = list.Order().ToList();
+            for (int i = 0;i< list.Count - 1;i++)
+            {
+                var s = list[i+1] - list[i];
+                result = Math.Min(result, s);
+            }
+            return result;
+        }
     }
 }
 
