@@ -2883,15 +2883,43 @@ namespace Playground
             }
             if (l == null && r != null)
             {
-                return r.val < root.val ? r : root;
+                return r;
             }
             if (l != null && r == null)
             {
-                return l.val < root.val ? l : root;
+                return l;
             }
 
             return null;
         }
+
+        public IList<int> RightSideView(TreeNode root)
+        {
+            var result = new Dictionary<int, int>();
+            FindRightMost(root, 0, result);
+            return result.Select(q=>q.Value).ToList();
+        }
+
+        public void FindRightMost(TreeNode root, int h, Dictionary<int,int> result)
+        {
+            if (root == null)
+            {
+                return;
+            }
+            if (!result.ContainsKey(h))
+            {
+                result.Add(h, root.val);
+            }
+            if (root.right != null)
+            {
+                FindRightMost(root.right, h+1, result);
+            }
+            if (root.left != null)
+            {
+                FindRightMost(root.left, h+1, result);
+            }
+        }
+
     }
 }
 
