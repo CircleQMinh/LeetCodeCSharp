@@ -3070,43 +3070,37 @@ namespace Playground
 
         public int NumIslands(char[][] grid)
         {
-            var count = 0;
-            var m = grid.Length;
-            var n = grid[0].Length;
+            int count = 0;
+            int m = grid.Length;
+            int n = grid[0].Length;
 
-            var visited = new HashSet<(int X,int Y)>();
+            var directions = new (int X, int Y)[] { (-1, 0), (1, 0), (0, -1), (0, 1) };
 
-            for (int i = 0; i < m; i++) {
-                for (int j = 0; j < n; j++) {
-                    if (!visited.Contains((i,j)))
+            for (int i = 0; i < m; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    if (grid[i][j] == '1') // Found an island
                     {
-                        var queue =  new Queue<(int X, int Y)>();
+                        count++; // Once find an island check for another island near by and add that to the queue
+                        var queue = new Queue<(int X, int Y)>();
                         queue.Enqueue((i, j));
+                        grid[i][j] = '0'; // Mark as visited, use 0 instead of hashset to save memory since 0 is useless in this
+
                         while (queue.Count > 0)
                         {
-                            var value = queue.Dequeue();
-                            var gridVal = grid[value.X][value.Y];
-                            visited.Add(value);
-                            if (gridVal == '1' && IsValidGridPlacement(m, n, value.X - 1, value.Y) && !visited.Contains((value.X - 1, value.Y)))//top
+                            var (x, y) = queue.Dequeue();
+
+                            foreach (var (dx, dy) in directions)
                             {
-                                queue.Enqueue((value.X - 1, value.Y));
+                                int newX = x + dx, newY = y + dy;
+
+                                if (newX >= 0 && newX < m && newY >= 0 && newY < n && grid[newX][newY] == '1') // Valid location and is an island
+                                {
+                                    queue.Enqueue((newX, newY));
+                                    grid[newX][newY] = '0'; // Mark as visited
+                                }
                             }
-                            if (gridVal == '1' && IsValidGridPlacement(m, n, value.X + 1, value.Y) && !visited.Contains((value.X + 1, value.Y)))//bot
-                            {
-                                queue.Enqueue((value.X + 1, value.Y));
-                            }
-                            if (gridVal == '1' && IsValidGridPlacement(m, n, value.X, value.Y - 1) && !visited.Contains((value.X, value.Y - 1)))//left
-                            {
-                                queue.Enqueue((value.X, value.Y - 1));
-                            }
-                            if (gridVal == '1' && IsValidGridPlacement(m, n, value.X, value.Y + 1) && !visited.Contains((value.X, value.Y + 1)))//right
-                            {
-                                queue.Enqueue((value.X, value.Y + 1));
-                            }
-                        }
-                        if (grid[i][j] == '1')
-                        {
-                            count++;
                         }
                     }
                 }
@@ -3114,10 +3108,75 @@ namespace Playground
 
             return count;
         }
-        public bool IsValidGridPlacement(int m,int n,int i,int j)
+
+        public void Solve(char[][] board)
         {
-            return (i >= 0 && i < m) && (j >= 0 && j < n);
+            int m = board.Length;
+            int n = board[0].Length;
+
+           
+            for (int i = 0; i < m; i++) {
+                if (board[i][0] == 'O')
+                {
+                    MarkCantBeSurroundedRegion(board, i, 0);
+                }
+                if (board[i][n-1] == 'O')
+                {
+                    MarkCantBeSurroundedRegion(board, i, n-1);
+                }
+            }
+            for (int i = 1; i < n - 1; i++)
+            {
+
+                if (board[0][i] == 'O')
+                {
+                    MarkCantBeSurroundedRegion(board, 0, i);
+                }
+                if (board[m-1][i] == 'O')
+                {
+                    MarkCantBeSurroundedRegion(board, m-1, i);
+                }
+            }
+
+            for (int i = 0; i < m; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    if (board[i][j] == 'O')
+                    {
+                        board[i][j] = 'X';
+                    }
+                    if (board[i][j] == 'Q')
+                    {
+                        board[i][j] = 'O';
+                    }
+                }
+            }
+
         }
+        public void MarkCantBeSurroundedRegion(char[][] board, int i,int j)
+        {
+            int m = board.Length;
+            int n = board[0].Length;
+            var directions = new (int X, int Y)[] { (-1, 0), (1, 0), (0, -1), (0, 1) };
+            var queue = new Queue<(int X, int Y)>();
+            queue.Enqueue((i, j));
+            while (queue.Count > 0) {
+                var (x, y) = queue.Dequeue();
+                board[x][y] = 'Q'; // Mark 
+                foreach (var (dx, dy) in directions)
+                {
+                    int newX = x + dx, newY = y + dy;
+
+                    if (newX >= 0 && newX < m && newY >= 0 && newY < n && board[newX][newY] == 'O') // Valid location and is a region
+                    {
+                        queue.Enqueue((newX, newY));
+                        board[newX][newY] = 'Q'; // Mark 
+                    }
+                }
+            }
+        }
+
     }
 }
 
