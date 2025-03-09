@@ -3055,6 +3055,69 @@ namespace Playground
                 GetTreeNodeValueInOrder(root.right, result);
             }
         }
+        public bool IsValidBST(TreeNode root)
+        {
+            var result = new List<int>();
+            GetTreeNodeValueInOrder(root, result);
+            for (int i = 0; i < result.Count - 1; i++) {
+                if (result[i] >= result[i+1])
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public int NumIslands(char[][] grid)
+        {
+            var count = 0;
+            var m = grid.Length;
+            var n = grid[0].Length;
+
+            var visited = new HashSet<(int X,int Y)>();
+
+            for (int i = 0; i < m; i++) {
+                for (int j = 0; j < n; j++) {
+                    if (!visited.Contains((i,j)))
+                    {
+                        var queue =  new Queue<(int X, int Y)>();
+                        queue.Enqueue((i, j));
+                        while (queue.Count > 0)
+                        {
+                            var value = queue.Dequeue();
+                            var gridVal = grid[value.X][value.Y];
+                            visited.Add(value);
+                            if (gridVal == '1' && IsValidGridPlacement(m, n, value.X - 1, value.Y) && !visited.Contains((value.X - 1, value.Y)))//top
+                            {
+                                queue.Enqueue((value.X - 1, value.Y));
+                            }
+                            if (gridVal == '1' && IsValidGridPlacement(m, n, value.X + 1, value.Y) && !visited.Contains((value.X + 1, value.Y)))//bot
+                            {
+                                queue.Enqueue((value.X + 1, value.Y));
+                            }
+                            if (gridVal == '1' && IsValidGridPlacement(m, n, value.X, value.Y - 1) && !visited.Contains((value.X, value.Y - 1)))//left
+                            {
+                                queue.Enqueue((value.X, value.Y - 1));
+                            }
+                            if (gridVal == '1' && IsValidGridPlacement(m, n, value.X, value.Y + 1) && !visited.Contains((value.X, value.Y + 1)))//right
+                            {
+                                queue.Enqueue((value.X, value.Y + 1));
+                            }
+                        }
+                        if (grid[i][j] == '1')
+                        {
+                            count++;
+                        }
+                    }
+                }
+            }
+
+            return count;
+        }
+        public bool IsValidGridPlacement(int m,int n,int i,int j)
+        {
+            return (i >= 0 && i < m) && (j >= 0 && j < n);
+        }
     }
 }
 

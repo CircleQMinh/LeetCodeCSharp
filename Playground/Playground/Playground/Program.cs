@@ -36,9 +36,22 @@ var solution = new Solution();
 //lRUCache.Put(2, 1);
 //lRUCache.Get(2);
 
-var s = solution.CreateTreeNode(new List<int?> { 1, 2, 3, 4, null, null, null, 5 });
-//var s = solution.CreateNode(new List<int?> { 3, 9, 20, null, null, 15, 7 });
-var r = solution.RightSideView(s);
+//var s = solution.CreateTreeNode(new List<int?> { 1, 2, 3, 4, null, null, null, 5 });
+////var s = solution.CreateNode(new List<int?> { 3, 9, 20, null, null, 15, 7 });
+//var r = solution.RightSideView(s);
 
 
+var s = new char[][] {
+  [ '1','1','1','1','0' ],
+  [ '1','1','0','1','0' ],
+  [ '1','1','0','0','0' ],
+  [ '0','0','0','0','0' ]
+};
+var s1 = new char[][] {
+  ['1','1','0','0','0'],
+  ['1','1','0','0','0'],
+  ['0','0','1','0','0'],
+  ['0','0','0','1','1']
+};
+var r = solution.NumIslands(s1);
 Console.WriteLine("Hello, World!");
