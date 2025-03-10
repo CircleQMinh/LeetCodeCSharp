@@ -3144,74 +3144,155 @@ namespace Playground
             }
         }
 
-        public Node CloneGraph(Node node)
-        {
-            if (node == null)
-            {
-                return null;
-            }
-            if (node.neighbors.Count == 0)
-            {
-                return new Node(node.val);
-            }
-            var set = new Dictionary<int, List<Node>>();
-            CreateNodeToNeighborsMap(node, set);
-            var created = new Dictionary<int, Node>();
+        //public Node CloneGraph(Node node)
+        //{
+        //    if (node == null)
+        //    {
+        //        return null;
+        //    }
+        //    if (node.neighbors.Count == 0)
+        //    {
+        //        return new Node(node.val);
+        //    }
+        //    var set = new Dictionary<int, List<Node>>();
+        //    CreateNodeToNeighborsMap(node, set);
+        //    var created = new Dictionary<int, Node>();
 
-            foreach (var item in set)
-            {
-                Node currentNode;
-                if (!created.ContainsKey(item.Key))
-                {
-                    currentNode = new Node(item.Key);
-                    created.Add(item.Key, currentNode);
-                }
-                else
-                {
-                    currentNode = created[item.Key];
-                }
+        //    foreach (var item in set)
+        //    {
+        //        Node currentNode;
+        //        if (!created.ContainsKey(item.Key))
+        //        {
+        //            currentNode = new Node(item.Key);
+        //            created.Add(item.Key, currentNode);
+        //        }
+        //        else
+        //        {
+        //            currentNode = created[item.Key];
+        //        }
 
-                foreach (var nb in item.Value) {
-                    Node newNb;
-                    if (!created.ContainsKey(nb.val))
-                    {
-                        newNb = new Node(nb.val);
-                        created.Add(nb.val, newNb);
-                    }
-                    else { 
-                        newNb = created[nb.val];
-                    }
-                    currentNode.neighbors.Add(newNb);
-                }
-            }
+        //        foreach (var nb in item.Value) {
+        //            Node newNb;
+        //            if (!created.ContainsKey(nb.val))
+        //            {
+        //                newNb = new Node(nb.val);
+        //                created.Add(nb.val, newNb);
+        //            }
+        //            else { 
+        //                newNb = created[nb.val];
+        //            }
+        //            currentNode.neighbors.Add(newNb);
+        //        }
+        //    }
+        //    return created[1];
+        //}
 
-
-
-
-            return node;
-        }
-
-        public void CreateNodeToNeighborsMap(Node node, Dictionary<int,List<Node>> set)
-        {
-            var queue = new Queue<Node>();
-            queue.Enqueue(node);
-            while (queue.Count > 0) { 
-                var current = queue.Dequeue();
-                if (!set.ContainsKey(current.val))
-                {
-                    set.Add(current.val, current.neighbors.ToList());
-                }
-                foreach (var item in current.neighbors)
-                {
-                    if (item != null && !set.ContainsKey(item.val))
-                    {
-                        queue.Enqueue(item);
-                    }
-                }
+        //public void CreateNodeToNeighborsMap(Node node, Dictionary<int,List<Node>> set)
+        //{
+        //    var queue = new Queue<Node>();
+        //    queue.Enqueue(node);
+        //    while (queue.Count > 0) { 
+        //        var current = queue.Dequeue();
+        //        if (!set.ContainsKey(current.val))
+        //        {
+        //            set.Add(current.val, current.neighbors.ToList());
+        //        }
+        //        foreach (var item in current.neighbors)
+        //        {
+        //            if (item != null && !set.ContainsKey(item.val))
+        //            {
+        //                queue.Enqueue(item);
+        //            }
+        //        }
                 
+        //    }
+        //}
+
+        public double[] CalcEquation(IList<IList<string>> equations, double[] values, IList<IList<string>> queries)
+        {
+            var result = new double[queries.Count];
+            var map = new Dictionary<(string x,string y), double>();
+            var list = new Dictionary<string,Node>();
+
+            for (int i = 0; i < equations.Count; i++)
+            {
+                var equation = equations[i];
+                var v1 = equation[0];
+                var v2 = equation[1];
+                var value = values[i];
+
+                Node currentV1 = !list.ContainsKey(v1) ? new Node(v1) : currentV1 = list[v1]; if (!list.ContainsKey(v1)) list.Add(v1, currentV1);
+                Node currentV2 = !list.ContainsKey(v2) ? new Node(v2) : currentV2 = list[v2]; if (!list.ContainsKey(v2)) list.Add(v2, currentV2);
+
+                if (!currentV1.neighbors.Contains(currentV2))
+                {
+                    currentV1.neighbors.Add(currentV2);
+                }
+
+                if (!currentV2.neighbors.Contains(currentV1))
+                {
+                    currentV2.neighbors.Add(currentV1);
+                }
+
+                if (!map.ContainsKey((v1,v2)))
+                {
+                    map.Add((v1,v2), value);
+                    map.Add((v2,v1), 1/value);
+                }             
             }
+
+            for (int i = 0; i < queries.Count; i++)
+            {
+                var query = queries[i];
+                var v1 = query[0];
+                var v2 = query[1];
+
+                if (!list.ContainsKey(v1) || !list.ContainsKey(v2))
+                {
+                    result[i] = (-1);
+                    continue;
+                }
+
+                Node currentV1 = list[v1];
+                Node currentV2 = list[v2];
+                var path = FindPathFromV1ToV2(currentV1, currentV2, new List<string>(), new List<string>());
+                var cal = 1d;
+                for (int j = 0; j < path.Count - 1; j++)
+                {
+                    cal *= map[(path[j], path[j + 1])];
+                }
+                result[i] = (cal);
+            }
+
+
+
+            return result;
         }
 
+        public List<string> FindPathFromV1ToV2(Node v1,Node v2, List<string> current, List<string> visited)
+        {
+            current.Add(v1.val);
+            visited.Add(v1.val);
+            if (v1.val == v2.val)
+            {
+                return current;
+            }
+            foreach (var item in v1.neighbors)
+            {
+                if (!visited.Contains(item.val))
+                {
+                    var s = FindPathFromV1ToV2(item, v2, current, visited);
+                    if (s.Count > 0)
+                    {
+                        return s;
+                    }
+                    current.Remove(item.val);
+                }
+            }
+            current.Remove(v1.val);
+            return new List<string>();
+
+        }
 
     }
 }

@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Playground;
+using System.Collections.Generic;
 
 Console.WriteLine("Hello, World!");
 var solution = new Solution();
@@ -56,16 +57,27 @@ var s1 = new char[][] {
 //var r = solution.NumIslands(s1);
 
 
-var n1 = new Node(1);
-var n2 = new Node(2);
-var n3 = new Node(3);
-var n4 = new Node(4);
+//var n1 = new Node(1);
+//var n2 = new Node(2);
+//var n3 = new Node(3);
+//var n4 = new Node(4);
 
-n1.neighbors = new List<Node>() { n2,n4};
-n2.neighbors = new List<Node>() { n1,n3};
-n3.neighbors = new List<Node>() { n2, n4 };
-n4.neighbors = new List<Node>() { n1, n3 };
+//n1.neighbors = new List<Node>() { n2,n4};
+//n2.neighbors = new List<Node>() { n1,n3};
+//n3.neighbors = new List<Node>() { n2, n4 };
+//n4.neighbors = new List<Node>() { n1, n3 };
 
-var r = solution.CloneGraph(n1);
+//var r = solution.CloneGraph(n1);
+
+var equas = new List<IList<string>>() { new List<string>(){ "a", "b" }, new List<string>() { "b", "c" } };
+var values = new double[] { 2.0, 3.0 };
+var queries = new List<IList<string>>() { 
+    new List<string>() { "a", "c" },
+    new List<string>() { "b", "a" }, 
+    new List<string>() { "a", "e" }, 
+    new List<string>() { "a", "a" }, 
+    new List<string>() { "x", "x" } };
+
+var r = solution.CalcEquation(equas,values,queries);
 
 Console.WriteLine("Hello, World!");

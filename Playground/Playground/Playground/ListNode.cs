@@ -48,22 +48,22 @@ namespace Playground
     //}
     public class Node
     {
-        public int val;
+        public string val;
         public IList<Node> neighbors;
 
         public Node()
         {
-            val = 0;
+            val = "";
             neighbors = new List<Node>();
         }
 
-        public Node(int _val)
+        public Node(string _val)
         {
             val = _val;
             neighbors = new List<Node>();
         }
 
-        public Node(int _val, List<Node> _neighbors)
+        public Node(string _val, List<Node> _neighbors)
         {
             val = _val;
             neighbors = _neighbors;
