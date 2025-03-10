@@ -2459,39 +2459,6 @@ namespace Playground
         }
 
 
-        public Node CreateNode(List<int?> values)
-        {
-            if (values == null || values.Count == 0 || values[0] == null)
-                return null;
-
-            Node root = new Node(values[0].Value);
-            Queue<Node> queue = new Queue<Node>();
-            queue.Enqueue(root);
-
-            int i = 1;
-            while (i < values.Count)
-            {
-                Node current = queue.Dequeue();
-
-                // Process left child
-                if (i < values.Count && values[i] != null)
-                {
-                    current.left = new Node(values[i].Value);
-                    queue.Enqueue(current.left);
-                }
-                i++;
-
-                // Process right child
-                if (i < values.Count && values[i] != null)
-                {
-                    current.right = new Node(values[i].Value);
-                    queue.Enqueue(current.right);
-                }
-                i++;
-            }
-
-            return root;
-        }
 
         public int MaxDepth(TreeNode root)
         {
@@ -2675,41 +2642,41 @@ namespace Playground
             return null;
         }
 
-        public Node Connect(Node root)
-        {
-            if (root == null)
-            {
-                return root;
-            }
-            var queue = new Queue<Node>();
-            queue.Enqueue(root);
+        //public Node Connect(Node root)
+        //{
+        //    if (root == null)
+        //    {
+        //        return root;
+        //    }
+        //    var queue = new Queue<Node>();
+        //    queue.Enqueue(root);
 
-            while (queue.Count > 0)
-            {
-                var count = queue.Count;
-                Node prev = null;
-                for (int i = 0; i < count; i++)
-                {
-                    var node = queue.Dequeue();
-                    if (prev != null)
-                    {
-                        prev.next = node;
-                    }
-                    prev = node;
+        //    while (queue.Count > 0)
+        //    {
+        //        var count = queue.Count;
+        //        Node prev = null;
+        //        for (int i = 0; i < count; i++)
+        //        {
+        //            var node = queue.Dequeue();
+        //            if (prev != null)
+        //            {
+        //                prev.next = node;
+        //            }
+        //            prev = node;
 
-                    if (node.left != null)
-                    {
-                        queue.Enqueue(node.left);
-                    }
-                    if (node.right != null)
-                    {
-                        queue.Enqueue(node.right);
-                    }
+        //            if (node.left != null)
+        //            {
+        //                queue.Enqueue(node.left);
+        //            }
+        //            if (node.right != null)
+        //            {
+        //                queue.Enqueue(node.right);
+        //            }
 
-                }
-            }
-            return root;
-        }
+        //        }
+        //    }
+        //    return root;
+        //}
         public void Flatten(TreeNode root)
         {
             if (root == null)
@@ -3176,6 +3143,75 @@ namespace Playground
                 }
             }
         }
+
+        public Node CloneGraph(Node node)
+        {
+            if (node == null)
+            {
+                return null;
+            }
+            if (node.neighbors.Count == 0)
+            {
+                return new Node(node.val);
+            }
+            var set = new Dictionary<int, List<Node>>();
+            CreateNodeToNeighborsMap(node, set);
+            var created = new Dictionary<int, Node>();
+
+            foreach (var item in set)
+            {
+                Node currentNode;
+                if (!created.ContainsKey(item.Key))
+                {
+                    currentNode = new Node(item.Key);
+                    created.Add(item.Key, currentNode);
+                }
+                else
+                {
+                    currentNode = created[item.Key];
+                }
+
+                foreach (var nb in item.Value) {
+                    Node newNb;
+                    if (!created.ContainsKey(nb.val))
+                    {
+                        newNb = new Node(nb.val);
+                        created.Add(nb.val, newNb);
+                    }
+                    else { 
+                        newNb = created[nb.val];
+                    }
+                    currentNode.neighbors.Add(newNb);
+                }
+            }
+
+
+
+
+            return node;
+        }
+
+        public void CreateNodeToNeighborsMap(Node node, Dictionary<int,List<Node>> set)
+        {
+            var queue = new Queue<Node>();
+            queue.Enqueue(node);
+            while (queue.Count > 0) { 
+                var current = queue.Dequeue();
+                if (!set.ContainsKey(current.val))
+                {
+                    set.Add(current.val, current.neighbors.ToList());
+                }
+                foreach (var item in current.neighbors)
+                {
+                    if (item != null && !set.ContainsKey(item.val))
+                    {
+                        queue.Enqueue(item);
+                    }
+                }
+                
+            }
+        }
+
 
     }
 }

@@ -30,20 +30,43 @@ namespace Playground
     //    }
     //}
 
+    //public class Node
+    //{
+    //    public int val;
+    //    public Node left;
+    //    public Node right;
+    //    public Node next;
+
+    //    public Node(int _val)
+    //    {
+    //        val = _val;
+    //        next = null;
+    //        left = null;
+    //        right = null;
+    //        next = null;
+    //    }
+    //}
     public class Node
     {
         public int val;
-        public Node left;
-        public Node right;
-        public Node next;
+        public IList<Node> neighbors;
+
+        public Node()
+        {
+            val = 0;
+            neighbors = new List<Node>();
+        }
 
         public Node(int _val)
         {
             val = _val;
-            next = null;
-            left = null;
-            right = null;
-            next = null;
+            neighbors = new List<Node>();
+        }
+
+        public Node(int _val, List<Node> _neighbors)
+        {
+            val = _val;
+            neighbors = _neighbors;
         }
     }
 

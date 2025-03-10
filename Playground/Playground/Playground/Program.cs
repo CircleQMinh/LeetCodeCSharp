@@ -53,5 +53,19 @@ var s1 = new char[][] {
   ['0','0','1','0','0'],
   ['0','0','0','1','1']
 };
-var r = solution.NumIslands(s1);
+//var r = solution.NumIslands(s1);
+
+
+var n1 = new Node(1);
+var n2 = new Node(2);
+var n3 = new Node(3);
+var n4 = new Node(4);
+
+n1.neighbors = new List<Node>() { n2,n4};
+n2.neighbors = new List<Node>() { n1,n3};
+n3.neighbors = new List<Node>() { n2, n4 };
+n4.neighbors = new List<Node>() { n1, n3 };
+
+var r = solution.CloneGraph(n1);
+
 Console.WriteLine("Hello, World!");
