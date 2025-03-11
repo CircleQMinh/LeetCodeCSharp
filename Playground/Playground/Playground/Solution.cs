@@ -3256,6 +3256,11 @@ namespace Playground
                 Node currentV1 = list[v1];
                 Node currentV2 = list[v2];
                 var path = FindPathFromV1ToV2(currentV1, currentV2, new List<string>(), new List<string>());
+                if (path.Count == 0)
+                {
+                    result[i] = (-1);
+                    continue;
+                }
                 var cal = 1d;
                 for (int j = 0; j < path.Count - 1; j++)
                 {
@@ -3293,7 +3298,59 @@ namespace Playground
             return new List<string>();
 
         }
+        public bool CanFinish(int numCourses, int[][] prerequisites)
+        {
+            var dictionary = new Dictionary<int, List<int>>();
+            for (int i = 0; i < numCourses; i++)
+            {
+                dictionary.Add(i, new List<int>());
+            }
+            foreach (var item in prerequisites) {
+                var need = item[0];
+                var pre = item[1];
+                dictionary[need].Add(pre);
+            }
+            foreach(var item in dictionary)
+            {
+                if (!CanFinishCourse(item.Key,dictionary))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
 
+        public bool CanFinishCourse(int courseNumber, Dictionary<int, List<int>> prerequisites) {
+
+            var queue = new Queue<int>();
+            var visited = new HashSet<int>();
+            foreach (var item in prerequisites[courseNumber]) {
+                queue.Enqueue(item);
+            }
+            while (queue.Count > 0) {
+                var pre = new HashSet<int>();
+                var count = queue.Count;
+                for (int i = 0; i < count; i++) { 
+                    var value = queue.Dequeue();
+                    if (!visited.Add(value))
+                    {
+                        return false;
+                    }
+                    foreach (var item in prerequisites[value])
+                    {
+                        pre.Add(item);
+                    }
+                }
+                foreach (var item in pre)
+                {
+                    if (!queue.Contains(item))
+                    {
+                        queue.Enqueue(item); 
+                    }
+                }
+            }
+            return true;
+        } 
     }
 }
 

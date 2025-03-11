@@ -42,18 +42,18 @@ var solution = new Solution();
 //var r = solution.RightSideView(s);
 
 
-var s = new char[][] {
-  [ '1','1','1','1','0' ],
-  [ '1','1','0','1','0' ],
-  [ '1','1','0','0','0' ],
-  [ '0','0','0','0','0' ]
-};
-var s1 = new char[][] {
-  ['1','1','0','0','0'],
-  ['1','1','0','0','0'],
-  ['0','0','1','0','0'],
-  ['0','0','0','1','1']
-};
+//var s = new char[][] {
+//  [ '1','1','1','1','0' ],
+//  [ '1','1','0','1','0' ],
+//  [ '1','1','0','0','0' ],
+//  [ '0','0','0','0','0' ]
+//};
+//var s1 = new char[][] {
+//  ['1','1','0','0','0'],
+//  ['1','1','0','0','0'],
+//  ['0','0','1','0','0'],
+//  ['0','0','0','1','1']
+//};
 //var r = solution.NumIslands(s1);
 
 
@@ -69,15 +69,17 @@ var s1 = new char[][] {
 
 //var r = solution.CloneGraph(n1);
 
-var equas = new List<IList<string>>() { new List<string>(){ "a", "b" }, new List<string>() { "b", "c" } };
-var values = new double[] { 2.0, 3.0 };
-var queries = new List<IList<string>>() { 
-    new List<string>() { "a", "c" },
-    new List<string>() { "b", "a" }, 
-    new List<string>() { "a", "e" }, 
-    new List<string>() { "a", "a" }, 
-    new List<string>() { "x", "x" } };
+//var equas = new List<IList<string>>() { new List<string>(){ "a", "b" }, new List<string>() { "b", "c" } };
+//var values = new double[] { 2.0, 3.0 };
+//var queries = new List<IList<string>>() { 
+//    new List<string>() { "a", "c" },
+//    new List<string>() { "b", "a" }, 
+//    new List<string>() { "a", "e" }, 
+//    new List<string>() { "a", "a" }, 
+//    new List<string>() { "x", "x" } };
 
-var r = solution.CalcEquation(equas,values,queries);
+//var r = solution.CalcEquation(equas,values,queries);
 
+var s = new int[][] { [1, 0], [1, 2], [3, 1], [3, 2], [2, 4], [4, 5], [2, 5] };
+var r = solution.CanFinish(6, s);
 Console.WriteLine("Hello, World!");
