@@ -80,6 +80,6 @@ var solution = new Solution();
 
 //var r = solution.CalcEquation(equas,values,queries);
 
-var s = new int[][] { [1, 0], [1, 2], [3, 1], [3, 2], [2, 4], [4, 5], [2, 5] };
-var r = solution.CanFinish(6, s);
+var s = new int[][] { [1, 0], [1, 2], [0, 1] };
+var r = solution.FindOrder(4, s);
 Console.WriteLine("Hello, World!");
