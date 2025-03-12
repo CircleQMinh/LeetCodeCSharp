@@ -80,6 +80,6 @@ var solution = new Solution();
 
 //var r = solution.CalcEquation(equas,values,queries);
 
-var s = new int[][] { [1, 0], [1, 2], [0, 1] };
-var r = solution.FindOrder(4, s);
+var s = new int[][] { [-1, -1, 19, 10, -1], [2, -1, -1, 6, -1], [-1, 17, -1, 19, -1], [25, -1, 20, -1, -1], [-1, -1, -1, -1, 15] };
+var r = solution.SnakesAndLadders( s);
 Console.WriteLine("Hello, World!");
