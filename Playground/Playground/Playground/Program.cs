@@ -80,6 +80,11 @@ var solution = new Solution();
 
 //var r = solution.CalcEquation(equas,values,queries);
 
-var s = new int[][] { [-1, -1, 19, 10, -1], [2, -1, -1, 6, -1], [-1, 17, -1, 19, -1], [25, -1, 20, -1, -1], [-1, -1, -1, -1, 15] };
-var r = solution.SnakesAndLadders( s);
+//var s = new int[][] { [-1, -1, 19, 10, -1], [2, -1, -1, 6, -1], [-1, 17, -1, 19, -1], [25, -1, 20, -1, -1], [-1, -1, -1, -1, 15] };
+//var r = solution.SnakesAndLadders( s);
+
+
+var r = solution.MinMutation("AACCGGTT", "AAACGGTA", new string[] { "AACCGATT", "AACCGATA", "AAACGATA", "AAACGGTA" });
+
+
 Console.WriteLine("Hello, World!");
