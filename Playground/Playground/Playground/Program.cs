@@ -84,7 +84,7 @@ var solution = new Solution();
 //var r = solution.SnakesAndLadders( s);
 
 
-var r = solution.MinMutation("AACCGGTT", "AAACGGTA", new string[] { "AACCGATT", "AACCGATA", "AAACGATA", "AAACGGTA" });
-
+//var r = solution.MinMutation("AACCGGTT", "AAACGGTA", new string[] { "AACCGATT", "AACCGATA", "AAACGATA", "AAACGGTA" });
+var t = solution.LadderLength("hit", "cog", new string[] { "hot", "dot", "dog", "lot", "log", "cog" });
 
 Console.WriteLine("Hello, World!");
