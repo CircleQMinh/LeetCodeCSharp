@@ -3529,20 +3529,22 @@ namespace Playground
             {
                 return 0;
             }
+
             var n = beginWord.Length;
             var queue = new Queue<string>();
             var set = new HashSet<string>();
+            var wordSet = new HashSet<string>(wordList);
 
             var mutations = new HashSet<char>() {  };
-            foreach (var word in wordList) {
-                foreach (var c in word) { 
-                    mutations.Add(c);
-                }
+            for (int k = 'a'; k <= 'z'; k++)
+            {
+                mutations.Add((char)k);
             }
+
             queue.Enqueue(beginWord);
             set.Add(beginWord);
 
-            var count = 0;
+            var count = 1;
             while (queue.Count > 0) {
 
                 var size = queue.Count;
@@ -3562,7 +3564,7 @@ namespace Playground
                                 var newWordArray = current.ToArray();
                                 newWordArray[j] = c;
                                 var newWord = new string(newWordArray);
-                                if (wordList.Contains(newWord) && !set.Contains(newWord))
+                                if (wordSet.Contains(newWord) && !set.Contains(newWord))
                                 {
                                     queue.Enqueue(newWord);
                                     set.Add(newWord);
@@ -3575,7 +3577,7 @@ namespace Playground
                 count++;
             }
             
-            return count;
+            return 0;
         }
     }
 }
