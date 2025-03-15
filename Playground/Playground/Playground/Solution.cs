@@ -3946,6 +3946,18 @@ namespace Playground
 
             return result;
         }
+
+        public int MaxSubArray(int[] nums)
+        {
+            var max = int.MinValue;
+            var current = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                current = Math.Max(0,current + nums[i]);   
+                max = Math.Max(max, current);
+            }
+            return max;
+        }
     }
 }
 
