@@ -135,7 +135,12 @@ var solution = new Solution();
 //var s = new int[] { -10, -3, 0, 5, 9 };
 //var r = solution.SortedArrayToBST(s);
 
-var s = solution.CreateLinkedList(new List<int> { 4, 2, 1, 3 });
-var r = solution.SortList(s);
+//var s = solution.CreateLinkedList(new List<int> { 4, 2, 1, 3 });
+//var r = solution.SortList(s);
+
+
+var s = new int[][] { [1, 1, 1, 1, 0, 0, 0, 0], [1, 1, 1, 1, 0, 0, 0, 0], [1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 0, 0, 0, 0], [1, 1, 1, 1, 0, 0, 0, 0], [1, 1, 1, 1, 0, 0, 0, 0], [1, 1, 1, 1, 0, 0, 0, 0] };
+var r = solution.Construct(s);
+
 
 Console.WriteLine("Hello, World!");
