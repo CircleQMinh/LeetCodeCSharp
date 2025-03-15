@@ -87,20 +87,37 @@ var solution = new Solution();
 //var r = solution.MinMutation("AACCGGTT", "AAACGGTA", new string[] { "AACCGATT", "AACCGATA", "AAACGATA", "AAACGGTA" });
 
 
-var wd = new WordDictionary();
-wd.AddWord("at");
-wd.AddWord("and");
-wd.AddWord("an");
-wd.AddWord("add");
-var a1 = wd.Search("a");
-var a2 = wd.Search(".at");
-wd.AddWord("bat");
-var a3 = wd.Search(".at");
-var a4 = wd.Search(".an");
+//var wd = new WordDictionary();
+//wd.AddWord("at");
+//wd.AddWord("and");
+//wd.AddWord("an");
+//wd.AddWord("add");
+//var a1 = wd.Search("a");
+//var a2 = wd.Search(".at");
+//wd.AddWord("bat");
+//var a3 = wd.Search(".at");
+//var a4 = wd.Search(".an");
 
-var a5 = wd.Search("a.d");
-var a6 = wd.Search("b.");
-var a7 = wd.Search("a.d");
-var a8 = wd.Search(".");
+
+
+
+
+
+//var a5 = wd.Search("a.d");
+//var a6 = wd.Search("b.");
+//var a7 = wd.Search("a.d");
+//var a8 = wd.Search(".");
+
+//var s = new char[][] {
+//    ['a','b'],['c','d']
+//};
+//var w = new string[] { "abcb" };
+
+var s = new char[][] {
+   ['a','b','c'],['a','e','d'],['a','f','g']
+};
+var w = new string[] { "abcdefg", "gfedcbaaa", "eaabcdgfa", "befa", "dgc", "ade" };
+
+var r = solution.FindWords(s, w);
 
 Console.WriteLine("Hello, World!");

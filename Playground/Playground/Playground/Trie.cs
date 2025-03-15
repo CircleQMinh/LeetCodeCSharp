@@ -20,13 +20,13 @@ namespace Playground
             var n = word.Length;
             for (var i = 0; i < n; i++) {
                 var c = word[i];
-                if (!current.childs.ContainsKey(c))
+                if (!current.Children.ContainsKey(c))
                 {
-                    current.childs.Add(c, new TrieNode(c));
+                    current.Children.Add(c, new TrieNode(c));
                 }
-                current = current.childs[c];
+                current = current.Children[c];
             }
-            current.isEnd = true;
+            current.IsEnd = true;
         }
 
         public bool Search(string word)
@@ -34,13 +34,13 @@ namespace Playground
             var current = _root;
             foreach (var c in word)
             {
-                if (!current.childs.ContainsKey(c))
+                if (!current.Children.ContainsKey(c))
                 {
                     return false;
                 }
-                current = current.childs[c];
+                current = current.Children[c];
             }
-            return current.isEnd;
+            return current.IsEnd;
         }
 
         public bool StartsWith(string prefix)
@@ -48,11 +48,11 @@ namespace Playground
             var current = _root;
             foreach (var c in prefix)
             {
-                if (!current.childs.ContainsKey(c))
+                if (!current.Children.ContainsKey(c))
                 {
                     return false;
                 }
-                current = current.childs[c];
+                current = current.Children[c];
             }
             return true;
         }
@@ -61,18 +61,18 @@ namespace Playground
     public class TrieNode
     {
         public char val;
-        public bool isEnd;
-        public Dictionary<char, TrieNode> childs;
+        public bool IsEnd;
+        public Dictionary<char, TrieNode> Children;
         public TrieNode()
         {
 
-            childs = new Dictionary<char, TrieNode>();
+            Children = new Dictionary<char, TrieNode>();
 
         }
         public TrieNode(char c)
         {
             val = c;
-            childs = new Dictionary<char, TrieNode>();
+            Children = new Dictionary<char, TrieNode>();
         }
     }
 }
