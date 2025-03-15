@@ -2785,10 +2785,10 @@ namespace Playground
             while (queue.Count > 0)
             {
                 var node = queue.Dequeue();
-                var left = Math.Max(MaxGain(node.left),0); //if path gain is negative ignore it -> plus 0
-                var right = Math.Max(MaxGain(node.right),0);
+                var left = Math.Max(MaxGain(node.left), 0); //if path gain is negative ignore it -> plus 0
+                var right = Math.Max(MaxGain(node.right), 0);
                 var currentPath = left + right + node.val;
-               
+
                 max = Math.Max(max, currentPath);
                 if (node.left != null)
                 {
@@ -2809,8 +2809,8 @@ namespace Playground
             {
                 return 0;
             }
-            var gain = Math.Max(Math.Max(MaxGain(root.left),0), Math.Max(MaxGain(root.right),0));
-            return gain+root.val;
+            var gain = Math.Max(Math.Max(MaxGain(root.left), 0), Math.Max(MaxGain(root.right), 0));
+            return gain + root.val;
         }
 
         public int CountNodes(TreeNode root)
@@ -2822,15 +2822,15 @@ namespace Playground
             int level = 0;
             var left = root;
             var right = root;
-            while (right != null) 
+            while (right != null)
             {
                 level++;
-                left=left.left;
-                right=right.right;  
+                left = left.left;
+                right = right.right;
             }
             if (left == null) // check if this is a full tree, this always trigger once so the complexity is < o(n)
             {
-                return (int) Math.Pow(2,level) - 1;
+                return (int)Math.Pow(2, level) - 1;
             }
             // if not full then Calculate like O(N) solution
             return 1 + CountNodes(root.left) + CountNodes(root.right);
@@ -2838,13 +2838,13 @@ namespace Playground
 
         public TreeNode LowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q)
         {
-            if (root == null || root.val == p.val|| root.val == q.val)
+            if (root == null || root.val == p.val || root.val == q.val)
             {
                 return root;
             }
 
-            var l = LowestCommonAncestor(root.left,p,q);
-            var r = LowestCommonAncestor(root.right,p,q);
+            var l = LowestCommonAncestor(root.left, p, q);
+            var r = LowestCommonAncestor(root.right, p, q);
 
             if (l != null && r != null)
             {
@@ -2866,10 +2866,10 @@ namespace Playground
         {
             var result = new Dictionary<int, int>();
             FindRightMost(root, 0, result);
-            return result.Select(q=>q.Value).ToList();
+            return result.Select(q => q.Value).ToList();
         }
 
-        public void FindRightMost(TreeNode root, int h, Dictionary<int,int> result)
+        public void FindRightMost(TreeNode root, int h, Dictionary<int, int> result)
         {
             if (root == null)
             {
@@ -2881,11 +2881,11 @@ namespace Playground
             }
             if (root.right != null)
             {
-                FindRightMost(root.right, h+1, result);
+                FindRightMost(root.right, h + 1, result);
             }
             if (root.left != null)
             {
-                FindRightMost(root.left, h+1, result);
+                FindRightMost(root.left, h + 1, result);
             }
         }
         public IList<double> AverageOfLevels(TreeNode root)
@@ -2893,12 +2893,14 @@ namespace Playground
             var result = new List<double>();
             var queue = new Queue<TreeNode>();
             queue.Enqueue(root);
-            while (queue.Count > 0) {
+            while (queue.Count > 0)
+            {
                 double avg = 0;
                 var count = queue.Count;
-                for (int i = 0; i < count; i++) { 
+                for (int i = 0; i < count; i++)
+                {
                     var node = queue.Dequeue();
-                    if (node.left !=null)
+                    if (node.left != null)
                     {
                         queue.Enqueue(node.left);
                     }
@@ -2908,7 +2910,7 @@ namespace Playground
                     }
                     avg += node.val;
                 }
-                avg/= count;
+                avg /= count;
                 result.Add(avg);
             }
             return result;
@@ -2917,16 +2919,19 @@ namespace Playground
         public IList<IList<int>> LevelOrder(TreeNode root)
         {
             var result = new List<IList<int>>();
-            if (root == null) { 
-            
+            if (root == null)
+            {
+
                 return result;
             }
             var queue = new Queue<TreeNode>();
             queue.Enqueue(root);
-            while (queue.Count > 0) {
+            while (queue.Count > 0)
+            {
                 var count = queue.Count;
                 var list = new List<int>();
-                for (int i = 0; i < count; i++) {
+                for (int i = 0; i < count; i++)
+                {
                     var node = queue.Dequeue();
                     if (node.left != null)
                     {
@@ -2998,9 +3003,9 @@ namespace Playground
             }
             var result = int.MaxValue;
             list = list.Order().ToList();
-            for (int i = 0;i< list.Count - 1;i++)
+            for (int i = 0; i < list.Count - 1; i++)
             {
-                var s = list[i+1] - list[i];
+                var s = list[i + 1] - list[i];
                 result = Math.Min(result, s);
             }
             return result;
@@ -3020,7 +3025,7 @@ namespace Playground
             }
             result.Add(root.val);
             if (root.right != null)
-            { 
+            {
                 GetTreeNodeValueInOrder(root.right, result);
             }
         }
@@ -3028,8 +3033,9 @@ namespace Playground
         {
             var result = new List<int>();
             GetTreeNodeValueInOrder(root, result);
-            for (int i = 0; i < result.Count - 1; i++) {
-                if (result[i] >= result[i+1])
+            for (int i = 0; i < result.Count - 1; i++)
+            {
+                if (result[i] >= result[i + 1])
                 {
                     return false;
                 }
@@ -3083,15 +3089,16 @@ namespace Playground
             int m = board.Length;
             int n = board[0].Length;
 
-           
-            for (int i = 0; i < m; i++) {
+
+            for (int i = 0; i < m; i++)
+            {
                 if (board[i][0] == 'O')
                 {
                     MarkCantBeSurroundedRegion(board, i, 0);
                 }
-                if (board[i][n-1] == 'O')
+                if (board[i][n - 1] == 'O')
                 {
-                    MarkCantBeSurroundedRegion(board, i, n-1);
+                    MarkCantBeSurroundedRegion(board, i, n - 1);
                 }
             }
             for (int i = 1; i < n - 1; i++)
@@ -3101,9 +3108,9 @@ namespace Playground
                 {
                     MarkCantBeSurroundedRegion(board, 0, i);
                 }
-                if (board[m-1][i] == 'O')
+                if (board[m - 1][i] == 'O')
                 {
-                    MarkCantBeSurroundedRegion(board, m-1, i);
+                    MarkCantBeSurroundedRegion(board, m - 1, i);
                 }
             }
 
@@ -3123,14 +3130,15 @@ namespace Playground
             }
 
         }
-        public void MarkCantBeSurroundedRegion(char[][] board, int i,int j)
+        public void MarkCantBeSurroundedRegion(char[][] board, int i, int j)
         {
             int m = board.Length;
             int n = board[0].Length;
             var directions = new (int X, int Y)[] { (-1, 0), (1, 0), (0, -1), (0, 1) };
             var queue = new Queue<(int X, int Y)>();
             queue.Enqueue((i, j));
-            while (queue.Count > 0) {
+            while (queue.Count > 0)
+            {
                 var (x, y) = queue.Dequeue();
                 board[x][y] = 'Q'; // Mark 
                 foreach (var (dx, dy) in directions)
@@ -3206,15 +3214,15 @@ namespace Playground
         //                queue.Enqueue(item);
         //            }
         //        }
-                
+
         //    }
         //}
 
         public double[] CalcEquation(IList<IList<string>> equations, double[] values, IList<IList<string>> queries)
         {
             var result = new double[queries.Count];
-            var map = new Dictionary<(string x,string y), double>();
-            var list = new Dictionary<string,Node>();
+            var map = new Dictionary<(string x, string y), double>();
+            var list = new Dictionary<string, Node>();
 
             for (int i = 0; i < equations.Count; i++)
             {
@@ -3236,11 +3244,11 @@ namespace Playground
                     currentV2.neighbors.Add(currentV1);
                 }
 
-                if (!map.ContainsKey((v1,v2)))
+                if (!map.ContainsKey((v1, v2)))
                 {
-                    map.Add((v1,v2), value);
-                    map.Add((v2,v1), 1/value);
-                }             
+                    map.Add((v1, v2), value);
+                    map.Add((v2, v1), 1 / value);
+                }
             }
 
             for (int i = 0; i < queries.Count; i++)
@@ -3276,7 +3284,7 @@ namespace Playground
             return result;
         }
 
-        public List<string> FindPathFromV1ToV2(Node v1,Node v2, List<string> current, List<string> visited)
+        public List<string> FindPathFromV1ToV2(Node v1, Node v2, List<string> current, List<string> visited)
         {
             current.Add(v1.val);
             visited.Add(v1.val);
@@ -3307,14 +3315,15 @@ namespace Playground
             {
                 dictionary.Add(i, new List<int>());
             }
-            foreach (var item in prerequisites) {
+            foreach (var item in prerequisites)
+            {
                 var need = item[0];
                 var pre = item[1];
                 dictionary[need].Add(pre);
             }
-            foreach(var item in dictionary)
+            foreach (var item in dictionary)
             {
-                if (!CanFinishCourse(item.Key,dictionary,new HashSet<int>()))
+                if (!CanFinishCourse(item.Key, dictionary, new HashSet<int>()))
                 {
                     return false;
                 }
@@ -3322,7 +3331,7 @@ namespace Playground
             return true;
         }
 
-        public bool CanFinishCourse(int courseNumber, Dictionary<int, List<int>> prerequisites, HashSet<int> taken) 
+        public bool CanFinishCourse(int courseNumber, Dictionary<int, List<int>> prerequisites, HashSet<int> taken)
         {
             if (prerequisites[courseNumber].Count == 0)
             {
@@ -3335,7 +3344,7 @@ namespace Playground
 
             foreach (var item in prerequisites[courseNumber])
             {
-                if (!CanFinishCourse(item,prerequisites,taken))
+                if (!CanFinishCourse(item, prerequisites, taken))
                 {
                     return false;
                 }
@@ -3362,9 +3371,11 @@ namespace Playground
             var result = new List<int>();
             if (!IsCyclic(dictionary))
             {
-                while (dictionary.Any(q => q.Value.Count == 0 && !result.Contains(q.Key))) {
+                while (dictionary.Any(q => q.Value.Count == 0 && !result.Contains(q.Key)))
+                {
                     var course = dictionary.FirstOrDefault(q => q.Value.Count == 0 && !result.Contains(q.Key));
-                    foreach (var item in dictionary) {
+                    foreach (var item in dictionary)
+                    {
                         item.Value.Remove(course.Key);
                     }
                     result.Add(course.Key);
@@ -3379,7 +3390,7 @@ namespace Playground
             return result.ToArray();
         }
         // Function to detect cycle in a directed graph
-        public static bool IsCyclic(Dictionary<int,List<int>> adj)
+        public static bool IsCyclic(Dictionary<int, List<int>> adj)
         {
             int V = adj.Count;
             // Stores in-degree of each vertex
@@ -3430,10 +3441,10 @@ namespace Playground
         {
             var result = int.MaxValue;
             var n = board.Length;
-            var flatten = new int[(n*n)+1];
+            var flatten = new int[(n * n) + 1];
             int count = 1;
             var reverse = false;
-            for (int i = n-1; i >= 0; i--)
+            for (int i = n - 1; i >= 0; i--)
             {
                 if (reverse)
                 {
@@ -3464,13 +3475,13 @@ namespace Playground
             var queue = new Queue<int>();
             queue.Enqueue(1);
             distance[1] = 0;
-            while (queue.Count > 0) 
+            while (queue.Count > 0)
             {
                 var current = queue.Dequeue();
-                for (int next = current+1; next <= Math.Min(current + 6, board.Length - 1); next++) // [curr + 1, min(curr + 6, n2)]
+                for (int next = current + 1; next <= Math.Min(current + 6, board.Length - 1); next++) // [curr + 1, min(curr + 6, n2)]
                 {
                     var dest = board[next] == -1 ? next : board[next];
-                    
+
                     if (distance[dest] == -1 || distance[current] + 1 < distance[dest])
                     {
                         distance[dest] = distance[current] + 1;
@@ -3478,7 +3489,7 @@ namespace Playground
                     }
                 }
             }
-             return distance[board.Length-1];
+            return distance[board.Length - 1];
         }
         public int MinMutation(string startGene, string endGene, string[] bank)
         {
@@ -3489,12 +3500,13 @@ namespace Playground
             var n = startGene.Length;
             var queue = new Queue<string>();
             var map = new Dictionary<string, int>();
-            var mutations = new List<char>() { 'A','G','T','C'};
+            var mutations = new List<char>() { 'A', 'G', 'T', 'C' };
             queue.Enqueue(startGene);
             map.Add(startGene, 0);
             map.Add(endGene, int.MaxValue);
 
-            while (queue.Count > 0) { 
+            while (queue.Count > 0)
+            {
                 var current = queue.Dequeue();
                 for (int i = 0; i < n; i++)
                 {
@@ -3502,7 +3514,7 @@ namespace Playground
                     {
                         var newGene = current.ToList();
                         newGene[i] = c;
-                        var newGeneString = string.Join("",newGene);
+                        var newGeneString = string.Join("", newGene);
                         if (bank.Contains(newGeneString))
                         {
                             var newGeneStep = map[current] + 1;
@@ -3537,7 +3549,7 @@ namespace Playground
             var set = new HashSet<string>();
             var wordSet = new HashSet<string>(wordList);
 
-            var mutations = new HashSet<char>() {  };
+            var mutations = new HashSet<char>() { };
             for (int k = 'a'; k <= 'z'; k++)
             {
                 mutations.Add((char)k);
@@ -3547,7 +3559,8 @@ namespace Playground
             set.Add(beginWord);
 
             var count = 1;
-            while (queue.Count > 0) {
+            while (queue.Count > 0)
+            {
 
                 var size = queue.Count;
                 for (int i = 0; i < size; i++)
@@ -3557,7 +3570,8 @@ namespace Playground
                     {
                         return count;
                     }
-                    for (int j = 0; j < n; j++) {
+                    for (int j = 0; j < n; j++)
+                    {
                         var currentChar = current[j];
                         foreach (char c in mutations)
                         {
@@ -3578,7 +3592,7 @@ namespace Playground
                 }
                 count++;
             }
-            
+
             return 0;
         }
 
@@ -3590,7 +3604,7 @@ namespace Playground
             var root = new TrieNode();
             foreach (var word in words)
             {
-                InsertIntoTrie(word,root);
+                InsertIntoTrie(word, root);
             }
 
             for (int i = 0; i < m; i++)
@@ -3599,7 +3613,7 @@ namespace Playground
                 {
                     if (root.Children.ContainsKey(board[i][j]))
                     {
-                        DFSWordOnBoard(board, "", root,(i,j),result);
+                        DFSWordOnBoard(board, "", root, (i, j), result);
                     }
                 }
             }
@@ -3620,7 +3634,7 @@ namespace Playground
             node.IsEnd = true;
         }
 
-        public void DFSWordOnBoard(char[][] board, string word, TrieNode node, (int X,int Y) currentPos, HashSet<string> result)
+        public void DFSWordOnBoard(char[][] board, string word, TrieNode node, (int X, int Y) currentPos, HashSet<string> result)
         {
             var c = board[currentPos.X][currentPos.Y];
             if (!node.Children.ContainsKey(c))
@@ -3640,7 +3654,8 @@ namespace Playground
             var n = board[0].Length;
 
             board[currentPos.X][currentPos.Y] = '#';
-            foreach (var dir in directions) {
+            foreach (var dir in directions)
+            {
                 var newX = currentPos.X + dir.X;
                 var newY = currentPos.Y + dir.Y;
                 if (newX >= 0 && newX < m && newY >= 0 && newY < n && board[newX][newY] != '#')
@@ -3666,8 +3681,9 @@ namespace Playground
                 return;
             }
             var lastNum = current.LastOrDefault();
-            for (int i = 1; i <= n; i++) {
-                if (i>lastNum)
+            for (int i = 1; i <= n; i++)
+            {
+                if (i > lastNum)
                 {
                     current.Add(i);
                     GenerateCombanations(n, k, current, result);
@@ -3694,9 +3710,11 @@ namespace Playground
             var lastQPlaceX = currentQ.Count > 0 ? currentQ.Last()[0] : -1;
             var lastQPlaceY = currentQ.Count > 0 ? currentQ.Last()[1] : -1;
 
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < n; j++) {
-                    if ((i>lastQPlaceX || (i==lastQPlaceX && j>lastQPlaceY)) && IsValidPlacementForQ(board,currentQ,i,j))
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    if ((i > lastQPlaceX || (i == lastQPlaceX && j > lastQPlaceY)) && IsValidPlacementForQ(board, currentQ, i, j))
                     {
                         currentQ.Add([i, j]);
                         board[i, j] = 1;
@@ -3712,17 +3730,18 @@ namespace Playground
         public bool IsValidPlacementForQ(int[,] board, List<int[]> currentQ, int placeX, int placeY)
         {
             var n = board.GetLength(0);
-            if (board[placeX,placeY] == 1)
+            if (board[placeX, placeY] == 1)
             {
                 return false;
             }
             var directions = new (int X, int Y)[] { (-1, 0), (1, 0), (0, -1), (0, 1), (-1, -1), (-1, 1), (1, -1), (1, 1) };
-            foreach (var dir in directions) {
+            foreach (var dir in directions)
+            {
                 var newX = placeX + dir.X;
                 var newY = placeY + dir.Y;
                 while (newX >= 0 && newX < n && newY >= 0 && newY < n)
                 {
-                    if (board[newX,newY] == 1)
+                    if (board[newX, newY] == 1)
                     {
                         return false;
                     }
@@ -3757,12 +3776,12 @@ namespace Playground
         public bool DFSWordInBoard(char[][] board, string word, (int X, int Y) currentPos, int currentIndex)
         {
             var c = board[currentPos.X][currentPos.Y];
-            if (word.Length == currentIndex+1)
+            if (word.Length == currentIndex + 1)
             {
                 return word[currentIndex] == c;
             }
 
-      
+
             if (word[currentIndex] != c)
             {
                 return false;
@@ -3779,9 +3798,9 @@ namespace Playground
                 var newY = currentPos.Y + dir.Y;
                 if (newX >= 0 && newX < m && newY >= 0 && newY < n && board[newX][newY] != '#')
                 {
-                    if (DFSWordInBoard(board,word,(newX,newY),currentIndex+1))
+                    if (DFSWordInBoard(board, word, (newX, newY), currentIndex + 1))
                     {
-                        return true ;
+                        return true;
                     }
                 }
             }
@@ -3800,8 +3819,67 @@ namespace Playground
             var middle = n / 2;
             var root = new TreeNode(nums[middle]);
             root.left = SortedArrayToBST(nums.Take(middle).ToArray());
-            root.right = SortedArrayToBST(nums.Skip(middle+1).Take(n-middle-1).ToArray());
+            root.right = SortedArrayToBST(nums.Skip(middle + 1).Take(n - middle - 1).ToArray());
             return root;
+        }
+
+        public ListNode SortList(ListNode head)
+        {
+            if (head == null || head.next == null)
+                return head;
+
+            ListNode current = null;
+            var slow = head;
+            var fast = head;
+
+            while (fast != null && fast.next != null)
+            {
+                current = slow;
+                slow = slow.next;
+                fast = fast.next.next;
+            }
+
+            current.next = null;
+
+            var result = Merge(head, slow);
+            return result;
+
+        }
+
+        public ListNode Merge(ListNode l, ListNode r)
+        {
+            var result = new ListNode();
+            var current = result;
+
+            while (l != null && r != null)
+            {
+                if (l.val < r.val)
+                {
+                    current.next = new ListNode(l.val);
+                    current=current.next;
+                    l = l.next;
+                }
+                else
+                {
+                    current.next = new ListNode(r.val);
+                    current = current.next;
+                    r = r.next;
+                }
+            }
+
+            while(l != null)
+            {
+                current.next = new ListNode(l.val);
+                current = current.next;
+                l = l.next;
+            }
+            while (r != null)
+            {
+                current.next = new ListNode(r.val);
+                current = current.next;
+                r = r.next;
+            }
+            return result.next;
         }
     }
 }

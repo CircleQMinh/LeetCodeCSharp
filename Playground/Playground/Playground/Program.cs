@@ -131,8 +131,11 @@ var solution = new Solution();
 //    ['a','b'],['c','d']
 //};
 
-//var r = solution.Exist(s, "acdb");
-var s = new int[] { -10, -3, 0, 5, 9 };
-var r = solution.SortedArrayToBST(s);
+////var r = solution.Exist(s, "acdb");
+//var s = new int[] { -10, -3, 0, 5, 9 };
+//var r = solution.SortedArrayToBST(s);
+
+var s = solution.CreateLinkedList(new List<int> { 4, 2, 1, 3 });
+var r = solution.SortList(s);
 
 Console.WriteLine("Hello, World!");
