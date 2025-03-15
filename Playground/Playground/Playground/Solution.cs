@@ -3789,6 +3789,20 @@ namespace Playground
 
             return false;
         }
+        public TreeNode SortedArrayToBST(int[] nums)
+        {
+
+            var n = nums.Length;
+            if (n == 0)
+            {
+                return null;
+            }
+            var middle = n / 2;
+            var root = new TreeNode(nums[middle]);
+            root.left = SortedArrayToBST(nums.Take(middle).ToArray());
+            root.right = SortedArrayToBST(nums.Skip(middle+1).Take(n-middle-1).ToArray());
+            return root;
+        }
     }
 }
 

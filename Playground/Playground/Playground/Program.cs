@@ -127,10 +127,12 @@ var solution = new Solution();
 //var n = 1;
 //var r = solution.TotalNQueens(5);
 
-var s = new char[][] {
-    ['a','b'],['c','d']
-};
+//var s = new char[][] {
+//    ['a','b'],['c','d']
+//};
 
-var r = solution.Exist(s, "acdb");
+//var r = solution.Exist(s, "acdb");
+var s = new int[] { -10, -3, 0, 5, 9 };
+var r = solution.SortedArrayToBST(s);
 
 Console.WriteLine("Hello, World!");
