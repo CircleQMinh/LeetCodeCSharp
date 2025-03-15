@@ -120,9 +120,11 @@ var solution = new Solution();
 
 //var r = solution.FindWords(s, w);
 
-var n = 4;
-var k = 2;
-var r = solution.Combine(n, k);
+//var n = 4;
+//var k = 2;
+//var r = solution.Combine(n, k);
 
+var n = 1;
+var r = solution.TotalNQueens(5);
 
 Console.WriteLine("Hello, World!");
