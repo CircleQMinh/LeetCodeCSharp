@@ -113,11 +113,16 @@ var solution = new Solution();
 //};
 //var w = new string[] { "abcb" };
 
-var s = new char[][] {
-   ['a','b','c'],['a','e','d'],['a','f','g']
-};
-var w = new string[] { "abcdefg", "gfedcbaaa", "eaabcdgfa", "befa", "dgc", "ade" };
+//var s = new char[][] {
+//   ['a','b','c'],['a','e','d'],['a','f','g']
+//};
+//var w = new string[] { "abcdefg", "gfedcbaaa", "eaabcdgfa", "befa", "dgc", "ade" };
 
-var r = solution.FindWords(s, w);
+//var r = solution.FindWords(s, w);
+
+var n = 4;
+var k = 2;
+var r = solution.Combine(n, k);
+
 
 Console.WriteLine("Hello, World!");
