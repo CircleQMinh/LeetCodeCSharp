@@ -124,7 +124,13 @@ var solution = new Solution();
 //var k = 2;
 //var r = solution.Combine(n, k);
 
-var n = 1;
-var r = solution.TotalNQueens(5);
+//var n = 1;
+//var r = solution.TotalNQueens(5);
+
+var s = new char[][] {
+    ['a','b'],['c','d']
+};
+
+var r = solution.Exist(s, "acdb");
 
 Console.WriteLine("Hello, World!");
