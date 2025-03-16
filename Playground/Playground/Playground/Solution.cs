@@ -3953,10 +3953,38 @@ namespace Playground
             var current = 0;
             for (int i = 0; i < nums.Length; i++)
             {
-                current = Math.Max(0,current + nums[i]);   
+                current += nums[i];
                 max = Math.Max(max, current);
+                if (current < 0)
+                {
+                    current = 0;
+                }
             }
             return max;
+        }
+
+        public int MaxSubarraySumCircular(int[] nums)
+        {
+            var n = nums.Length;
+            var max = int.MinValue;
+            var min = int.MaxValue;
+            var currentMax = 0;
+            var currentMin = 0;
+            var total = 0;
+            var set = new HashSet<int>();
+            for (int i = 0; i < n; i++)
+            {
+
+                currentMax = Math.Max(nums[i], currentMax + nums[i]);
+                max = Math.Max(max, currentMax);
+
+
+                currentMin = Math.Min(nums[i], currentMin + nums[i]);
+                min = Math.Min(min, currentMin);
+
+                total += nums[i];
+            }
+            return max > 0 ? Math.Max(currentMax,total-min) : max;
         }
     }
 }

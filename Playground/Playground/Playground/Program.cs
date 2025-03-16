@@ -143,7 +143,7 @@ var solution = new Solution();
 //var r = solution.Construct(s);
 
 
-var s = new int[] { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
-var m = solution.MaxSubArray(s);
+var s = new int[] { 1, -2, 3, -2 };
+var m = solution.MaxSubarraySumCircular(s);
 
 Console.WriteLine("Hello, World!");
