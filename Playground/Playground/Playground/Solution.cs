@@ -3857,7 +3857,7 @@ namespace Playground
                 if (l.val < r.val)
                 {
                     current.next = new ListNode(l.val);
-                    current=current.next;
+                    current = current.next;
                     l = l.next;
                 }
                 else
@@ -3868,7 +3868,7 @@ namespace Playground
                 }
             }
 
-            while(l != null)
+            while (l != null)
             {
                 current.next = new ListNode(l.val);
                 current = current.next;
@@ -3908,11 +3908,12 @@ namespace Playground
                 }
             }
 
-            if (isAllSameValue) { 
-                return new QuadTree(Convert.ToBoolean(gridValue),true);
+            if (isAllSameValue)
+            {
+                return new QuadTree(Convert.ToBoolean(gridValue), true);
             }
 
-            var result = new QuadTree(true,false);
+            var result = new QuadTree(true, false);
 
 
             result.topLeft = Construct(CreateSmallerGrid(grid, 0, middle, 0, middle));
@@ -3934,7 +3935,8 @@ namespace Playground
             }
             var iCount = 0;
             var jCount = 0;
-            for (var i = iStart; i < iEnd; i++){
+            for (var i = iStart; i < iEnd; i++)
+            {
                 jCount = 0;
                 for (var j = jStart; j < jEnd; j++)
                 {
@@ -3984,7 +3986,75 @@ namespace Playground
 
                 total += nums[i];
             }
-            return max > 0 ? Math.Max(currentMax,total-min) : max;
+            return max > 0 ? Math.Max(max, total - min) : max;
+        }
+
+        public bool SearchMatrix(int[][] matrix, int target)
+        {
+            var m = matrix.Length;
+            var n = matrix[0].Length;
+
+            int left = 0;
+            int right = (m * n) - 1;
+
+            while (left <= right)
+            {
+                int middle = left + (right - left) / 2;
+                int x = middle / n;
+                int y = middle % n;
+
+                if (matrix[x][y] == target)
+                {
+                    return true;
+                }
+
+                if (matrix[x][y] < target)
+                {
+                    left = middle + 1;
+                }
+                else
+                {
+                    right = middle - 1;
+                }
+            }
+
+            return false;
+
+        }
+
+        public int FindMin(int[] nums)
+        {
+            int left = 0;
+            int right = nums.Length - 1;
+            int middle = 0;
+            while (left <= right)
+            {
+                middle = left + (right - left) / 2;
+                if (left == right)
+                {
+                    return nums[middle];
+                }
+
+                if (nums[middle] < nums[left] && nums[middle] < nums[right])
+                {
+                    left = left + 1;
+                    right = right - 1;
+                    continue;
+                }
+
+                if (nums[middle] > nums[right])
+                {
+                    left = middle + 1;
+                    continue;
+                }
+                else
+                {
+                    right = middle - 1;
+                    continue;
+                }
+            }
+
+            return nums[middle];
         }
     }
 }
