@@ -143,7 +143,12 @@ var solution = new Solution();
 //var r = solution.Construct(s);
 
 
-var s = new int[] { 1, 2 };
-var m = solution.FindPeakElement(s);
+//var s = new int[] { 1, 2 };
+//var m = solution.FindPeakElement(s);
+
+var s1 = new int[] { 1, 1, 2 };
+var s2 = new int[] { 1,2,3};
+var k = 9;
+var r = solution.KSmallestPairs(s1,s2,k);
 
 Console.WriteLine("Hello, World!");
