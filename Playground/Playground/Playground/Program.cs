@@ -146,9 +146,16 @@ var solution = new Solution();
 //var s = new int[] { 1, 2 };
 //var m = solution.FindPeakElement(s);
 
-var s1 = new int[] { 1, 1, 2 };
-var s2 = new int[] { 1,2,3};
-var k = 9;
-var r = solution.KSmallestPairs(s1,s2,k);
+//var s1 = new int[] { 1, 1, 2 };
+//var s2 = new int[] { 1,2,3};
+//var k = 9;
+//var r = solution.KSmallestPairs(s1,s2,k);
+
+MedianFinder medianFinder = new MedianFinder();
+medianFinder.AddNum(1);    // arr = [1]
+medianFinder.AddNum(2);    // arr = [1, 2]
+medianFinder.FindMedian(); // return 1.5 (i.e., (1 + 2) / 2)
+medianFinder.AddNum(3);    // arr[1, 2, 3]
+medianFinder.FindMedian(); // return 2.0
 
 Console.WriteLine("Hello, World!");
