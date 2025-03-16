@@ -4131,7 +4131,28 @@ namespace Playground
 
             return result;
         }
+        public int FindMaximizedCapital(int k, int w, int[] profits, int[] capital)
+        {
+            var n = profits.Length;
+            var result = new List<int>();
+            var projects = new List<(int profit, int cap)>();
+            for (int i = 0; i < n; i++)
+            {
+                projects.Add((profits[i], capital[i]));
+            }
+            projects = projects.OrderBy(q=>q.cap).ToList();
 
+            var maxHeap = new PriorityQueue<(int profit, int cap), int>();
+            while (k > 0)
+            {
+                var projectCanAfford = pro
+
+
+                k--;
+            }
+
+            return 0;
+        }
     }
 }
 
