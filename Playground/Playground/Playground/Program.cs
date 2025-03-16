@@ -143,7 +143,7 @@ var solution = new Solution();
 //var r = solution.Construct(s);
 
 
-var s = new int[] { 3, 4, 5, 1, 2 };
-var m = solution.FindMin(s);
+var s = new int[] { 1, 2 };
+var m = solution.FindPeakElement(s);
 
 Console.WriteLine("Hello, World!");

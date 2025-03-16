@@ -4027,34 +4027,80 @@ namespace Playground
             int left = 0;
             int right = nums.Length - 1;
             int middle = 0;
-            while (left <= right)
-            {
+            //while (left <= right)
+            //{
+            //    middle = left + (right - left) / 2;
+            //    if (left == right)
+            //    {
+            //        return nums[middle];
+            //    }
+
+            //    if (nums[middle] < nums[left] && nums[middle] < nums[right])
+            //    {
+            //        left = left + 1;
+            //        right = right - 1;
+            //        continue;
+            //    }
+
+            //    if (nums[middle] > nums[right])
+            //    {
+            //        left = middle + 1;
+            //        continue;
+            //    }
+            //    else
+            //    {
+            //        right = middle - 1;
+            //        continue;
+            //    }
+            //}
+
+            //return nums[middle];
+
+            while (left < right) {
                 middle = left + (right - left) / 2;
-                if (left == right)
-                {
-                    return nums[middle];
-                }
-
-                if (nums[middle] < nums[left] && nums[middle] < nums[right])
-                {
-                    left = left + 1;
-                    right = right - 1;
-                    continue;
-                }
-
                 if (nums[middle] > nums[right])
                 {
                     left = middle + 1;
-                    continue;
+                }
+                else
+                {
+                    right = middle;
+                }
+            }
+            return nums[left];
+        }
+
+        public int FindPeakElement(int[] nums)
+        {
+            if (nums.Length == 0)
+            {
+                return 0;
+            }
+            int left = 0;
+            int right = nums.Length - 1;
+            var middle = 0;
+
+            while (left <= right)
+            {
+                middle = left + (right - left) / 2;
+                var leftSideOfMid = middle - 1 >= 0 ? nums[middle - 1] : int.MinValue;
+                var rightSideOfMid = middle + 1 < nums.Length ? nums[middle + 1] : int.MinValue;
+                if (nums[middle] > rightSideOfMid && nums[middle] > leftSideOfMid)
+                {
+                    return middle;
+                }
+
+                if (nums[middle] < nums[middle+1])
+                {
+                    left = middle + 1;
                 }
                 else
                 {
                     right = middle - 1;
-                    continue;
                 }
             }
 
-            return nums[middle];
+            return -1;
         }
     }
 }
