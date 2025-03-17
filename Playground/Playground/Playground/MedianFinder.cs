@@ -6,9 +6,6 @@ using System.Threading.Tasks;
 
 namespace Playground
 {
-    using System;
-    using System.Collections.Generic;
-
     public class MedianFinder
     {
         private PriorityQueue<int, int> minHeap;
@@ -48,6 +45,23 @@ namespace Playground
                 return (maxHeap.Peek() + minHeap.Peek()) / 2.0; // Even count, avg of two middle elements
             }
         }
+
+        public int FindKthLargest(int[] nums, int k)
+        {
+            var maxHeap = new PriorityQueue<int, int>();
+            for (int i = 0; i < nums.Length; i++) { 
+                maxHeap.Enqueue(i, -nums[i]);
+            }
+            var result = 0;
+            while (k > 0) {
+                result = nums[maxHeap.Dequeue()];
+                k--;
+            }
+            return result;
+        }
+
+      
+
     }
 
 }

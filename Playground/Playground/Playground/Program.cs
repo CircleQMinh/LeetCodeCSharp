@@ -151,11 +151,13 @@ var solution = new Solution();
 //var k = 9;
 //var r = solution.KSmallestPairs(s1,s2,k);
 
-MedianFinder medianFinder = new MedianFinder();
-medianFinder.AddNum(1);    // arr = [1]
-medianFinder.AddNum(2);    // arr = [1, 2]
-medianFinder.FindMedian(); // return 1.5 (i.e., (1 + 2) / 2)
-medianFinder.AddNum(3);    // arr[1, 2, 3]
-medianFinder.FindMedian(); // return 2.0
+//MedianFinder medianFinder = new MedianFinder();
+//medianFinder.AddNum(1);    // arr = [1]
+//medianFinder.AddNum(2);    // arr = [1, 2]
+//medianFinder.FindMedian(); // return 1.5 (i.e., (1 + 2) / 2)
+//medianFinder.AddNum(3);    // arr[1, 2, 3]
+//medianFinder.FindMedian(); // return 2.0
+
+var r = solution.AddBinary("11", "1");
 
 Console.WriteLine("Hello, World!");
