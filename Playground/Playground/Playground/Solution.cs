@@ -4181,7 +4181,7 @@ namespace Playground
                 if (valA == '1' && valB == '1')
                 {
                     result = overflow ? result + '1' : result + '0';
-                    overflow = !overflow;
+                    overflow = true;
                 }
                 else if (valA == '0' && valB == '0')
                 {
@@ -4205,6 +4205,15 @@ namespace Playground
             Array.Reverse(charArray);
             result = new string(charArray);
             return result;
+        }
+
+        public int SingleNumber(int[] nums)
+        {
+            for (int i = 1; i < nums.Length; i++) {
+
+                nums[0] = nums[0] ^ nums[i];
+            }
+            return nums[0];
         }
     }
 }

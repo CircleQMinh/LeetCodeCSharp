@@ -9,12 +9,15 @@ namespace MinhVu
     {
         public int SingleNumber(int[] nums)
         {
-            for (int i = 1; i < nums.Length; i++)
+            var one = 0;
+            var two = 0;
+            for (int i = 0; i < nums.Length; i++)
             {
+                one = (one ^ nums[i]) & ~two;
+                two = (two ^ nums[i]) & ~one;
 
-                nums[0] = nums[0] ^ nums[i];
             }
-            return nums[0];
+            return one;
         }
     }
 }
