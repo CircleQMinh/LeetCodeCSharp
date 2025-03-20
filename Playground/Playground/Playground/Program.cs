@@ -163,6 +163,9 @@ var solution = new Solution();
 //var s = new int[] { 9 };
 //var r = solution.PlusOne(s);
 
-var s = solution.MyPow(2,10);
+//var s = solution.MyPow(2,10);
+
+var s = new int[][] { [4, 5], [4, -1], [4, 0] };
+var m = solution.MaxPoints(s);
 
 Console.WriteLine("Hello, World!");
