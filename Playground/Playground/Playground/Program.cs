@@ -163,6 +163,6 @@ var solution = new Solution();
 //var s = new int[] { 9 };
 //var r = solution.PlusOne(s);
 
-var s = solution.TrailingZeroes(5);
+var s = solution.MySqrt(340503759);
 
 Console.WriteLine("Hello, World!");

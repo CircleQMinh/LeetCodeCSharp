@@ -4275,15 +4275,46 @@ namespace Playground
         public int FactorialTrailingZeroes(int n,ref int count)
         {
             var val = n;
-            while (val > 0) {
-                if (val % 5 == 0)
+            while(val >= 5 && val % 5 == 0)
+            {
+                val /= 5;
+                count++;
+            }
+            return n == 0 ? 1 : n == 1 ? 1 : n * FactorialTrailingZeroes(n - 1,ref count);
+        }
+
+        public int MySqrt(int x)
+        {
+            long left = 0;
+            long right = Math.Max(x/2,1);
+            while (left < right)
+            {
+                long middle = left + (right - left) / 2;
+                var val = middle * middle;
+                if (middle * middle == x)
                 {
-                    val /= 5;
-                    count++;
+                    return (int)middle;
+                }
+
+                if (middle * middle < x)
+                {
+                    left = middle + 1;
+                }
+                else
+                {
+                    right = middle - 1;
                 }
             }
+            while(left >= 1)
+            {
+                if (left * left < x)
+                {
+                    return (int)left;
+                }
+                left--;
+            }
+            return (int)left;
 
-            return n == 0 ? 1 : n == 1 ? 1 : n * FactorialTrailingZeroes(n - 1,ref count);
         }
     }
 }
