@@ -4207,13 +4207,83 @@ namespace Playground
             return result;
         }
 
-        public int SingleNumber(int[] nums)
-        {
-            for (int i = 1; i < nums.Length; i++) {
+        //public int SingleNumber(int[] nums) // one
+        //{
+        //    for (int i = 1; i < nums.Length; i++) {
 
-                nums[0] = nums[0] ^ nums[i];
+        //        nums[0] = nums[0] ^ nums[i];
+        //    }
+        //    return nums[0];
+        //}
+
+        public int SingleNumber(int[] nums) //two
+        {
+            var one = 0;
+            var two = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                one = (one ^ nums[i]) & ~two;
+                two = (two ^ nums[i]) & ~one;
+
             }
-            return nums[0];
+            return one;
+        }
+
+        public int RangeBitwiseAnd(int left, int right)
+        {
+            while (left<right)
+            {
+                right = right & (right - 1);
+            }
+            return right;
+        }
+        public int[] PlusOne(int[] digits)
+        {
+            var carry = true;
+            var index = digits.Length-1;
+
+            while (carry && index>=0) {
+          
+                if (digits[index] == 9)
+                {
+                    digits[index] = 0;
+                    carry = true;
+                }
+                else
+                {
+                    digits[index]++;
+                    carry = false;
+                }
+                index--;
+            }
+            if (carry) { 
+            
+                var newSize = digits.Length+1;
+                Array.Resize(ref digits, newSize);
+                Array.Fill(digits, 0);
+                digits[0] = 1;
+            }
+            return digits;
+        }
+
+        public int TrailingZeroes(int n)
+        {
+            var count = 0;
+            FactorialTrailingZeroes(n,ref count);
+            return  count;
+        }
+        public int FactorialTrailingZeroes(int n,ref int count)
+        {
+            var val = n;
+            while (val > 0) {
+                if (val % 5 == 0)
+                {
+                    val /= 5;
+                    count++;
+                }
+            }
+
+            return n == 0 ? 1 : n == 1 ? 1 : n * FactorialTrailingZeroes(n - 1,ref count);
         }
     }
 }

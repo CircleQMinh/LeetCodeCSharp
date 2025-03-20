@@ -158,6 +158,11 @@ var solution = new Solution();
 //medianFinder.AddNum(3);    // arr[1, 2, 3]
 //medianFinder.FindMedian(); // return 2.0
 
-var r = solution.AddBinary("11", "1");
+//var r = solution.AddBinary("11", "1");
+
+//var s = new int[] { 9 };
+//var r = solution.PlusOne(s);
+
+var s = solution.TrailingZeroes(5);
 
 Console.WriteLine("Hello, World!");
