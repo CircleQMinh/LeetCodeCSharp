@@ -163,6 +163,6 @@ var solution = new Solution();
 //var s = new int[] { 9 };
 //var r = solution.PlusOne(s);
 
-var s = solution.MySqrt(340503759);
+var s = solution.MyPow(2,10);
 
 Console.WriteLine("Hello, World!");

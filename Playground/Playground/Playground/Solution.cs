@@ -4316,6 +4316,26 @@ namespace Playground
             return (int)left;
 
         }
+        public double MyPow(double x, int n)
+        {
+            if (x == 0)
+            {
+                return 1;
+            }
+            var negative = false;
+            if (n < 0)
+            {
+                n = -n;
+                negative = true;
+            }
+            for (int i = 0; i < n; i++) { 
+            
+                x = x * x;
+            }
+
+            return negative ? 1/x : x;
+        }
     }
 }
+
 
