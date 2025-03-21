@@ -4056,7 +4056,8 @@ namespace Playground
 
             //return nums[middle];
 
-            while (left < right) {
+            while (left < right)
+            {
                 middle = left + (right - left) / 2;
                 if (nums[middle] > nums[right])
                 {
@@ -4090,7 +4091,7 @@ namespace Playground
                     return middle;
                 }
 
-                if (nums[middle] < nums[middle+1])
+                if (nums[middle] < nums[middle + 1])
                 {
                     left = middle + 1;   // Move towards the higher value (possible peak)
                 }
@@ -4231,7 +4232,7 @@ namespace Playground
 
         public int RangeBitwiseAnd(int left, int right)
         {
-            while (left<right)
+            while (left < right)
             {
                 right = right & (right - 1);
             }
@@ -4240,10 +4241,11 @@ namespace Playground
         public int[] PlusOne(int[] digits)
         {
             var carry = true;
-            var index = digits.Length-1;
+            var index = digits.Length - 1;
 
-            while (carry && index>=0) {
-          
+            while (carry && index >= 0)
+            {
+
                 if (digits[index] == 9)
                 {
                     digits[index] = 0;
@@ -4256,9 +4258,10 @@ namespace Playground
                 }
                 index--;
             }
-            if (carry) { 
-            
-                var newSize = digits.Length+1;
+            if (carry)
+            {
+
+                var newSize = digits.Length + 1;
                 Array.Resize(ref digits, newSize);
                 Array.Fill(digits, 0);
                 digits[0] = 1;
@@ -4269,24 +4272,24 @@ namespace Playground
         public int TrailingZeroes(int n)
         {
             var count = 0;
-            FactorialTrailingZeroes(n,ref count);
-            return  count;
+            FactorialTrailingZeroes(n, ref count);
+            return count;
         }
-        public int FactorialTrailingZeroes(int n,ref int count)
+        public int FactorialTrailingZeroes(int n, ref int count)
         {
             var val = n;
-            while(val >= 5 && val % 5 == 0)
+            while (val >= 5 && val % 5 == 0)
             {
                 val /= 5;
                 count++;
             }
-            return n == 0 ? 1 : n == 1 ? 1 : n * FactorialTrailingZeroes(n - 1,ref count);
+            return n == 0 ? 1 : n == 1 ? 1 : n * FactorialTrailingZeroes(n - 1, ref count);
         }
 
         public int MySqrt(int x)
         {
             long left = 0;
-            long right = Math.Max(x/2,1);
+            long right = Math.Max(x / 2, 1);
             while (left < right)
             {
                 long middle = left + (right - left) / 2;
@@ -4305,7 +4308,7 @@ namespace Playground
                     right = middle - 1;
                 }
             }
-            while(left >= 1)
+            while (left >= 1)
             {
                 if (left * left < x)
                 {
@@ -4334,12 +4337,13 @@ namespace Playground
             }
 
             double result = 1;
-            while (exp > 0) {
+            while (exp > 0)
+            {
                 if ((exp & 1) == 1) // If exponent is odd, multiply by current x
-                {  
+                {
                     result *= x;
                 }
-                x *= x; 
+                x *= x;
                 exp >>= 1; // Divide exponent by 2
             }
 
@@ -4351,8 +4355,10 @@ namespace Playground
         {
             var dic = new Dictionary<string, int>();
             var max = 0;
-            for (int i = 0; i < points.Length; i++) {
-                for (int j = i + 1; j < points.Length; j++) { 
+            for (int i = 0; i < points.Length; i++)
+            {
+                for (int j = i + 1; j < points.Length; j++)
+                {
                     var pointA = points[i];
                     var pointB = points[j];
 
@@ -4368,6 +4374,10 @@ namespace Playground
                     if (slopeY == 0)
                     {
                         slope = $"IFN";
+                    }
+                    else if (slopeX == 0)
+                    {
+                        slope = "0";
                     }
                     else
                     {
@@ -4385,27 +4395,76 @@ namespace Playground
                     }
                     dic[slope]++;
                 }
-                var currentMax = dic.Count > 0 ? dic.Max(q=>q.Value) : 0;
+                var currentMax = dic.Count > 0 ? dic.Max(q => q.Value) : 0;
                 max = Math.Max(max, currentMax);
                 dic.Clear();
             }
-       
+
             return max + 1;
         }
-        public int GCD(int x,int y)
+        public int GCD(int x, int y)
         {
-            var n = Math.Min(Math.Abs(x),Math.Abs(y));
+            var n = Math.Min(Math.Abs(x), Math.Abs(y));
             while (n > 0)
             {
-                if (x%n == 0 && y%n ==0)
+                if (x % n == 0 && y % n == 0)
                 {
                     return n;
                 }
                 n--;
             }
-            return 0;    
+            return 0;
+        }
+        //public int ClimbStairs(int n)
+        //{
+        //    if (n == 1)
+        //    {
+        //        return 1;
+        //    }
+        //    if (n == 2)
+        //    {
+        //        return 2;
+        //    }
+        //    return ClimbStairs(n - 1) + ClimbStairs(n - 2);
+        //}
+        public int ClimbStairs(int n)
+        {
+            if (n == 1)
+            {
+                return 1;
+            }
+            if (n == 2)
+            {
+                return 2;
+            }
+            var prev1 = 1;
+            var prev2 = 2;
+            for (var i = 3; i <= n; i++)
+            {
+                var val = prev1 + prev2;
+                prev1 = prev2;
+                prev2 = val;
+            }
+            return prev2;
+        }
+
+        public int Rob(int[] nums)
+        {
+            var n = nums.Length;
+            var amount = new int[n + 1];
+            amount[0] = 0;
+            amount[1] = nums[0];
+            for (var i = 1; i < n; i++)
+            {
+                var val = nums[i];
+                var amountIndex = i + 1;
+                amount[amountIndex] = Math.Max(amount[amountIndex - 2] + val, amount[amountIndex - 1]);
+            }
+            return amount[n];
         }
     }
 }
+
+
 
 

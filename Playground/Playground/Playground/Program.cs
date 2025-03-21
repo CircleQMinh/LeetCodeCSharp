@@ -165,7 +165,10 @@ var solution = new Solution();
 
 //var s = solution.MyPow(2,10);
 
-var s = new int[][] { [4, 5], [4, -1], [4, 0] };
-var m = solution.MaxPoints(s);
+//var s = new int[][] { [4, 5], [4, -1], [4, 0] };
+//var m = solution.MaxPoints(s);
+
+var s = new int[] { 2, 7, 9, 3, 1 };
+var r = solution.Rob(s);
 
 Console.WriteLine("Hello, World!");
