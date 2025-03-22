@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿using System.Text.RegularExpressions;
 
 namespace Playground
 {
@@ -4463,26 +4453,110 @@ namespace Playground
             return amount[n];
         }
 
+        //public bool WordBreak(string s, IList<string> wordDict)
+        //{
+        //    if (s.All(q=>q.Equals('_')))
+        //    {
+        //        return true;
+        //    }
+        //    foreach (var word in wordDict) {
+
+        //        if (s.Contains(word))
+        //        {
+        //            var temp = s;
+        //            s = ReplaceFirst(s,word, "_");
+        //            if (WordBreak(s,wordDict))
+        //            {
+        //                return true;
+        //            }
+        //            s = temp;
+        //        }
+        //    }
+        //    return false;
+        //}
+
+        //public static string ReplaceFirst(string s, string oldString, string newString)
+        //{
+        //    var regex = new Regex(Regex.Escape(oldString));
+        //    var result = regex.Replace(s, newString, 1);
+        //    return result;
+        //}
+
         public bool WordBreak(string s, IList<string> wordDict)
         {
-            if (s.All(q=>q.Equals('_')))
+            var wordSet = wordDict.ToHashSet();
+            var memo = new Dictionary<string, bool>();
+            return CheckWordBreak(s, wordSet, memo);
+        }
+
+        public bool CheckWordBreak(string s,HashSet<string> set, Dictionary<string,bool> memo)
+        {
+            if (s.Length == 0)
             {
                 return true;
             }
-            foreach (var word in wordDict) {
-
-                if (s.Contains(word))
+            if (memo.ContainsKey(s))
+            {
+                return memo[s];
+            }
+            for (var i = 1; i <= s.Length; i++) {
+                var left = s.Substring(0, i);
+                var right = s.Substring(i);
+                if (set.Contains(left))
                 {
-                    var temp = s;
-                    s = s.Replace(word, "_");
-                    if (WordBreak(s,wordDict))
-                    {
+                    memo[left] = true;
+                    if (CheckWordBreak(right,set,memo))
+                    { 
                         return true;
                     }
-                    s = temp;
                 }
             }
+            memo[s] = false;
             return false;
+        }
+        public int CoinChange(int[] coins, int amount)
+        {
+            var set = coins.ToHashSet();
+            var memo = new Dictionary<int, int>();
+            foreach (var coin in coins)
+            {
+                memo.Add(coin, 1);
+            }
+            return CheckCoinChange(amount,set,memo);
+        }
+
+        public int CheckCoinChange(int amount, HashSet<int> coins, Dictionary<int,int> memo)
+        {
+            if (amount == 0)
+            {
+                return 0;
+            }
+            if (memo.ContainsKey(amount))
+            {
+                return memo[amount];
+            }
+            foreach (var coin in coins) {
+
+                if (coin <= amount)
+                {
+                    var newAmount = amount - coin;
+                    var newAmountCointCount = CheckCoinChange(newAmount,coins,memo);
+                    if (newAmountCointCount != -1)
+                    {
+                        if (!memo.ContainsKey(amount))
+                        {
+                            memo.Add(amount, int.MaxValue);
+                        }
+                        memo[amount] = Math.Min(newAmountCointCount + 1, memo[amount]);
+                    }
+                }
+
+            }
+            if (!memo.ContainsKey(amount))
+            {
+                memo.Add(amount, -1);
+            }
+            return memo[amount];
         }
     }
 }

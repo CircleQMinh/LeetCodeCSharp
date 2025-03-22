@@ -171,8 +171,12 @@ var solution = new Solution();
 //var s = new int[] { 2, 7, 9, 3, 1 };
 //var r = solution.Rob(s);
 
-var s = "ddadddbdddadd";
-var w = new string[] { "dd", "ad", "da", "b" };
-var r = solution.WordBreak(s, w);
+//var s = "ddadddbdddadd";
+//var w = new string[] { "dd", "ad", "da", "b" };
+//var r = solution.WordBreak(s, w);
+
+var s = new int[] { 1, 2, 5 };
+var w = 100;
+var r = solution.CoinChange(s, w);
 
 Console.WriteLine("Hello, World!");
