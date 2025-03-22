@@ -213,8 +213,8 @@ var s = new int[][]
    //[7,1,9,6,1,2,7,0,9,6,6,4,4,5,1,0],
    //[3,4,9,2,8,3,1,2,6,9,7,0,2,4,2,0],
    //[5,1,8,8,4,6,8,5,2,4,1,6,2,2,9,7]
-   [1,2],[5,6],[1,1]
+[0,0,0],[0,1,0],[0,0,0]
 };
-var r = solution.MinPathSum(s);
+var r = solution.UniquePathsWithObstacles(s);
 
 Console.WriteLine("Hello, World!");
