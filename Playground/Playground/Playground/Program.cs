@@ -179,8 +179,18 @@ var solution = new Solution();
 //var w = 100;
 //var r = solution.CoinChange(s, w);
 
-var s = new int[] { 0, 1, 0, 3, 2, 3 };
-var r = solution.LengthOfLIS(s);
+//var s = new int[] { 0, 1, 0, 3, 2, 3 };
+//var r = solution.LengthOfLIS(s);
 
+
+var s = new List<IList<int>>()
+{
+    new List<int> { 0 },
+    new List<int>  { 0, 4 },
+    //new List<int>  { 6, 5, 7 },
+    //new List<int>  { 4, 1, 8, 3 }
+};
+
+var r = solution.MinimumTotal(s);
 
 Console.WriteLine("Hello, World!");
