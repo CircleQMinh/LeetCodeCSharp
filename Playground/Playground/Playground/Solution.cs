@@ -4462,6 +4462,28 @@ namespace Playground
             }
             return amount[n];
         }
+
+        public bool WordBreak(string s, IList<string> wordDict)
+        {
+            if (s.All(q=>q.Equals('_')))
+            {
+                return true;
+            }
+            foreach (var word in wordDict) {
+
+                if (s.Contains(word))
+                {
+                    var temp = s;
+                    s = s.Replace(word, "_");
+                    if (WordBreak(s,wordDict))
+                    {
+                        return true;
+                    }
+                    s = temp;
+                }
+            }
+            return false;
+        }
     }
 }
 

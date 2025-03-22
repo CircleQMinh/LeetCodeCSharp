@@ -168,7 +168,11 @@ var solution = new Solution();
 //var s = new int[][] { [4, 5], [4, -1], [4, 0] };
 //var m = solution.MaxPoints(s);
 
-var s = new int[] { 2, 7, 9, 3, 1 };
-var r = solution.Rob(s);
+//var s = new int[] { 2, 7, 9, 3, 1 };
+//var r = solution.Rob(s);
+
+var s = "ddadddbdddadd";
+var w = new string[] { "dd", "ad", "da", "b" };
+var r = solution.WordBreak(s, w);
 
 Console.WriteLine("Hello, World!");
