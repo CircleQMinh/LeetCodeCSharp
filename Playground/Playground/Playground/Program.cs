@@ -175,8 +175,12 @@ var solution = new Solution();
 //var w = new string[] { "dd", "ad", "da", "b" };
 //var r = solution.WordBreak(s, w);
 
-var s = new int[] { 1, 2, 5 };
-var w = 100;
-var r = solution.CoinChange(s, w);
+//var s = new int[] { 281, 20, 251, 251 };
+//var w = 100;
+//var r = solution.CoinChange(s, w);
+
+var s = new int[] { 0, 1, 0, 3, 2, 3 };
+var r = solution.LengthOfLIS(s);
+
 
 Console.WriteLine("Hello, World!");
