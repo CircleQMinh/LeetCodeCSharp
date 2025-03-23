@@ -227,7 +227,10 @@ var solution = new Solution();
 //var w2 = "ros";
 //var r = solution.MinDistance(w1, w2);
 
-var s = new int[] { 3, 2, 6, 5, 0, 3 };
-var r = solution.MaxProfitIV(2, s);
+//var s = new int[] { 3, 2, 6, 5, 0, 3 };
+//var r = solution.MaxProfitIV(2, s);
+
+var s = solution.CreateLinkedList(new List<int>() { 1, 2, 3, 4, 5 });
+var r = solution.ReverseKGroup(s,2);
 
 Console.WriteLine("Hello, World!");
