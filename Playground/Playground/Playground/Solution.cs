@@ -4489,7 +4489,7 @@ namespace Playground
             return CheckWordBreak(s, wordSet, memo);
         }
 
-        public bool CheckWordBreak(string s,HashSet<string> set, Dictionary<string,bool> memo)
+        public bool CheckWordBreak(string s, HashSet<string> set, Dictionary<string, bool> memo)
         {
             if (s.Length == 0)
             {
@@ -4499,14 +4499,15 @@ namespace Playground
             {
                 return memo[s];
             }
-            for (var i = 1; i <= s.Length; i++) {
+            for (var i = 1; i <= s.Length; i++)
+            {
                 var left = s.Substring(0, i);
                 var right = s.Substring(i);
                 if (set.Contains(left))
                 {
                     memo[left] = true;
-                    if (CheckWordBreak(right,set,memo))
-                    { 
+                    if (CheckWordBreak(right, set, memo))
+                    {
                         return true;
                     }
                 }
@@ -4522,10 +4523,10 @@ namespace Playground
             {
                 memo.Add(coin, 1);
             }
-            return CheckCoinChange(amount,set,memo);
+            return CheckCoinChange(amount, set, memo);
         }
 
-        public int CheckCoinChange(int amount, HashSet<int> coins, Dictionary<int,int> memo)
+        public int CheckCoinChange(int amount, HashSet<int> coins, Dictionary<int, int> memo)
         {
             if (amount == 0)
             {
@@ -4535,12 +4536,13 @@ namespace Playground
             {
                 return memo[amount];
             }
-            foreach (var coin in coins) {
+            foreach (var coin in coins)
+            {
 
                 if (coin <= amount)
                 {
                     var newAmount = amount - coin;
-                    var newAmountCointCount = CheckCoinChange(newAmount,coins,memo);
+                    var newAmountCointCount = CheckCoinChange(newAmount, coins, memo);
                     if (newAmountCointCount != -1)
                     {
                         if (!memo.ContainsKey(amount))
@@ -4565,15 +4567,16 @@ namespace Playground
             var max = 1;
             var dp = new int[n];
             Array.Fill(dp, 1);
-            for (int i = 1; i < n; i++) {
-               for (int j = 0; j < i; j++)
-               {
+            for (int i = 1; i < n; i++)
+            {
+                for (int j = 0; j < i; j++)
+                {
                     if (nums[i] > nums[j])
                     {
                         dp[i] = Math.Max(dp[j] + 1, dp[i]);
-                        max = Math.Max(max, dp[i]); 
+                        max = Math.Max(max, dp[i]);
                     }
-               }
+                }
             }
             return max;
         }
@@ -4583,17 +4586,19 @@ namespace Playground
             var m = triangle.Count;
             var dp = new List<List<int>>();
             dp.Add(triangle[0].ToList());
-            for (int i = 1; i < m; i++) { 
-                var rowAbove = dp[i-1];
+            for (int i = 1; i < m; i++)
+            {
+                var rowAbove = dp[i - 1];
                 var currentRow = triangle[i];
                 var n = currentRow.Count;
                 var currentDp = new List<int>();
 
-                for (int j = 0; j < n; j++) { 
+                for (int j = 0; j < n; j++)
+                {
                     var val = currentRow[j];
                     var min = int.MaxValue;
                     var startIndex = j - 1 < 0 ? j : j - 1;
-                    var endIndex = Math.Min(rowAbove.Count, j+1);
+                    var endIndex = Math.Min(rowAbove.Count, j + 1);
                     for (int k = startIndex; k < endIndex; k++)
                     {
                         var total = val + rowAbove[k];
@@ -4656,7 +4661,7 @@ namespace Playground
                 }
             }
 
-            return dp[m-1][n-1];
+            return dp[m - 1][n - 1];
         }
 
         public int UniquePathsWithObstacles(int[][] grid)
@@ -4703,7 +4708,7 @@ namespace Playground
                     {
                         dp[i][j] = 1;
                     }
-                    
+
                 }
             }
 
@@ -4748,6 +4753,45 @@ namespace Playground
             }
 
             return dp[m][n];
+        }
+
+        public int MinDistance(string word1, string word2)
+        {
+            var m = word1.Length;
+            var n = word2.Length;
+
+            var dp = new int[m + 1, n + 1];
+            dp[0, 0] = 0;
+            //step to convert i char from w1 to empty string
+            for (int i = 1; i <= m; i++)
+            {
+                dp[i, 0] = i;
+            }
+            // step to convert empty string to j char from w2
+            for (int j = 1; j <= n; j++)
+            {
+                dp[0, j] = j;
+            }
+
+            for (int i = 1; i <= m; i++)
+            {
+                for (int j = 1; j <= n; j++)
+                {
+                    if (word1[i - 1] == word2[j - 1])
+                    {
+                        dp[i, j] = dp[i - 1, j - 1];
+                    }
+                    else
+                    {
+                        var insert = dp[i, j - 1] + 1;
+                        var replace = dp[i - 1, j - 1] + 1;
+                        var delete = dp[i - 1, j] + 1;
+
+                        dp[i, j] = Math.Min(insert, Math.Min(replace, delete));
+                    }
+                }
+            }
+             return dp[m, n];
         }
     }
 }

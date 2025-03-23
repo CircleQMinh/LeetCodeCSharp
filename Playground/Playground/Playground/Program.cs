@@ -217,9 +217,14 @@ var solution = new Solution();
 //};
 //var r = solution.UniquePathsWithObstacles(s);
 
-var s1 = "";
-var s2 = "";
-var s3 = "";
-var r = solution.IsInterleave(s1, s2, s3);
+//var s1 = "";
+//var s2 = "";
+//var s3 = "";
+//var r = solution.IsInterleave(s1, s2, s3);
+
+
+var w1 = "horse";
+var w2 = "ros";
+var r = solution.MinDistance(w1, w2);
 
 Console.WriteLine("Hello, World!");
