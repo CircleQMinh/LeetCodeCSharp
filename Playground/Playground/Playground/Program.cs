@@ -223,8 +223,11 @@ var solution = new Solution();
 //var r = solution.IsInterleave(s1, s2, s3);
 
 
-var w1 = "horse";
-var w2 = "ros";
-var r = solution.MinDistance(w1, w2);
+//var w1 = "horse";
+//var w2 = "ros";
+//var r = solution.MinDistance(w1, w2);
+
+var s = new int[] { 3, 2, 6, 5, 0, 3 };
+var r = solution.MaxProfitIV(2, s);
 
 Console.WriteLine("Hello, World!");

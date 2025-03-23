@@ -4793,6 +4793,62 @@ namespace Playground
             }
              return dp[m, n];
         }
+
+        public int MaxProfitIII(int[] prices)
+        {
+            var b1 = int.MinValue;
+            var s1 = int.MinValue;
+            var b2 = int.MinValue;
+            var s2 = int.MinValue;
+            for (int i = 0; i < prices.Length; i++) { 
+                var price = prices[i];
+                b1 = Math.Max(b1, -price);
+                s1 = Math.Max(s1, b1 + price);
+                b2 = Math.Max(b2, s1 - price);
+                s2 = Math.Max(s2, b2 + price);   
+            }
+
+            return s2;
+        }
+
+        public int MaxProfitIV(int k, int[] prices)
+        {
+            if (k >= prices.Length / 2)
+            {
+                var profit = 0;
+                for (int i = 1; i < prices.Length; i++)
+                {
+                    if (prices[i] > prices[i - 1])
+                    {
+                        profit -= prices[i - 1];
+                        profit += prices[i];
+                    }
+                }
+                return profit;
+            }
+            var n = prices.Length;
+            var dp = new int[k + 1, n];
+            dp[0, 0] = 0;
+            for (int i = 1; i <= k; i++)
+            {
+                dp[i, 0] = 0;
+            }
+            for (int j = 1; j < n; j++)
+            {
+                dp[0, j] = 0;
+            }
+
+            for (int i = 1; i <= k; i++)
+            {
+                int maxDiff = -prices[0];
+                for (int j = 1; j < n; j++)
+                {
+                    dp[i,j] = Math.Max(dp[i,j - 1], prices[j] + maxDiff);
+                    maxDiff = Math.Max(maxDiff, dp[i - 1,j] - prices[j]);
+                }
+            }
+            return dp[k,n-1];
+        }
     }
 }
 
