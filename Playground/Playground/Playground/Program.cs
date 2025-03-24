@@ -233,7 +233,10 @@ var solution = new Solution();
 //var s = solution.CreateLinkedList(new List<int>() { 1, 2, 3, 4, 5 });
 //var r = solution.ReverseKGroup(s,2);
 
-var s = new char[][] { ['0', '1'], ['1', '0'] };
-var r = solution.MaximalSquare(s);
+//var s = new char[][] { ['0', '1'], ['1', '0'] };
+//var r = solution.MaximalSquare(s);
+
+var s = "leet**cod*e";
+var r = solution.RemoveStars(s);
 
 Console.WriteLine("Hello, World!");

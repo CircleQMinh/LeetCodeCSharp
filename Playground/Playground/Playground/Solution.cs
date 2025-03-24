@@ -4921,6 +4921,7 @@ namespace Playground
                 return matrix[0][0] == '1' ? 1 : 0;
             }
             int[][] dp = new int[m ][];
+            var max = int.MinValue;
             for (int i = 0; i < m; i++)
             {
                 dp[i] = new int[n];
@@ -4929,13 +4930,21 @@ namespace Playground
             for (int i = 0; i < m; i++)
             {
                 dp[i][0] = matrix[i][0] == '1' ? 1 : 0;
+                if (dp[i][0] > max)
+                {
+                    max = dp[i][0];
+                }
             }
             for (int j = 0; j < n; j++)
             {
                 dp[0][j] = matrix[0][j] == '1' ? 1 : 0;
+                if (dp[0][j] > max)
+                {
+                    max = dp[0][j];
+                }
             }
             var directions = new (int X, int Y)[] { (-1, 0), (0, -1), (-1,-1) };
-            var max = int.MinValue;
+     
             for (int i = 1;i< m; i++)
             {
                 for(int j = 1; j < n; j++)
@@ -4985,6 +4994,69 @@ namespace Playground
 
             }
             return max*max;
+        }
+
+        public string MergeAlternately(string word1, string word2)
+        {
+            var result = "";
+            var i = 0;
+            var j = 0;
+            while (i < word1.Length && j < word2.Length) {
+                if (j<i)
+                {
+                    result += word2[j];
+                    j++;
+                }
+                else
+                {
+                    result += word1[i];
+                    i++;
+                }
+            
+            }
+            while (i < word1.Length )
+            {
+                result += word1[i];
+                i++;
+            }
+            while (j < word2.Length)
+            {
+                result += word2[j];
+                j++;
+            }
+            return result;
+        }
+
+        public string RemoveStars(string s)
+        {
+            var n = s.Length;
+            var result = "";
+            var count = 0;
+            var stack = new Stack<char>();
+            for (int i = n-1; i >= 0; i--)
+            {
+                var c = s[i];
+                if (c.Equals('*'))
+                {
+                    count++;
+                }
+                else
+                {
+                    if (count == 0)
+                    {
+                        stack.Push(c);
+                    }
+                    else
+                    {
+                        count--;
+                    }
+                }
+            }
+            while(stack.Count > 0)
+            {
+                result += stack.Pop();
+            }
+            return result;
         }
     }
 }
