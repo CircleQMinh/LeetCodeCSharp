@@ -4911,6 +4911,81 @@ namespace Playground
 
             return result.next;
         }
+
+        public int MaximalSquare(char[][] matrix)
+        {
+            var m = matrix.Length;
+            var n = matrix[0].Length;
+            if (m == n && m == 1)
+            {
+                return matrix[0][0] == '1' ? 1 : 0;
+            }
+            int[][] dp = new int[m ][];
+            for (int i = 0; i < m; i++)
+            {
+                dp[i] = new int[n];
+            }
+
+            for (int i = 0; i < m; i++)
+            {
+                dp[i][0] = matrix[i][0] == '1' ? 1 : 0;
+            }
+            for (int j = 0; j < n; j++)
+            {
+                dp[0][j] = matrix[0][j] == '1' ? 1 : 0;
+            }
+            var directions = new (int X, int Y)[] { (-1, 0), (0, -1), (-1,-1) };
+            var max = int.MinValue;
+            for (int i = 1;i< m; i++)
+            {
+                for(int j = 1; j < n; j++)
+                {
+                    var top = int.MaxValue;
+                    var left = int.MaxValue;
+                    var topLeft = int.MaxValue;
+
+                    var newX = i + directions[0].X;
+                    var newY = j + directions[0].Y;
+
+                    if (newX >= 0 && newX < m && newY >= 0 && newY < n)
+                    {
+                        top = dp[newX][newY];
+                    }
+
+                    newX = i + directions[1].X;
+                    newY = j + directions[1].Y;
+
+                    if (newX >= 0 && newX < m && newY >= 0 && newY < n)
+                    {
+                        left = dp[newX][newY];
+                    }
+
+                    newX = i + directions[2].X;
+                    newY = j + directions[2].Y;
+
+                    if (newX >= 0 && newX < m && newY >= 0 && newY < n)
+                    {
+                        topLeft = dp[newX][newY];
+                    }
+
+                    if (matrix[i][j] == '1')
+                    {
+                        dp[i][j] = Math.Min(left, Math.Min(top, topLeft)) + 1;
+                        if (dp[i][j] > max)
+                        {
+                            max = dp[i][j];
+                        }
+                    }
+                    else
+                    {
+                        dp[i][j] = 0;
+                    }
+
+                }
+
+            }
+            return max*max;
+        }
     }
 }
 

@@ -230,7 +230,10 @@ var solution = new Solution();
 //var s = new int[] { 3, 2, 6, 5, 0, 3 };
 //var r = solution.MaxProfitIV(2, s);
 
-var s = solution.CreateLinkedList(new List<int>() { 1, 2, 3, 4, 5 });
-var r = solution.ReverseKGroup(s,2);
+//var s = solution.CreateLinkedList(new List<int>() { 1, 2, 3, 4, 5 });
+//var r = solution.ReverseKGroup(s,2);
+
+var s = new char[][] { ['0', '1'], ['1', '0'] };
+var r = solution.MaximalSquare(s);
 
 Console.WriteLine("Hello, World!");
