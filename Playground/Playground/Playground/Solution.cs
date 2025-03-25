@@ -5032,7 +5032,6 @@ namespace Playground
             var n = s.Length;
             var result = "";
             var count = 0;
-            var stack = new Stack<char>();
             for (int i = n-1; i >= 0; i--)
             {
                 var c = s[i];
@@ -5044,7 +5043,7 @@ namespace Playground
                 {
                     if (count == 0)
                     {
-                        stack.Push(c);
+                        result += c;
                     }
                     else
                     {
@@ -5052,11 +5051,10 @@ namespace Playground
                     }
                 }
             }
-            while(stack.Count > 0)
-            {
-                result += stack.Pop();
-            }
-            return result;
+
+            char[] r = result.ToCharArray();
+            Array.Reverse(r);
+            return new string(r);
         }
     }
 }
