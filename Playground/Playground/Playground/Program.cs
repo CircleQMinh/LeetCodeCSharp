@@ -236,7 +236,10 @@ var solution = new Solution();
 //var s = new char[][] { ['0', '1'], ['1', '0'] };
 //var r = solution.MaximalSquare(s);
 
-var s = "leet**cod*e";
-var r = solution.RemoveStars(s);
+//var s = "leet**cod*e";
+//var r = solution.RemoveStars(s);
+
+var s = solution.CreateLinkedList(new List<int> { 1, 2, 3,4 });
+var r = solution.DeleteMiddle(s);
 
 Console.WriteLine("Hello, World!");

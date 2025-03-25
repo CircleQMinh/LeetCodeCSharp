@@ -5056,6 +5056,51 @@ namespace Playground
             Array.Reverse(r);
             return new string(r);
         }
+
+        public double FindMaxAverage(int[] nums, int k)
+        {
+            var n = nums.Length;
+            var j = k;
+            double result = 0;
+            double max = 0;
+            for (int i = 0; i < k; i++)
+            {
+                result += nums[i];
+            }
+            max =  result/k;
+            while (j < n) {
+                result -= nums[j - k];
+                result += nums[j];
+                max = Math.Max(max, result/k);
+                j++;
+            }
+            return max;
+        }
+
+        public ListNode DeleteMiddle(ListNode head)
+        {
+            if (head.next == null)
+            {
+                return null;
+            }
+
+            var slow = head;
+            var fast = head;
+            var prev = head;
+
+            while (fast.next != null && fast.next.next !=null) {
+                prev = slow;
+                slow = slow.next;
+                fast = fast.next.next;
+            }
+            if (fast.next != null) //even
+            {
+                prev = slow;
+                slow = slow.next;
+            }
+            prev.next = slow.next;
+            return head;
+        }
     }
 }
 
