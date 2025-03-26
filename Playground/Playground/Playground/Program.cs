@@ -239,7 +239,9 @@ var solution = new Solution();
 //var s = "leet**cod*e";
 //var r = solution.RemoveStars(s);
 
-var s = solution.CreateLinkedList(new List<int> { 1, 2, 3,4 });
-var r = solution.DeleteMiddle(s);
+//var s = solution.CreateLinkedList(new List<int> { 1, 2, 3,4 });
+//var r = solution.DeleteMiddle(s);
+
+var r = solution.NumTilings(100);
 
 Console.WriteLine("Hello, World!");
