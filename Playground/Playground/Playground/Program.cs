@@ -242,6 +242,10 @@ var solution = new Solution();
 //var s = solution.CreateLinkedList(new List<int> { 1, 2, 3,4 });
 //var r = solution.DeleteMiddle(s);
 
-var r = solution.NumTilings(100);
+//var r = solution.NumTilings(100);
+
+var s = "ABABAB";
+var w = "ABAB";
+var r =  solution.GcdOfStrings(s, w);
 
 Console.WriteLine("Hello, World!");

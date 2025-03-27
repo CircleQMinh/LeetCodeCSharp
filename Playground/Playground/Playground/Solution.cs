@@ -5114,6 +5114,79 @@ namespace Playground
             }
             return (int)(dp[n] % (1000000007));
         }
+
+        public int GoodNodes(TreeNode root)
+        {
+            if (root == null) { 
+                return 0;
+            }
+            return 1 + CountGoodNodes(root.right,root.val) + CountGoodNodes(root.left,root.val);
+        }
+
+        public int CountGoodNodes(TreeNode root,int currentMax)
+        {
+            if (root == null) {
+                return 0;
+            }
+            var temp = currentMax;
+            var result = 0;
+            if (root.val >= currentMax)
+            {
+                currentMax = root.val;
+                
+                result = 1 + CountGoodNodes(root.left, currentMax) + CountGoodNodes(root.right, currentMax); 
+            }
+            else
+            {
+                result =  CountGoodNodes(root.left, currentMax) + CountGoodNodes(root.right, currentMax);
+            }
+            currentMax = temp;
+            return result;
+        }
+        public bool CanVisitAllRooms(IList<IList<int>> rooms)
+        {
+            var n = rooms.Count;
+            var queue = new Queue<int>();
+            var visited = new HashSet<int>();
+            visited.Add(0);
+            var keys = rooms[0];
+            foreach (var i in keys) { 
+                queue.Enqueue(i);          
+            }
+            while (queue.Count > 0)
+            {
+                var key = queue.Dequeue();
+                if (!visited.Contains(key))
+                {
+                    visited.Add(key);
+                    foreach (var i in rooms[key]) { 
+                        queue.Enqueue(i);
+                    }
+                }
+            }
+
+            return visited.Count == n;
+        }
+
+        public string GcdOfStrings(string str1, string str2)
+        {
+            var result = "";
+            var shorter = str1.Length < str2.Length ? str1 : str2;
+
+            while(shorter.Length > 0)
+            {
+                var t1 = str1.Replace(shorter, "");
+                var t2 = str2.Replace(shorter, "");
+
+                if (string.IsNullOrEmpty(t1) && string.IsNullOrEmpty(t2))
+                {
+                    return shorter;
+                }
+                shorter = shorter.Remove(shorter.Length - 1);
+            }
+
+            return result;
+        }
     }
 }
 
