@@ -5187,8 +5187,56 @@ namespace Playground
 
             return result;
         }
+        public IList<IList<int>> FindDifference(int[] nums1, int[] nums2)
+        {
+            var ans1 = new HashSet<int>();
+            var ans2 = new HashSet<int>();
+            var set = new HashSet<int>();
+            foreach (var i in nums1) {
+                if (set.Add(i))
+                {
+                    ans1.Add(i);
+                }
+            }
+            foreach (var i in nums2) {
+                if (set.Add(i))
+                {
+                    ans2.Add(i);
+                }
+                else
+                {
+                    ans1.Remove(i);
+                }
+                
+            }
+            return new List<IList<int>>() { ans1.ToList(),ans2.ToList()};
+        }
+
+        public int PairSum(ListNode head)
+        {
+            var stack = new Stack<int>();
+            var fast = head;
+            var slow = head;
+            var max = int.MinValue;
+            while (fast.next != null && fast.next.next != null) { 
+                stack.Push(slow.val);    
+                slow = slow.next;
+                fast = fast.next.next;
+            }
+            stack.Push(slow.val);
+            slow = slow.next;
+            while(slow != null)
+            {
+                var v = stack.Pop();
+                var value = slow.val + v;
+                max = Math.Max(max, value);
+                slow = slow.next;
+            }
+            return max;
+        }
     }
 }
+
 
 
 

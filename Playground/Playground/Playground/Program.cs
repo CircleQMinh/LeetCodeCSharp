@@ -244,8 +244,11 @@ var solution = new Solution();
 
 //var r = solution.NumTilings(100);
 
-var s = "ABABAB";
-var w = "ABAB";
-var r =  solution.GcdOfStrings(s, w);
+//var s = "ABABAB";
+//var w = "ABAB";
+//var r =  solution.GcdOfStrings(s, w);
+
+var s = solution.CreateLinkedList(new List<int> { 5,4,2,1 });
+var r = solution.PairSum(s);
 
 Console.WriteLine("Hello, World!");
