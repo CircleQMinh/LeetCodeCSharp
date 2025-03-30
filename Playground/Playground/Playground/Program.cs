@@ -248,7 +248,26 @@ var solution = new Solution();
 //var w = "ABAB";
 //var r =  solution.GcdOfStrings(s, w);
 
-var s = solution.CreateLinkedList(new List<int> { 5,4,2,1 });
-var r = solution.PairSum(s);
+//var s = solution.CreateLinkedList(new List<int> { 5,4,2,1 });
+//var r = solution.PairSum(s);
+
+//var s = new char[][]
+//{
+//    ['+','+','.','+'],['.','.','.','+'],['+','+','+','.']
+//};
+//var r = solution.NearestExit(s, new int[] {1,2});
+
+//var s = new char[][]
+//{
+//    ['.','+']
+//};
+//var r = solution.NearestExit(s, new int[] { 0, 0 });
+
+
+var s = new char[][]
+{
+    ['.','.','.','.','.','+','.','.','.'],['.','+','.','.','.','.','.','.','.'],['.','.','+','.','+','.','+','.','+'],['.','.','.','.','+','.','.','.','.'],['.','.','.','.','+','+','.','.','.'],['+','.','.','.','.','.','.','.','.'],['.','.','.','+','.','.','.','.','.'],['.','.','.','+','.','.','.','.','+'],['+','.','.','+','.','+','+','.','.']
+};
+ var r = solution.NearestExit(s, new int[] { 8, 4 });
 
 Console.WriteLine("Hello, World!");

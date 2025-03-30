@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.ComponentModel;
+using System.Text.RegularExpressions;
 
 namespace Playground
 {
@@ -5234,6 +5235,109 @@ namespace Playground
             }
             return max;
         }
+
+        public int NearestExit(char[][] maze, int[] entrance)
+        {
+            var m = maze.Length;
+            var n = maze[0].Length;
+            var min = int.MaxValue;
+            var startX = entrance[0];
+            var startY = entrance[1];
+            var exits = new HashSet<(int X, int Y)>();
+            var dic = new Dictionary<(int X, int Y),int>();
+            exits.Add((startX, startY));
+            for (int i = 0; i < m; i++)
+            {
+                if (maze[i][0] == '.')
+                {
+                    exits.Add((i, 0));
+                }
+                if (maze[i][n - 1] == '.')
+                {
+                    exits.Add((i, n - 1));
+                }
+            }
+            for (int j = 1; j < n - 1; j++)
+            {
+
+                if (maze[0][j] == '.')
+                {
+                    exits.Add((0, j));
+                }
+                if (maze[m - 1][j] == '.' )
+                {
+                    exits.Add((m - 1, j));
+                }
+            }
+            exits.Remove((startX,startY));
+            if (exits.Count == 0)
+            {
+                return -1;
+            }
+            var directions = new (int X, int Y)[] { (-1, 0), (1, 0), (0, -1), (0, 1) };
+            var queue = new Queue<(int X, int Y)>();
+            queue.Enqueue((startX, startY));
+            var step = 0;
+            while (queue.Count > 0) {
+                var count = queue.Count;
+                for (int i = 0; i < count; i++) {
+                    var current = queue.Dequeue();
+                    maze[current.X][current.Y] = '+';
+                    if (!dic.ContainsKey(current))
+                    {
+                        dic.Add(current, int.MaxValue);
+                    }
+                    dic[current] = Math.Min(dic[current],step);
+                    foreach (var (dx, dy) in directions)
+                    {
+                        int newX = current.X + dx, newY = current.Y + dy;
+
+                        if (newX >= 0 && newX < m && newY >= 0 && newY < n && maze[newX][newY] == '.' )
+                        {
+                            queue.Enqueue((newX, newY));
+                        }
+                    }
+                }
+                step++;
+            }
+
+            foreach (var exit in exits)
+            {
+                if (dic.ContainsKey(exit))
+                {
+                    min = Math.Min(dic[exit], min);
+                }
+            }
+
+            return min == int.MaxValue ? -1 : min;
+        }
+
+        public void DFSNearestExit(char[][] maze, (int X,int Y) current, (int X, int Y) exit, int currentStep,HashSet<(int X, int Y)> visited, Dictionary<(int X,int Y),int> result)
+        {
+            var m = maze.Length;
+            var n = maze[0].Length;
+
+            if (current.X == exit.X && current.Y == exit.Y)
+            {
+                result[exit] = Math.Min(currentStep, result[exit]);
+            }
+            var directions = new (int X, int Y)[] { (-1, 0), (1, 0), (0, -1), (0, 1) };
+            visited.Add(current);
+            foreach (var (dx, dy) in directions)
+            {
+                int newX = current.X + dx, newY = current.Y + dy;
+
+                if (newX >= 0 && newX < m && newY >= 0 && newY < n && maze[newX][newY] == '.' && !visited.Contains((newX,newY))) 
+                {
+                    visited.Add((newX, newY));
+                    DFSNearestExit(maze, (newX, newY), exit , currentStep + 1, visited, result);
+             
+                }
+            }
+            visited.Remove(current);
+        }
+
+
     }
 }
 
