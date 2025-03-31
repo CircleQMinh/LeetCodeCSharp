@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
 
@@ -5332,67 +5334,120 @@ namespace Playground
 
         public TreeNode DeleteNode(TreeNode root, int key)
         {
-            var result = root;
-            var queue = new Queue<TreeNode>();
             if (root == null)
             {
-                return result;
+                return root;
             }
 
-            queue.Enqueue(root);
-            while (queue.Count > 0) {
-                var current = queue.Dequeue();
-                if (current.val == key)
+            if (root.val > key)
+            {
+                root.left = DeleteNode(root.left, key);
+            }
+            else if (root.val < key)
+            {
+                root.right = DeleteNode(root.right, key);
+            }
+            else
+            {
+                if (root.right == null && root.left == null)
                 {
-                    if (current.right == null && current.left == null)
-                    {
-                        current = null;
-                    }
-                    else if (current.right == null && current.left !=null)
-                    {
-                        current.val = current.left.val;
-                        current.right = current.left.right;
-                        current.left = current.left.left;
-                    }
-                    else if (current.right != null && current.left == null)
-                    {
-                        current.val = current.right.val;
-                        current.left = current.right.left;
-                        current.right = current.right.right;
-                    }
-                    else //both left & right
-                    {
-                        var right = current.right;
-                        var prev = current;
-                        while (right.left != null) {
-                            prev = right;
-                            right = right.left; 
-                        }
-                        current.val = right.val;
-                        if (right.val == current.right.val)
-                        {
-                            current.right = current.right.right;
-                        }
-                        else
-                        {
-                            right = null;
-                        }
-
-                    }
-                    break;
+                    root = null;
                 }
-                if (current.left != null)
+                else if (root.right == null)
                 {
-                    queue.Enqueue(current.left);
+                    root = root.left;
                 }
-                if (current.right!=null)
+                else if (root.left == null)
                 {
-                    queue.Enqueue(current.right);
+                    root = root.right;
+                }
+                else
+                {
+                    var minRight = DeleteNodeFindMin(root.right);
+                    root.val = minRight.val;
+                    root.right = DeleteNode(root.right, root.val);
                 }
             }
-            return result;
+           
+            return root;
         }
 
+        public TreeNode DeleteNodeFindMin(TreeNode root)
+        {
+            while (root.left != null)
+            {
+                root = root.left;
+            }
+            return root;
+        }
+
+        //public int UniquePaths(int m, int n)
+        //{
+        //    var solutions = new HashSet<List<(int X, int Y)>>();
+        //    FindUniquePaths(m,n,(0,0),new List<(int X, int Y)>(),solutions);
+        //    return solutions.Count;
+        //}
+
+        //public void FindUniquePaths(int m, int n, (int X, int Y) current, List<(int X,int Y)> currentPath, HashSet<List<(int X, int Y)>> solutions)
+        //{
+        //    if (current.X == m-1 && current.Y == n-1)
+        //    {
+        //        var newSolution = new List<(int X,int Y)>(currentPath);
+        //        solutions.Add(newSolution);
+        //    }
+        //    var directions = new (int X, int Y)[] {  (1, 0), (0, 1) };
+        //    foreach (var (dx, dy) in directions)
+        //    {
+        //        int newX = current.X + dx, newY = current.Y + dy;
+
+        //        if (newX >= 0 && newX < m && newY >= 0 && newY < n) // Valid location 
+        //        {
+        //            currentPath.Add((newX, newY));
+        //            FindUniquePaths(m,n,(newX,newY),currentPath,solutions);
+        //            currentPath.RemoveAt(currentPath.Count - 1);
+        //        }
+        //    }
+        //}
+        public int UniquePaths(int m, int n)
+        {
+            var dp = new int[m, n];
+            for (int i = 0; i < n; i++)
+            {
+                dp[0,i] = 1;
+            }
+            for (int i = 0;i<m; i++)
+            {
+                dp[i, 0] = 1;
+            }
+            for(int i = 1; i < m; i++)
+            {
+                for (int j = 1; j < n; j++)
+                {
+                    dp[i,j] = dp[i,j-1] + dp[i-1,j];
+                }
+            }
+            return dp[m-1, n-1];
+        }
+
+        //public void FindUniquePaths(int m, int n, (int X, int Y) current, List<(int X, int Y)> currentPath, ref int solutions)
+        //{
+        //    if (current.X == m - 1 && current.Y == n - 1)
+        //    {
+        //        solutions++;
+        //    }
+        //    var directions = new (int X, int Y)[] { (1, 0), (0, 1) };
+        //    foreach (var (dx, dy) in directions)
+        //    {
+        //        int newX = current.X + dx, newY = current.Y + dy;
+
+        //        if (newX >= 0 && newX < m && newY >= 0 && newY < n) // Valid location 
+        //        {
+        //            currentPath.Add((newX, newY));
+        //            FindUniquePaths(m, n, (newX, newY), currentPath,ref solutions);
+        //            currentPath.RemoveAt(currentPath.Count - 1);
+        //        }
+        //    }
+        //}
     }
 }
 
