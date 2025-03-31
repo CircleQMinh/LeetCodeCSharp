@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Text.RegularExpressions;
 
 namespace Playground
@@ -5240,49 +5241,27 @@ namespace Playground
         {
             var m = maze.Length;
             var n = maze[0].Length;
-            var min = int.MaxValue;
             var startX = entrance[0];
             var startY = entrance[1];
-            var exits = new HashSet<(int X, int Y)>();
-            var dic = new Dictionary<(int X, int Y),int>();
-            exits.Add((startX, startY));
-            for (int i = 0; i < m; i++)
-            {
-                if (maze[i][0] == '.')
-                {
-                    exits.Add((i, 0));
-                }
-                if (maze[i][n - 1] == '.')
-                {
-                    exits.Add((i, n - 1));
-                }
-            }
-            for (int j = 1; j < n - 1; j++)
-            {
 
-                if (maze[0][j] == '.')
-                {
-                    exits.Add((0, j));
-                }
-                if (maze[m - 1][j] == '.' )
-                {
-                    exits.Add((m - 1, j));
-                }
-            }
-            exits.Remove((startX,startY));
-            if (exits.Count == 0)
-            {
-                return -1;
-            }
+            var dic = new Dictionary<(int X, int Y),int>();
             var directions = new (int X, int Y)[] { (-1, 0), (1, 0), (0, -1), (0, 1) };
             var queue = new Queue<(int X, int Y)>();
+
             queue.Enqueue((startX, startY));
+            maze[startX][startY] = '+';
             var step = 0;
+
             while (queue.Count > 0) {
                 var count = queue.Count;
                 for (int i = 0; i < count; i++) {
                     var current = queue.Dequeue();
-                    maze[current.X][current.Y] = '+';
+               
+                    if ((current.X == 0 || current.X == m - 1 || current.Y == 0 || current.Y == n - 1) && (current.X != startX || current.Y != startY))
+                    {
+                        return step;
+                    }
+
                     if (!dic.ContainsKey(current))
                     {
                         dic.Add(current, int.MaxValue);
@@ -5295,21 +5274,14 @@ namespace Playground
                         if (newX >= 0 && newX < m && newY >= 0 && newY < n && maze[newX][newY] == '.' )
                         {
                             queue.Enqueue((newX, newY));
+                            maze[newX][newY] = '+';
                         }
                     }
                 }
                 step++;
             }
 
-            foreach (var exit in exits)
-            {
-                if (dic.ContainsKey(exit))
-                {
-                    min = Math.Min(dic[exit], min);
-                }
-            }
-
-            return min == int.MaxValue ? -1 : min;
+            return -1;
         }
 
         public void DFSNearestExit(char[][] maze, (int X,int Y) current, (int X, int Y) exit, int currentStep,HashSet<(int X, int Y)> visited, Dictionary<(int X,int Y),int> result)
@@ -5337,6 +5309,89 @@ namespace Playground
             visited.Remove(current);
         }
 
+        //public int GuessNumber(int n)
+        //{
+        //    var left = 1;
+        //    var right = n;
+        //    var mid = 0;
+        //    var result = 999;
+        //    while (result != 0) {
+        //        mid = left + (right - left) / 2;
+        //        result = guess(mid);
+        //        if (result == -1)
+        //        {
+        //            right = mid-1; 
+        //        }
+        //        else
+        //        {
+        //            left = mid+1;
+        //        }
+        //    }
+        //    return mid;
+        //}
+
+        public TreeNode DeleteNode(TreeNode root, int key)
+        {
+            var result = root;
+            var queue = new Queue<TreeNode>();
+            if (root == null)
+            {
+                return result;
+            }
+
+            queue.Enqueue(root);
+            while (queue.Count > 0) {
+                var current = queue.Dequeue();
+                if (current.val == key)
+                {
+                    if (current.right == null && current.left == null)
+                    {
+                        current = null;
+                    }
+                    else if (current.right == null && current.left !=null)
+                    {
+                        current.val = current.left.val;
+                        current.right = current.left.right;
+                        current.left = current.left.left;
+                    }
+                    else if (current.right != null && current.left == null)
+                    {
+                        current.val = current.right.val;
+                        current.left = current.right.left;
+                        current.right = current.right.right;
+                    }
+                    else //both left & right
+                    {
+                        var right = current.right;
+                        var prev = current;
+                        while (right.left != null) {
+                            prev = right;
+                            right = right.left; 
+                        }
+                        current.val = right.val;
+                        if (right.val == current.right.val)
+                        {
+                            current.right = current.right.right;
+                        }
+                        else
+                        {
+                            right = null;
+                        }
+
+                    }
+                    break;
+                }
+                if (current.left != null)
+                {
+                    queue.Enqueue(current.left);
+                }
+                if (current.right!=null)
+                {
+                    queue.Enqueue(current.right);
+                }
+            }
+            return result;
+        }
 
     }
 }
