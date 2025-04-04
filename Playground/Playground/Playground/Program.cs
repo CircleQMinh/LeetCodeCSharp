@@ -273,6 +273,17 @@ var solution = new Solution();
 //var s = solution.CreateTreeNode(new List<int?> { 2, 0, 34, null, 1, 25, 40, null, null, 11, 31, null, 45, 10, 18, 29, 32, 43, 46, 4, null, 12, 24, 26, 30, null, null, 42, 44, null, 48, 3, 9, null, 14, 22, null, null, 27, null, null, 41, null, null, null, 47, 49, null, null, 5, null, 13, 15, 21, 23, null, 28, null, null, null, null, null, null, null, 8, null, null, null, 17, 19, null, null, null, null, null, 7, null, 16, null, null, 20, 6 });
 //var r = solution.DeleteNode(s, 33);
 
-var r = solution.Tribonacci(4);
+//var r = solution.Tribonacci(4);
+
+SmallestInfiniteSet smallestInfiniteSet = new SmallestInfiniteSet();
+smallestInfiniteSet.AddBack(2);    // 2 is already in the set, so no change is made.
+smallestInfiniteSet.PopSmallest(); // return 1, since 1 is the smallest number, and remove it from the set.
+smallestInfiniteSet.PopSmallest(); // return 2, and remove it from the set.
+smallestInfiniteSet.PopSmallest(); // return 3, and remove it from the set.
+smallestInfiniteSet.AddBack(1);    // 1 is added back to the set.
+smallestInfiniteSet.PopSmallest(); // return 1, since 1 was added back to the set and
+                                   // is the smallest number, and remove it from the set.
+smallestInfiniteSet.PopSmallest(); // return 4, and remove it from the set.
+smallestInfiniteSet.PopSmallest(); // return 5, and remove it from the set.
 
 Console.WriteLine("Hello, World!");
