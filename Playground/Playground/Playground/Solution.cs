@@ -5461,6 +5461,84 @@ namespace Playground
             }
             return dp[n];
         }
+
+        public IList<bool> KidsWithCandies(int[] candies, int extraCandies)
+        {
+            var result = new List<bool>();
+            var max = candies.Max();
+            for (int i = 0; i < candies.Length; i++)
+            {
+                result.Add(candies[i] + extraCandies >= max);
+            }
+
+
+            return result;
+        }
+
+        public bool CanPlaceFlowers(int[] flowerbed, int n)
+        {
+            var count = 0;
+            if (flowerbed.Length == 0)
+            {
+                return false;
+            }
+            if (flowerbed.Length == 1) { 
+                return flowerbed[0] == 0 || n == 0;
+            }
+            if (flowerbed[0] == 0 && flowerbed[1] == 0)
+            {
+                count++;
+                flowerbed[0] = 1;
+            }
+            if (flowerbed.Length - 2 > 0 && flowerbed[flowerbed.Length - 1] == 0 && flowerbed[flowerbed.Length - 2] == 0)
+            {
+                count++;
+                flowerbed[flowerbed.Length - 1] = 1;
+            }
+            for (int i = 1; i < flowerbed.Length - 1; i++)
+            {
+                if (flowerbed[i] == 0 && flowerbed[i-1] == 0 && flowerbed[i+1] == 0)
+                {
+                    count++;
+                    flowerbed[i] = 1;
+                }
+            }
+            return count >= n;
+        }
+
+        public int MaxLevelSum(TreeNode root)
+        {
+            var result = 1;
+            var level = 0;
+            var max = int.MinValue;
+            var queue = new Queue<TreeNode>();
+            queue.Enqueue(root);
+            while (queue.Count > 0) {
+                var sum = 0;
+                level++;
+                for (int i = 0; i < queue.Count; i++) { 
+                    var node = queue.Dequeue();
+                    sum += node.val;
+
+                    if (node.left != null)
+                    {
+                        queue.Enqueue(node.left);
+                    }
+                    if (node.right != null)
+                    {
+                        queue.Enqueue(node.right);
+                    }
+                }
+           
+                if (sum>max)
+                {
+                    max = sum;
+                    result = level;
+                }
+            }
+
+            return result;
+        }
     }
 }
 

@@ -274,8 +274,12 @@ var solution = new Solution();
 //var r = solution.DeleteNode(s, 33);
 
 //var r = solution.Tribonacci(4);
-Action Write = () => Console.Write("Lol");
-var a = new Alarm(Write);
-a.Trigger();
+//Action Write = () => Console.Write("Lol");
+//var a = new Alarm(Write);
+//a.Trigger();
+
+var s = solution.CreateTreeNode(new List<int?> { 1, 7, 0, 7, -8, null, null });
+var r = solution.MaxLevelSum(s);
+
 
 Console.WriteLine("Hello, World!");
