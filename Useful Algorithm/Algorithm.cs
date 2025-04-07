@@ -46,5 +46,45 @@ namespace UsefulAlgorithm
 
             return -1;
         }
+
+        public int BinarySearchLeftMost(int[] array, int target)
+        {
+            int left = 0;
+            int right = array.Length;
+
+            while (left < right)
+            {
+                int middle = left + (right - left) / 2;
+                if (array[middle] < target)
+                {
+                    left = middle + 1;
+                }
+                else
+                {
+                    right = middle;
+                }
+            }
+            return left;
+        }
+        public int BinarySearchRightMost(int[] array, int target)
+        {
+            int left = 0;
+            int right = array.Length;
+
+            while (left < right)
+            {
+                int middle = left + (right - left) / 2;
+
+                if (array[middle] > target)
+                {
+                    right = middle;
+                }
+                else
+                {
+                    left = middle + 1;
+                }
+            }
+            return right - 1;
+        }
     }
 }

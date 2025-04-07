@@ -278,8 +278,10 @@ var solution = new Solution();
 //var a = new Alarm(Write);
 //a.Trigger();
 
-var s = solution.CreateTreeNode(new List<int?> { 1, 7, 0, 7, -8, null, null });
-var r = solution.MaxLevelSum(s);
+//var s = solution.CreateTreeNode(new List<int?> { 1, 7, 0, 7, -8, null, null });
+//var r = solution.MaxLevelSum(s);
+
+var r = solution.SuccessfulPairs(new int[] { 5, 1, 3 }, new int[] {1,2,3,4,5 }, 7);
 
 
 Console.WriteLine("Hello, World!");
