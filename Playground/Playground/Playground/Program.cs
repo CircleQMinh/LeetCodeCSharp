@@ -283,6 +283,6 @@ var solution = new Solution();
 
 //var r = solution.SuccessfulPairs(new int[] { 5, 1, 3 }, new int[] {1,2,3,4,5 }, 7);
 
-var r = solution.LongestCommonSubsequence("a", "ttta");
+var r = solution.DailyTemperatures(new int[] { 73, 74, 75, 71, 69, 72, 76, 73 });
 
 Console.WriteLine("Hello, World!");
