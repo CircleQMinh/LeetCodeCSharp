@@ -283,6 +283,9 @@ var solution = new Solution();
 
 //var r = solution.SuccessfulPairs(new int[] { 5, 1, 3 }, new int[] {1,2,3,4,5 }, 7);
 
-var r = solution.DailyTemperatures(new int[] { 73, 74, 75, 71, 69, 72, 76, 73 });
+var s = new int[] { 2, 2, 2, 2, 3, 3, 3, 3, 1, 1, 1, 1, 2, 2, 2, 2, 2 };
+var r = solution.TotalCost(s, 6, 3);
+
+
 
 Console.WriteLine("Hello, World!");
