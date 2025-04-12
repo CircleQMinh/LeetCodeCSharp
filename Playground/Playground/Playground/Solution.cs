@@ -5656,7 +5656,7 @@ namespace Playground
         {
             var n = costs.Length;
             var left = 0;
-            var right = 0;
+            var right = n-1;
             long totalCost = 0;
             var first = new PriorityQueue<int, int>();
             var last = new PriorityQueue<int,int>();
@@ -5687,13 +5687,54 @@ namespace Playground
                     totalCost += last.Dequeue();
                     if (left <= right)
                     {
-                        first.Enqueue(costs[right], costs[right]);
+                        last.Enqueue(costs[right], costs[right]);
                         right--;
                     }
                 }
             }
 
             return totalCost;
+
+        }
+
+        public int FindCircleNum(int[][] isConnected)
+        {
+            var n = isConnected.Length;
+            var count = 0;
+
+            for (int i = 0; i < n; i++) {
+
+                for (int j = 0; j < n; j++)
+                {
+                    if (i!=j && isConnected[i][j] == 1)
+                    {
+                        count++;
+                        isConnected[i][j] = 0;
+                        isConnected[j][i] = 0;
+                        FindAndMarkBelongToProvine(isConnected,j);
+                    }
+                }
+            }
+            return count;
+        }
+
+        public void FindAndMarkBelongToProvine(int[][] isConnected, int currentCity) 
+        {
+
+            var queue = new Queue<int>();
+            queue.Enqueue(currentCity);
+            while (queue.Count > 0)
+            {
+                var current = queue.Dequeue();
+                for (int k = 0; k < isConnected.Length; k++)
+                {
+                    if (isConnected[current][k] == 1)
+                    {
+                        isConnected[current][k] = 0;
+                        queue.Enqueue(k);
+                    }
+                }
+            }
 
         }
     }
