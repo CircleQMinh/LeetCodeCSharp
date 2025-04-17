@@ -5797,6 +5797,62 @@ namespace Playground
 
             return daysPass;
         }
+
+
+        public bool IncreasingTriplet(int[] nums)
+        {
+            var n = nums.Length;
+            if (n<3)
+            {
+                return false;
+            }
+            var first = nums[0];
+            var second = int.MaxValue;
+
+            for (int i = 1; i < n; i++) {
+                var current = nums[i];
+                if (current <= first)
+                {
+                    first = current;
+                }
+                else if (current <= second)
+                {
+                    second = current;
+                }
+                else if(current > second)
+                {
+                    return true;
+                }
+            
+            }
+            return false;
+        }
+
+        public int Compress(char[] chars)
+        {
+            var s = "";
+            var i = 0;
+            var n = chars.Length;
+            while (i < n) {
+                var current = chars[i];
+                var currentCount = 1;
+                while (i+1 < n && chars[i+1] == current) { 
+                    currentCount++;
+                    i++;
+                
+                }
+                s += current;
+                s += currentCount > 1 ? currentCount : "";
+                i++;
+            }
+            for (int j = 0; j < s.Length; j++)
+            {
+                chars[j] = s[j];
+            }
+
+            return s.Length;
+        }
+
     }
 }
 

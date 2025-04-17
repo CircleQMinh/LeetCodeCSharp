@@ -283,8 +283,11 @@ var solution = new Solution();
 
 //var r = solution.SuccessfulPairs(new int[] { 5, 1, 3 }, new int[] {1,2,3,4,5 }, 7);
 
-var s = new int[] { 2, 2, 2, 2, 3, 3, 3, 3, 1, 1, 1, 1, 2, 2, 2, 2, 2 };
-var r = solution.TotalCost(s, 6, 3);
+//var s = new int[] { 2, 2, 2, 2, 3, 3, 3, 3, 1, 1, 1, 1, 2, 2, 2, 2, 2 };
+//var r = solution.TotalCost(s, 6, 3);
+
+var s = new char[] { 'a', 'a', 'b', 'b', 'c', 'c', 'c' };
+var r = solution.Compress(s);
 
 
 
