@@ -286,9 +286,11 @@ var solution = new Solution();
 //var s = new int[] { 2, 2, 2, 2, 3, 3, 3, 3, 1, 1, 1, 1, 2, 2, 2, 2, 2 };
 //var r = solution.TotalCost(s, 6, 3);
 
-var s = new char[] { 'a', 'a', 'b', 'b', 'c', 'c', 'c' };
-var r = solution.Compress(s);
+//var s = new char[] { 'a', 'a', 'b', 'b', 'c', 'c', 'c' };
+//var r = solution.Compress(s);
 
 
+var s = new int[] { 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1 };
+var r = solution.LongestOnes(s, 3);
 
 Console.WriteLine("Hello, World!");
