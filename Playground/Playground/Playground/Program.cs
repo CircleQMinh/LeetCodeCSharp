@@ -290,7 +290,10 @@ var solution = new Solution();
 //var r = solution.Compress(s);
 
 
-var s = new int[] { 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1 };
-var r = solution.LongestOnes(s, 3);
+//var s = new int[] { 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1 };
+//var r = solution.LongestOnes(s, 3);
+
+var s = new int[][] { [4, 4, 4, 4], [4, 4, 4, 4], [4, 4, 4, 2], [4, 4, 4, 2] };
+var r = solution.EqualPairs(s);
 
 Console.WriteLine("Hello, World!");

@@ -5862,6 +5862,11 @@ namespace Playground
             var max = 0;
             var fliped = 0;
 
+            if (n == 1)
+            {
+                return (k >= 1) ? 1 : 0;
+            }
+
             while (l < n - 1 && r < n - 1) {
                 r++;
                 if (nums[r] == 1)
@@ -5880,11 +5885,47 @@ namespace Playground
                     }
                     
                 }
-                max = Math.Max(max, r - l);
+                max = Math.Max(max, r - l + 1);
             }
             return max;
         }
+        public int EqualPairs(int[][] grid)
+        {
+            var n = grid.Length;
+            var count = 0;
+            var set = new HashSet<string>();
+            var dic = new Dictionary<string, int>();
+            for (int i = 0; i < n; i++) {
+                var row = "";
+                var col = "";
+                for (int j = 0; j < n; j++)
+                {
+                    row = $"{row}{grid[i][j]}";
+                    col = $"{col}{grid[j][i]}";
+                }
+                if (!set.Add(row))
+                {
+                    count++;
+                }
+                if (!set.Add(col))
+                {
+                    count++;
+                }
 
+                if (!dic.ContainsKey(row))
+                {
+                    dic.Add(row, 0);
+                }
+                if (!dic.ContainsKey(col))
+                {
+                    dic.Add(col, 0);
+                }
+                dic[row]++;
+                dic[col]++;
+            }
+
+            return count;
+        }
     }
 }
 
