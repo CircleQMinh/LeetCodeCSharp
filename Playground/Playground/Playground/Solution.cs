@@ -5893,37 +5893,62 @@ namespace Playground
         {
             var n = grid.Length;
             var count = 0;
-            var set = new HashSet<string>();
-            var dic = new Dictionary<string, int>();
+            var rows = new HashSet<(int Index, string Content)>();
+            var cols = new HashSet<(int Index, string Content)>();
             for (int i = 0; i < n; i++) {
                 var row = "";
                 var col = "";
                 for (int j = 0; j < n; j++)
                 {
-                    row = $"{row}{grid[i][j]}";
-                    col = $"{col}{grid[j][i]}";
+                    row = $"{row}*{grid[i][j]}";
+                    col = $"{col}*{grid[j][i]}";
                 }
-                if (!set.Add(row))
-                {
-                    count++;
+                rows.Add((i, row));
+                cols.Add((i, col));
+            }
+            foreach (var row in rows) {
+                foreach (var col in cols) {
+                    if (row.Content == col.Content)
+                    {
+                        count++;
+                    }
                 }
-                if (!set.Add(col))
-                {
-                    count++;
-                }
-
-                if (!dic.ContainsKey(row))
-                {
-                    dic.Add(row, 0);
-                }
-                if (!dic.ContainsKey(col))
-                {
-                    dic.Add(col, 0);
-                }
-                dic[row]++;
-                dic[col]++;
             }
 
+            return count;
+        }
+
+
+        public int PathSum(TreeNode root, int targetSum)
+        {
+            return DFS_PathSum(root, targetSum);
+        }
+
+        public int DFS_PathSum(TreeNode root,int target)
+        {
+            if (root == null)
+            {
+                return 0;
+            }
+            return CountPathFromNode(root, target)+
+            DFS_PathSum(root.left, target) +
+            DFS_PathSum(root.right, target);
+
+        }
+        public int CountPathFromNode(TreeNode node, int target)
+        {
+            if (node == null)
+            {
+                return 0;
+            }
+            int count = 0;
+            if (node.val == target)
+            {
+                count++;
+            }
+
+            count += CountPathFromNode(node.left, target - node.val);
+            count += CountPathFromNode(node.right, target - node.val);
             return count;
         }
     }

@@ -293,7 +293,10 @@ var solution = new Solution();
 //var s = new int[] { 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1 };
 //var r = solution.LongestOnes(s, 3);
 
-var s = new int[][] { [4, 4, 4, 4], [4, 4, 4, 4], [4, 4, 4, 2], [4, 4, 4, 2] };
-var r = solution.EqualPairs(s);
+//var s = new int[][] { [4, 4, 4, 4], [4, 4, 4, 4], [4, 4, 4, 2], [4, 4, 4, 2] };
+//var r = solution.EqualPairs(s);
+
+var s = solution.CreateTreeNode(new List<int?>{ 0, 1, 1 });
+var r = solution.PathSum(s, 1);
 
 Console.WriteLine("Hello, World!");
