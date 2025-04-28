@@ -296,7 +296,9 @@ var solution = new Solution();
 //var s = new int[][] { [4, 4, 4, 4], [4, 4, 4, 4], [4, 4, 4, 2], [4, 4, 4, 2] };
 //var r = solution.EqualPairs(s);
 
-var s = solution.CreateTreeNode(new List<int?>{ 0, 1, 1 });
-var r = solution.PathSum(s, 1);
+//var s = solution.CreateTreeNode(new List<int?>{ 0, 1, 1 });
+//var r = solution.PathSum(s, 1);
+
+var s = solution.CombinationSum3(3, 7);
 
 Console.WriteLine("Hello, World!");
