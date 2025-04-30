@@ -299,6 +299,8 @@ var solution = new Solution();
 //var s = solution.CreateTreeNode(new List<int?>{ 0, 1, 1 });
 //var r = solution.PathSum(s, 1);
 
-var s = solution.CombinationSum3(3, 7);
+//var s = solution.CombinationSum3(3, 7);
+
+solution.MoveZeroes(new int[] { 0, 1, 0, 3, 12 });
 
 Console.WriteLine("Hello, World!");
