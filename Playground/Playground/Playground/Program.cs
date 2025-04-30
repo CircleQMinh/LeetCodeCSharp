@@ -301,6 +301,8 @@ var solution = new Solution();
 
 //var s = solution.CombinationSum3(3, 7);
 
-solution.MoveZeroes(new int[] { 0, 1, 0, 3, 12 });
+//solution.MoveZeroes(new int[] { 0, 1, 0, 3, 12 });
+
+var r = solution.LongestSubarray(new int[] { 0, 1, 1, 1, 0, 1, 1, 0, 1 });
 
 Console.WriteLine("Hello, World!");
