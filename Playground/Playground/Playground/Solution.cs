@@ -6038,6 +6038,16 @@ namespace Playground
                 }
                 r++;
             }
+            return countZero==0? max-1: max;
+        }
+        public int LargestAltitude(int[] gain)
+        {
+            var att = 0;
+            var max = 0;
+            foreach (var i in gain) {
+                att += i;
+                max = Math.Max(max, att);
+            }
             return max;
         }
     }
