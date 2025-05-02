@@ -303,6 +303,8 @@ var solution = new Solution();
 
 //solution.MoveZeroes(new int[] { 0, 1, 0, 3, 12 });
 
-var r = solution.LongestSubarray(new int[] { 0, 1, 1, 1, 0, 1, 1, 0, 1 });
+//var r = solution.LongestSubarray(new int[] { 0, 1, 1, 1, 0, 1, 1, 0, 1 });
+
+var r = solution.PivotIndex(new int[] { 1, 7, 3, 6, 5, 6 });
 
 Console.WriteLine("Hello, World!");
