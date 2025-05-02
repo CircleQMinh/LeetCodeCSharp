@@ -6163,6 +6163,62 @@ namespace Playground
             }
             return ":D";
         }
+
+        public ListNode ReverseList(ListNode head)
+        {
+            if (head == null)
+            {
+                return head;
+            }
+            var stack = new Stack<ListNode>();
+            var current = head;
+            while (current != null) { 
+                stack.Push(current);
+                current = current.next;           
+            }
+
+            var result = stack.Pop();
+            current = result;
+
+            while (stack.Count > 0) { 
+                var next = stack.Pop();
+                current.next = next;
+                current = current.next;
+            }
+            current.next = null;
+
+            return result;
+        }
+
+        public bool LeafSimilar(TreeNode root1, TreeNode root2)
+        {
+            var l1 = GetLeafNodeValues(root1);
+            var l2 = GetLeafNodeValues(root2);
+            return true;
+        }
+
+        public List<int> GetLeafNodeValues(TreeNode root) { 
+            var result = new List<int>();
+            var stack = new Stack<TreeNode>();
+            stack.Push(root);
+            while (stack.Count > 0)
+            {
+                var node = stack.Pop();
+                if (node.right == null && node.left == null)
+                {
+                    result.Add(node.val);
+                }
+                if(node.right != null)
+                {
+                    stack.Push(node.right);
+                }
+                if (node.left != null)
+                {
+                    stack.Push(node.left);
+                }
+            }
+            return result;
+        }
     }
 }
 

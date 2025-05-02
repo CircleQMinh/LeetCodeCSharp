@@ -86,5 +86,42 @@ namespace UsefulAlgorithm
             }
             return right - 1;
         }
+
+        // In Depth-First Search (DFS) for binary trees, you can traverse in three standard orders:
+
+        // Pre-order: Visit Node → Left → Right
+
+        // In-order: Left → Visit Node → Right
+
+        // Post-order: Left → Right → Visit Node
+
+        public void PreOrder(TreeNode root)
+        {
+            if (root == null) return;
+
+            Console.WriteLine(root.Value); // Visit node
+            PreOrder(root.Left);           // Traverse left
+            PreOrder(root.Right);          // Traverse right
+        }
+        public void InOrder(TreeNode root)
+        {
+            if (root == null) return;
+
+            InOrder(root.Left);             // Traverse left
+            Console.WriteLine(root.Value);  // Visit node
+            InOrder(root.Right);            // Traverse right
+        }
+
+
+        public void PostOrder(TreeNode root)
+        {
+            if (root == null) return;
+
+            PostOrder(root.Left);            // Traverse left
+            PostOrder(root.Right);           // Traverse right
+            Console.WriteLine(root.Value);   // Visit node
+        }
+
+
     }
 }

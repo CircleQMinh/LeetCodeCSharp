@@ -309,6 +309,9 @@ var solution = new Solution();
 
 //var r = solution.DecodeString("100[leetcode]");
 
-var r = solution.PredictPartyVictory("DDRRR");
+//var r = solution.PredictPartyVictory("DDRRR");
 
+var s1 = solution.CreateTreeNode(new List<int?> { 3, 5, 1, 6, 2, 9, 8, null, null, 7, 4 });
+var s2 = solution.CreateTreeNode(new List<int?> { 3, 5, 1, 6, 7, 4, 2, null, null, null, null, null, null, 9, 8 });
+var r = solution.LeafSimilar(s1, s2);
 Console.WriteLine("Hello, World!");
