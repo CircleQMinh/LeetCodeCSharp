@@ -307,6 +307,8 @@ var solution = new Solution();
 
 //var r = solution.PivotIndex(new int[] { 1, 7, 3, 6, 5, 6 });
 
-var r = solution.DecodeString("100[leetcode]");
+//var r = solution.DecodeString("100[leetcode]");
+
+var r = solution.PredictPartyVictory("DDRRR");
 
 Console.WriteLine("Hello, World!");
