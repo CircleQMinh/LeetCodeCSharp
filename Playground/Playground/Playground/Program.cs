@@ -305,6 +305,8 @@ var solution = new Solution();
 
 //var r = solution.LongestSubarray(new int[] { 0, 1, 1, 1, 0, 1, 1, 0, 1 });
 
-var r = solution.PivotIndex(new int[] { 1, 7, 3, 6, 5, 6 });
+//var r = solution.PivotIndex(new int[] { 1, 7, 3, 6, 5, 6 });
+
+var r = solution.DecodeString("100[leetcode]");
 
 Console.WriteLine("Hello, World!");

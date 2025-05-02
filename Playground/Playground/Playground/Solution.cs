@@ -6057,7 +6057,7 @@ namespace Playground
             var sum = nums.Sum(x => x);
             var leftSum = 0;
             for (var i = 0; i < n; i++) {
-                if (leftSum == sum)
+                if (leftSum == sum - nums[i])
                 {
                     return i;
                 }
@@ -6065,6 +6065,45 @@ namespace Playground
                 sum-= nums[i];
             }
             return -1;
+        }
+
+        public string DecodeString(string s)
+        {
+            var stack = new Stack<string>();
+            for (var i = 0; i < s.Length; i++) {
+                if (s[i] == ']')
+                {
+                    var currentText = "";
+                    while (stack.Peek() != "[")
+                    {
+                        currentText = stack.Pop() + currentText;
+                    }
+
+                    stack.Pop();
+        
+                    var currentNumText = stack.Pop();
+                    while (stack.Count>0 && char.IsDigit(stack.Peek().ToCharArray()[0]))
+                    {
+                        currentNumText = stack.Pop() + currentNumText;
+                    }
+                    var currentNum = int.Parse(currentNumText);
+                    var decodeText = "";
+                    for (var j = 0; j < currentNum; j++)
+                    {
+                        decodeText += currentText;
+                    }
+                    stack.Push(decodeText);
+                }
+                else
+                {
+                    stack.Push(s[i].ToString());
+                }
+            }
+            var result = "";
+            while (stack.Count > 0) { 
+                result = stack.Pop() + result;
+            }
+            return result;
         }
     }
 }
