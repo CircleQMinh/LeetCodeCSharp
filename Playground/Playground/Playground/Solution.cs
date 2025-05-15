@@ -6194,6 +6194,16 @@ namespace Playground
         {
             var l1 = GetLeafNodeValues(root1);
             var l2 = GetLeafNodeValues(root2);
+            if (l1.Count != l2.Count)
+            {
+                return false;
+            }
+            for (int i = 0; i < l1.Count; i++) {
+                if (l1[i] != l2[i])
+                {
+                    return false;
+                }
+            }
             return true;
         }
 
