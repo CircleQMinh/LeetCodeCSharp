@@ -315,11 +315,14 @@ var solution = new Solution();
 //var s2 = solution.CreateTreeNode(new List<int?> { 3, 5, 1, 6, 7, 4, 2, null, null, null, null, null, null, 9, 8 });
 //var r = solution.LeafSimilar(s1, s2);
 
-var s = new StockSpanner();
-s.Next(100);
-s.Next(80);
-s.Next(60);
-s.Next(70);
-s.Next(60);
+//var s = new StockSpanner();
+//s.Next(100);
+//s.Next(80);
+//s.Next(60);
+//s.Next(70);
+//s.Next(60);
+
+var s = new int[][] { [1, 2, 9], [2, 3, 6], [2, 4, 5], [1, 4, 7] };
+var r = solution.MinScore(4,s);
 
 Console.WriteLine("Hello, World!");

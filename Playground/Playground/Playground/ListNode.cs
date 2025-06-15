@@ -69,6 +69,29 @@ namespace Playground
             neighbors = _neighbors;
         }
     }
+    public class IntNode
+    {
+        public int val;
+        public IList<IntNode> neighbors;
+
+        public IntNode()
+        {
+            val = 0;
+            neighbors = new List<IntNode>();
+        }
+
+        public IntNode(int _val)
+        {
+            val = _val;
+            neighbors = new List<IntNode>();
+        }
+
+        public IntNode(int _val, List<IntNode> _neighbors)
+        {
+            val = _val;
+            neighbors = _neighbors;
+        }
+    }
 
     public class DoublyLinkedList
     {
