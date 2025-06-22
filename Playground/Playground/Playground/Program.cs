@@ -322,7 +322,10 @@ var solution = new Solution();
 //s.Next(70);
 //s.Next(60);
 
-var s = new int[][] { [1, 2, 9], [2, 3, 6], [2, 4, 5], [1, 4, 7] };
-var r = solution.MinScore(4,s);
+//var s = new int[][] { [1, 2, 9], [2, 3, 6], [2, 4, 5], [1, 4, 7] };
+//var r = solution.MinScore(4,s);
+
+var s = solution.CreateTreeNode(new List<int?> { 1, 3, null, null, 2 });
+solution.RecoverTree(s);
 
 Console.WriteLine("Hello, World!");

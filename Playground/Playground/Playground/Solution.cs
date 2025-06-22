@@ -6281,6 +6281,57 @@ namespace Playground
 
             return minCost;
         }
+
+        public IList<int> InorderTraversal(TreeNode root)
+        {
+            var list = new List<int>();
+            DFS_InorderTraversal(root, list);
+            return list;
+        }
+
+        public void DFS_InorderTraversal(TreeNode root,List<int> list) {
+            if (root == null)
+            {
+                return;
+            }
+
+            DFS_InorderTraversal(root.left, list);
+            list.Add(root.val);
+            DFS_InorderTraversal(root.right, list);
+        }
+
+        public void RecoverTree(TreeNode root)
+        {
+            var list = new List<int>();
+            DFS_RecoverTree_FindNode(root, list);
+            list = list.OrderBy(q => q).ToList();
+            DFS_RecoverTree_RecoverNode(root, list);
+
+        }
+        public void DFS_RecoverTree_FindNode(TreeNode root,List<int> list)
+        {
+            if (root == null)
+            {
+                return;
+            }
+
+            DFS_RecoverTree_FindNode(root.left, list);
+            list.Add(root.val);
+            DFS_RecoverTree_FindNode(root.right, list);
+        }
+
+        public void DFS_RecoverTree_RecoverNode(TreeNode root, List<int> list)
+        {
+            if (root == null)
+            {
+                return;
+            }
+
+            DFS_RecoverTree_FindNode(root.left, list);
+            root.val = list[0];
+            list.RemoveAt(0);
+            DFS_RecoverTree_FindNode(root.right, list);
+        }
     }
 }
 
