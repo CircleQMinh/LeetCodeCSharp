@@ -12,7 +12,7 @@ namespace MinhVu
             int left = 0;
             int right = nums.Length - 1;
             int middle = 0;
-            //while (left <= right)
+            //while (left <= right) // also good but 
             //{
             //    middle = left + (right - left) / 2;
             //    if (left == right)
